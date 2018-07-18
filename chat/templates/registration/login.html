@@ -1,0 +1,9 @@
+{%extends 'chat/base.html' %}
+{% block content %}
+<form action = "" method = "post">
+	{% csrf_token %}
+	{{ form }}
+	<button>Log In</button>
+</form>
+
+{% endblock %}

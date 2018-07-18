@@ -1,0 +1,11 @@
+# ignore folders named __pycache__
+__pycache__/
+
+# ignore files with .pyc extensions
+*.pyc
+
+# ignore database file
+*.sqlite3
+
+# ignore migrations folders
+migrations/
