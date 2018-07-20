@@ -26,7 +26,6 @@ def users_list(request):
 @login_required
 def chatroom(request, username):
 	if username in list(User.objects.values_list('username', flat = True)):
-		#return HttpResponseRedirect(reverse('chat:index'))
 		return render(request, 'chat/chatroom.html')
 	else:
 		raise Http404("Invalid User! What are you even trying?")
