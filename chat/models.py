@@ -18,10 +18,10 @@ class Room(DateTimeModel):
 
     @property
     def is_private(self):
-        return self.users.objects.count() == 1
+        return self.users.count() == 1
 
 
 class Message(DateTimeModel):
-	room = models.ForeignKey(Room, on_delete=models.PROTECT)
-	sender = models.ForeignKey(User, on_delete=models.PROTECT)
-	content = models.TextField()
+    room = models.ForeignKey(Room, on_delete=models.PROTECT)
+    sender = models.ForeignKey(User, on_delete=models.PROTECT)
+    content = models.TextField()
