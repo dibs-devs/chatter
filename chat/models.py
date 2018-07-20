@@ -12,12 +12,16 @@ class DateTimeModel(models.Model):
 
 
 class Room(DateTimeModel):
-    title = models.CharField(max_length=20)
-    creator = models.ForeignKey(User, on_delete=models.PROTECT)
-    users = models.ManyToManyField(User, on_delete=models.PROTECT)
+    title = models.CharField(max_length=20, blank=True)
+    creator = models.ForeignKey(User, on_delete=models.PROTECT, related_name="creator")
+    users = models.ManyToManyField(User, related_name="users")
 
     @property
     def is_private(self):
         return self.users.objects.count() == 1
 
 
+class Message(DateTimeModel):
+	room = models.ForeignKey(Room, on_delete=models.PROTECT)
+	sender = models.ForeignKey(User, on_delete=models.PROTECT)
+	content = models.TextField()
