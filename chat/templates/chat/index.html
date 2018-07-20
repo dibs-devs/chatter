@@ -1,14 +1,14 @@
 {% extends 'chat/base.html' %}
 {% load static %}
+{% block extrahead %}
+	<link rel="stylesheet" href = "{% static 'css/search.css' %}">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
 {% block content %}
 	<p>Welcome!</p>
-	Pick a user to chat with:
-	<select id = "selectuser">
-		{% for user in user_list %}
-		<option value = {{user.username}}>{{user}}</option>
-		{% endfor %}
-	</select>
-	<button type = "button" id = "userselected">Go</button>
+		<input id = "searchbar" placeholder = "username"></input>
+		<button id = "user-selected">Go</button><br />
 	<a href = "{% url 'chat:logout' %}">Log out</a>
 	<script src = "{% static 'js/searchuser.js' %}"></script>
 {% endblock %}

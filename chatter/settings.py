@@ -75,6 +75,15 @@ WSGI_APPLICATION = 'chatter.wsgi.application'
 #For channels server to take over
 ASGI_APPLICATION = 'chatter.routing.application'
 
+#Channel layers to enable multiple instances of same consumer to communicate
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)]
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

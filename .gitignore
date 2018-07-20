@@ -9,3 +9,6 @@ __pycache__/
 
 # ignore migrations folders
 migrations/
+
+# ignore redis database file
+*.rdb
