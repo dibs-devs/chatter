@@ -1,0 +1,34 @@
+.chat-dialog {
+	margin: 0 auto;
+	width: 90vw;
+	height: 90vh;
+	border: 2px solid #35b88f;
+	border-radius: 5px;
+	background-color: white;
+	overflow: auto;
+}
+
+.input-container {
+	margin: 0 auto;
+	margin-top: 5px;
+	text-align: center;
+	width: 90vw;
+}
+
+#send-message {
+	border: 2px solid #35b88f;
+	border-radius: 10px;
+	width: 90vw;
+	text-align: left;
+	padding-left: 10px;
+}
+
+#send-button {
+	position: absolute;
+	right: 5vw;
+	background: transparent;
+	font-weight: bold;
+	color: #35b88f;
+	border: none;
+	padding-top: 2px;
+}
