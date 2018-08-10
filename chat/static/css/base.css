@@ -1,0 +1,10 @@
+body {
+	padding: 40px 20px 0px 20px;
+	font-size: 20px;
+}
+
+.float {
+	position: absolute;
+	right: 20px;
+	top: 40px;
+}

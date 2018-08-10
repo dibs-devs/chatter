@@ -1,19 +1,17 @@
 {% extends 'chat/base.html' %}
 {% load static %}
-{% block extrahead %}
-	<link rel = "stylesheet" href = "{% static 'css/chat-style.css' %}">
-	<script src = "{% static 'js/chat-window.js' %}"></script>
+{%block extrahead%}
+<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
 {% endblock %}
 {% block content %}
-<div class = "chat-container">
+{% include 'chat/chatroom-list.html' %}
+<div class = "col-8 chat-container">
 	<div class = "chat-dialog">
 	</div>
 	<div class = "input-container">
-		<!--<input id = "send-message" placeholder = "Type your message...">
-		-->
 		<button id = "send-button">Send</button>
 		<input id = "send-message" placeholder = "Type your message...">
-
 	</div>
 </div>
+<script src = "{% static 'js/searchuser.js' %}"></script>
 {% endblock %}

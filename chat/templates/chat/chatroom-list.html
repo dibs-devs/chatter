@@ -1,0 +1,14 @@
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'css/chatroom-list.css' %}">
+<div class = "col-3 search">
+	{% csrf_token %}
+	<input id = "searchbar" placeholder = "username"></input>
+	<button id = "user-selected">Go</button><br />
+</div>
+<div class = "col-3 chatroom-list">
+	{% for room in rooms_list %}
+	<a href="/chat/{{room.id}}/">
+		<div class = 'chat-list-item'>{{room}}</div>
+	</a>
+	{% endfor %}
+</div>

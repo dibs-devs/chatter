@@ -1,14 +1,16 @@
 {% extends 'chat/base.html' %}
 {% load static %}
 {% block extrahead %}
-	<link rel="stylesheet" href = "{% static 'css/search.css' %}">
+	<link rel="stylesheet" href = "{% static 'css/index.css' %}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock %}
 {% block content %}
-	<p>Welcome!</p>
-		<input id = "searchbar" placeholder = "username"></input>
-		<button id = "user-selected">Go</button><br />
-	<a href = "{% url 'chat:logout' %}">Log out</a>
+	{% include 'chat/chatroom-list.html' %}
+	<div class = "col-8 chat-section">
+		<h3>Select a Chat to get started.</h3>
+		<h6>Or type in a username you want to chat with.</h6>
+	</div>
+	{{hello}}
 	<script src = "{% static 'js/searchuser.js' %}"></script>
 {% endblock %}

@@ -1,0 +1,2746 @@
+[
+{
+    "model": "chat.room",
+    "pk": "200ed4f3-031c-4e3b-8e76-a76a892c2c21",
+    "fields": {
+        "date_created": "2018-08-09T07:52:14.198Z",
+        "date_modified": "2018-08-09T07:52:14.198Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "3119ec29-b2c5-4c4e-bd17-c1af0bc372dd",
+    "fields": {
+        "date_created": "2018-08-09T07:51:52.971Z",
+        "date_modified": "2018-08-09T07:51:52.971Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "35975468-788d-4b5b-8dbc-2c955fa933e5",
+    "fields": {
+        "date_created": "2018-08-09T07:52:06.482Z",
+        "date_modified": "2018-08-09T07:52:06.483Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "516f6b23-6ab8-4928-900f-da315716415a",
+    "fields": {
+        "date_created": "2018-08-09T07:52:03.067Z",
+        "date_modified": "2018-08-09T07:52:03.067Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "630af03b-5ead-43eb-87f5-3d7fab272a59",
+    "fields": {
+        "date_created": "2018-08-09T07:52:15.673Z",
+        "date_modified": "2018-08-09T07:52:15.673Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "6d9e0347-a2f9-4a38-a3f5-1edc9ea8e5bc",
+    "fields": {
+        "date_created": "2018-08-09T07:51:59.795Z",
+        "date_modified": "2018-08-09T07:51:59.795Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "75d688da-3681-49cc-a6d4-677695ad2008",
+    "fields": {
+        "date_created": "2018-08-09T07:52:08.216Z",
+        "date_modified": "2018-08-09T07:52:08.216Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "7645bba7-7c70-410f-8c26-60db33f12c3a",
+    "fields": {
+        "date_created": "2018-08-09T07:52:01.196Z",
+        "date_modified": "2018-08-09T07:52:01.196Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "8c027d12-db8c-48a8-94df-5618a092af8e",
+    "fields": {
+        "date_created": "2018-08-08T17:14:41.826Z",
+        "date_modified": "2018-08-08T17:14:48.167Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "98200f12-2253-4d05-99a2-89219134f6fc",
+    "fields": {
+        "date_created": "2018-08-09T07:52:19.243Z",
+        "date_modified": "2018-08-09T07:52:19.243Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "9eef12a2-1345-4c87-aebc-0450d9edf58f",
+    "fields": {
+        "date_created": "2018-08-08T07:10:47.523Z",
+        "date_modified": "2018-08-08T07:10:47.523Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+    "fields": {
+        "date_created": "2018-08-09T07:52:26.796Z",
+        "date_modified": "2018-08-09T07:52:26.796Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "bdcbf5ba-9f99-4ebb-b90a-ab6b80694f12",
+    "fields": {
+        "date_created": "2018-08-09T07:52:12.231Z",
+        "date_modified": "2018-08-09T07:52:12.231Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "c339892c-50de-484a-9f9e-e35e0d25a613",
+    "fields": {
+        "date_created": "2018-08-09T07:52:20.742Z",
+        "date_modified": "2018-08-09T07:52:20.742Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "ce9c50e9-9663-4dbc-a2dc-2110be8e4a62",
+    "fields": {
+        "date_created": "2018-08-09T07:51:58.184Z",
+        "date_modified": "2018-08-09T07:51:58.185Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "da2cc2db-02fe-4f51-b5c0-1c65558064e0",
+    "fields": {
+        "date_created": "2018-08-09T07:52:17.760Z",
+        "date_modified": "2018-08-09T07:52:17.760Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "e2daf1ce-04fc-4153-b9e8-dc73ba73a647",
+    "fields": {
+        "date_created": "2018-08-09T07:52:23.614Z",
+        "date_modified": "2018-08-09T07:52:23.614Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "f1606d1d-fb33-4ea4-bed2-62270f61ace5",
+    "fields": {
+        "date_created": "2018-08-09T07:52:04.449Z",
+        "date_modified": "2018-08-09T07:52:04.449Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+    "fields": {
+        "date_created": "2018-08-08T07:18:49.410Z",
+        "date_modified": "2018-08-08T07:18:49.410Z"
+    }
+},
+{
+    "model": "chat.room",
+    "pk": "fdeeddc6-f0fa-45e8-9913-fdaa467bb35e",
+    "fields": {
+        "date_created": "2018-08-09T07:52:10.623Z",
+        "date_modified": "2018-08-09T07:52:10.623Z"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 1,
+    "fields": {
+        "date_created": "2018-08-08T07:20:11.800Z",
+        "date_modified": "2018-08-08T08:39:29.214Z",
+        "sender": 1,
+        "text": "hello"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 2,
+    "fields": {
+        "date_created": "2018-08-08T08:39:42.835Z",
+        "date_modified": "2018-08-08T08:39:42.835Z",
+        "sender": 2,
+        "text": "hey Ishti! How's it going man?"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 3,
+    "fields": {
+        "date_created": "2018-08-08T09:32:22.709Z",
+        "date_modified": "2018-08-08T09:32:22.709Z",
+        "sender": 1,
+        "text": "I'm doing well! How about you?"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 4,
+    "fields": {
+        "date_created": "2018-08-08T09:32:37.527Z",
+        "date_modified": "2018-08-08T09:32:37.527Z",
+        "sender": 2,
+        "text": "Doing awesome man! How's the chat app coming along?"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 5,
+    "fields": {
+        "date_created": "2018-08-08T09:33:04.323Z",
+        "date_modified": "2018-08-08T09:33:04.323Z",
+        "sender": 1,
+        "text": "It's coming along awesome so far! Very excited about websockets man"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add room",
+        "content_type": 1,
+        "codename": "add_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change room",
+        "content_type": 1,
+        "codename": "change_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete room",
+        "content_type": 1,
+        "codename": "delete_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add room member",
+        "content_type": 2,
+        "codename": "add_roommember"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change room member",
+        "content_type": 2,
+        "codename": "change_roommember"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete room member",
+        "content_type": 2,
+        "codename": "delete_roommember"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add message",
+        "content_type": 3,
+        "codename": "add_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change message",
+        "content_type": 3,
+        "codename": "change_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete message",
+        "content_type": 3,
+        "codename": "delete_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 4,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 4,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 4,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 5,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 5,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 5,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 6,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 6,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 6,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 7,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 7,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 7,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 8,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 8,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 8,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 9,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 9,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 9,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user3",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-08T07:03:49Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user8",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-08T07:04:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$tRrsrakdLr8P$D8Fb66zCtrdXC/dKiRUDQGxQWX813LgJZ8BbfVl/zaQ=",
+        "last_login": "2018-08-08T08:24:47Z",
+        "is_superuser": true,
+        "username": "superuser",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-08-08T07:17:26Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$IlTfDKmvht1Z$/Oct3cKpeablc63oM4tFQCMAzuMfdEn9fwU0F+kWz8g=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user14",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:38:34Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$HOrT01QqQhaJ$Sqej8N1MdMAG06e80yZZFjygTqWYlTlOPbwCN5dRf5U=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user5",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:38:57Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$alDYTAenEi3L$P6oBlpu7ROoNLEoS7PoWfNUx6j9giXne3CJCHSijWKg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user10",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:39:25Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$11ZHJO7dSgXn$yEJweXgqIRebvLoENUUl5GWVPG68XCq/aQRYqRpfhvY=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user13",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:40:22Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$5Tf4cJLb3kCG$+pxiTG3mptprSdypPow28SIPBywlWl6OMPAbdIhukZ8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user4",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:40:39Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$PZrcSE4mNzKB$u2TL89LbLbsQdhUC6LVipLeQdXRQ+NlWHMIOGKBaR8I=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user7",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:40:55Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$3DxXtc3v5Xgw$6vICzhnod0ydhDvx8fNfJbwyxZecBwRSK10ZstUSxJ8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user9",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:41:10Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$XbD449h2oGmT$c1y+r3NADyG7RX9/6cVb75PSgSzpIvRVzvUTuPhF4mk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user15",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:41:18Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$xJ28Uw4XoRFw$12o32HOO3eqlAsg706uKZDsBUxCSueBkqS/1sKJkxQc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user11",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:41:31Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$HcKxZ9p41oOB$mbcuU/GfHrdJ884xf8xoUb8UOfWyGaZnH3ZlDEtaq2Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user2",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:41:50Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$kjuh3JyanO5Y$Yyf9GTaK0w1ObVun8bhkKfPdXFjGsd5tI9YDDgurJEk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user6",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:43:26Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$xQML760fZ6AI$lkABooIXqoOPLh7OfFwUlGcAWvxAbhjd/iOrc4WO+VU=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-08-09T07:43:37Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2018-08-08T07:18:49.412Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+        "object_repr": "Room object (f5d1dfda-a174-4b02-bf36-9cdd9136c18c)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2018-08-08T07:19:21.399Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "1",
+        "object_repr": "RoomMember object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2018-08-08T07:19:38.169Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "1",
+        "object_repr": "RoomMember object (1)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2018-08-08T07:19:46.883Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "2",
+        "object_repr": "RoomMember object (2)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2018-08-08T07:20:11.804Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Message object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2018-08-08T07:20:17.247Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Message object (1)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2018-08-08T08:39:29.229Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "hello sent by member aishtiaque in room f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2018-08-08T08:39:42.849Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "hey Ishti! How's it going man? sent by member kruto in room f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2018-08-08T09:32:22.717Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "3",
+        "object_repr": "\"I'm doing well! How about you?\" sent by \"member \"aishtiaque\" in room \"f5d1dfda-a174-4b02-bf36-9cdd9136c18c\"\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2018-08-08T09:32:37.543Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "4",
+        "object_repr": "\"Doing awesome man! How's the chat app coming along?\" sent by \"member \"kruto\" in room \"f5d1dfda-a174-4b02-bf36-9cdd9136c18c\"\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2018-08-08T09:33:04.337Z",
+        "user": 3,
+        "content_type": 3,
+        "object_id": "5",
+        "object_repr": "\"It's coming along awesome so far! Very excited about websockets man\" sent by \"member \"aishtiaque\" in room \"f5d1dfda-a174-4b02-bf36-9cdd9136c18c\"\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2018-08-08T13:10:12.556Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "3",
+        "object_repr": "member \"kruto\" in room \"['kruto']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2018-08-08T16:54:42.249Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "5",
+        "object_repr": "member \"aishtiaque\" in room \"['aishtiaque', 'kruto', 'aishtiaque2', 'aishtiaque']\"",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2018-08-08T17:14:27.345Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "6",
+        "object_repr": "member \"aishtiaque\" in room \"['aishtiaque', 'kruto']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2018-08-08T17:14:41.855Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "8c027d12-db8c-48a8-94df-5618a092af8e",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2018-08-08T17:14:48.180Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "8c027d12-db8c-48a8-94df-5618a092af8e",
+        "object_repr": "[]",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2018-08-08T17:15:06.973Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "7",
+        "object_repr": "member \"aishtiaque\" in room \"['aishtiaque']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2018-08-09T07:38:35.062Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "4",
+        "object_repr": "yyu",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2018-08-09T07:38:43.633Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "4",
+        "object_repr": "yyu",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2018-08-09T07:38:57.204Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "5",
+        "object_repr": "dlmoore",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2018-08-09T07:39:04.537Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "5",
+        "object_repr": "dlmoore",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2018-08-09T07:39:25.856Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "6",
+        "object_repr": "rrodriguez",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2018-08-09T07:39:28.667Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "6",
+        "object_repr": "rrodriguez",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2018-08-09T07:40:22.196Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "7",
+        "object_repr": "therringsh",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2018-08-09T07:40:39.833Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "8",
+        "object_repr": "aqngo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2018-08-09T07:40:44.265Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "8",
+        "object_repr": "aqngo",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2018-08-09T07:40:56.010Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "9",
+        "object_repr": "hlin",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2018-08-09T07:40:58.698Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "9",
+        "object_repr": "hlin",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2018-08-09T07:41:10.692Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "10",
+        "object_repr": "mahmad",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2018-08-09T07:41:18.480Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "11",
+        "object_repr": "zkhan",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2018-08-09T07:41:21.387Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "11",
+        "object_repr": "zkhan",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2018-08-09T07:41:31.943Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "12",
+        "object_repr": "smh",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2018-08-09T07:41:50.893Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "13",
+        "object_repr": "aharoon",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2018-08-09T07:41:54.539Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "13",
+        "object_repr": "aharoon",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2018-08-09T07:43:26.873Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "14",
+        "object_repr": "harry",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2018-08-09T07:43:29.516Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "14",
+        "object_repr": "harry",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2018-08-09T07:43:38.011Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "15",
+        "object_repr": "Will",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2018-08-09T07:44:21.663Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "15",
+        "object_repr": "Will",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2018-08-09T07:48:54.464Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "3",
+        "object_repr": "superuser",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2018-08-09T07:49:08.075Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "3",
+        "object_repr": "superuser",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"email\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2018-08-09T07:49:22.570Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "15",
+        "object_repr": "user1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2018-08-09T07:49:31.446Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "13",
+        "object_repr": "user2",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2018-08-09T07:49:40.790Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "1",
+        "object_repr": "user3",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2018-08-09T07:49:53.619Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "8",
+        "object_repr": "user4",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2018-08-09T07:49:59.575Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "5",
+        "object_repr": "user5",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2018-08-09T07:50:04.491Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "14",
+        "object_repr": "user6",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2018-08-09T07:50:09.125Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "9",
+        "object_repr": "user7",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2018-08-09T07:50:14.947Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "2",
+        "object_repr": "user8",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2018-08-09T07:50:20.630Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "10",
+        "object_repr": "user9",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2018-08-09T07:50:24.772Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "6",
+        "object_repr": "user10",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2018-08-09T07:50:29.518Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "12",
+        "object_repr": "user11",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2018-08-09T07:50:34.041Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "3",
+        "object_repr": "user12",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2018-08-09T07:50:38.387Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "7",
+        "object_repr": "user13",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2018-08-09T07:50:45.335Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "4",
+        "object_repr": "user14",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2018-08-09T07:50:55.567Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "11",
+        "object_repr": "user15",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2018-08-09T07:51:02.654Z",
+        "user": 3,
+        "content_type": 5,
+        "object_id": "3",
+        "object_repr": "superuser",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"username\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2018-08-09T07:51:52.983Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "3119ec29-b2c5-4c4e-bd17-c1af0bc372dd",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2018-08-09T07:51:58.196Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "ce9c50e9-9663-4dbc-a2dc-2110be8e4a62",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2018-08-09T07:51:59.805Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "6d9e0347-a2f9-4a38-a3f5-1edc9ea8e5bc",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2018-08-09T07:52:01.209Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "7645bba7-7c70-410f-8c26-60db33f12c3a",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2018-08-09T07:52:03.072Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "516f6b23-6ab8-4928-900f-da315716415a",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2018-08-09T07:52:04.461Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "f1606d1d-fb33-4ea4-bed2-62270f61ace5",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2018-08-09T07:52:06.496Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "35975468-788d-4b5b-8dbc-2c955fa933e5",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2018-08-09T07:52:08.230Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "75d688da-3681-49cc-a6d4-677695ad2008",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2018-08-09T07:52:10.631Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "fdeeddc6-f0fa-45e8-9913-fdaa467bb35e",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2018-08-09T07:52:12.244Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "bdcbf5ba-9f99-4ebb-b90a-ab6b80694f12",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2018-08-09T07:52:14.205Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "200ed4f3-031c-4e3b-8e76-a76a892c2c21",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2018-08-09T07:52:15.684Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "630af03b-5ead-43eb-87f5-3d7fab272a59",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2018-08-09T07:52:17.771Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "da2cc2db-02fe-4f51-b5c0-1c65558064e0",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2018-08-09T07:52:19.254Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "98200f12-2253-4d05-99a2-89219134f6fc",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2018-08-09T07:52:20.753Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "c339892c-50de-484a-9f9e-e35e0d25a613",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2018-08-09T07:52:23.624Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "e2daf1ce-04fc-4153-b9e8-dc73ba73a647",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2018-08-09T07:52:26.807Z",
+        "user": 3,
+        "content_type": 1,
+        "object_id": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "object_repr": "[]",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2018-08-09T07:52:53.179Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "8",
+        "object_repr": "member \"superuser\" in room \"['superuser']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2018-08-09T07:52:59.800Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "9",
+        "object_repr": "member \"user1\" in room \"['superuser', 'user1']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2018-08-09T07:53:07.100Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "10",
+        "object_repr": "member \"user10\" in room \"['user10']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2018-08-09T07:53:13.665Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "11",
+        "object_repr": "member \"user11\" in room \"['user10', 'user11']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+        "action_time": "2018-08-09T07:53:23.845Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "12",
+        "object_repr": "member \"user10\" in room \"['user10']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+        "action_time": "2018-08-09T07:53:30.599Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "13",
+        "object_repr": "member \"user11\" in room \"['user10', 'user11']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+        "action_time": "2018-08-09T08:05:33.640Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "14",
+        "object_repr": "member \"user13\" in room \"['user10', 'user13', 'user11']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+        "action_time": "2018-08-09T08:05:55.692Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "15",
+        "object_repr": "member \"user9\" in room \"['user9']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+        "action_time": "2018-08-09T08:06:01.634Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "16",
+        "object_repr": "member \"user8\" in room \"['user8', 'user9']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+        "action_time": "2018-08-09T08:06:07.041Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "17",
+        "object_repr": "member \"user7\" in room \"['user8', 'user7', 'user9']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+        "action_time": "2018-08-09T08:06:13.181Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "18",
+        "object_repr": "member \"user6\" in room \"['user8', 'user7', 'user9', 'user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+        "action_time": "2018-08-09T08:07:00.964Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "19",
+        "object_repr": "member \"user2\" in room \"['user2']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+        "action_time": "2018-08-09T08:07:06.622Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "20",
+        "object_repr": "member \"user3\" in room \"['user3', 'user2']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+        "action_time": "2018-08-09T08:07:13.276Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "21",
+        "object_repr": "member \"user6\" in room \"['user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+        "action_time": "2018-08-09T08:07:22.800Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "22",
+        "object_repr": "member \"user7\" in room \"['user7', 'user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+        "action_time": "2018-08-09T08:07:29.696Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "23",
+        "object_repr": "member \"user8\" in room \"['user8', 'user7', 'user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+        "action_time": "2018-08-09T08:07:39.105Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "24",
+        "object_repr": "member \"user13\" in room \"['user13']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+        "action_time": "2018-08-09T08:07:44.305Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "25",
+        "object_repr": "member \"user14\" in room \"['user14', 'user13']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+        "action_time": "2018-08-09T08:07:52.581Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "26",
+        "object_repr": "member \"user14\" in room \"['user14']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+        "action_time": "2018-08-09T08:08:00.623Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "27",
+        "object_repr": "member \"user15\" in room \"['user14', 'user15']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+        "action_time": "2018-08-09T08:08:11.903Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "28",
+        "object_repr": "member \"user2\" in room \"['user2']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+        "action_time": "2018-08-09T08:08:17.814Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "29",
+        "object_repr": "member \"superuser\" in room \"['superuser', 'user2']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+        "action_time": "2018-08-09T08:08:23.264Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "30",
+        "object_repr": "member \"superuser\" in room \"['superuser']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+        "action_time": "2018-08-09T08:08:31.025Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "31",
+        "object_repr": "member \"user13\" in room \"['superuser', 'user13']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+        "action_time": "2018-08-09T08:08:38.508Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "32",
+        "object_repr": "member \"user4\" in room \"['user4']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+        "action_time": "2018-08-09T08:08:44.248Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "33",
+        "object_repr": "member \"user10\" in room \"['user10', 'user4']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+        "action_time": "2018-08-09T08:08:50.461Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "34",
+        "object_repr": "member \"user6\" in room \"['user10', 'user4', 'user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+        "action_time": "2018-08-09T08:08:57.797Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "35",
+        "object_repr": "member \"user3\" in room \"['user3']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+        "action_time": "2018-08-09T08:09:03.944Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "36",
+        "object_repr": "member \"superuser\" in room \"['user3', 'superuser']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+        "action_time": "2018-08-09T08:09:14.841Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "37",
+        "object_repr": "member \"user4\" in room \"['user4']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+        "action_time": "2018-08-09T08:09:20.812Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "38",
+        "object_repr": "member \"user1\" in room \"['user4', 'user1']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+        "action_time": "2018-08-09T08:09:27.780Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "39",
+        "object_repr": "member \"user15\" in room \"['user4', 'user15', 'user1']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+        "action_time": "2018-08-09T08:09:33.698Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "40",
+        "object_repr": "member \"superuser\" in room \"['superuser']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+        "action_time": "2018-08-09T08:09:48.370Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "41",
+        "object_repr": "member \"user7\" in room \"['superuser', 'user7']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+        "action_time": "2018-08-09T08:09:54.748Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "42",
+        "object_repr": "member \"user6\" in room \"['user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+        "action_time": "2018-08-09T08:10:03.907Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "43",
+        "object_repr": "member \"user2\" in room \"['user2', 'user6']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+        "action_time": "2018-08-09T08:10:09.704Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "44",
+        "object_repr": "member \"user4\" in room \"['user4']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+        "action_time": "2018-08-09T08:10:15.552Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "45",
+        "object_repr": "member \"user10\" in room \"['user10', 'user4']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+        "action_time": "2018-08-09T08:10:23.720Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "46",
+        "object_repr": "member \"user3\" in room \"['user3']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+        "action_time": "2018-08-09T08:10:32.419Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "47",
+        "object_repr": "member \"user11\" in room \"['user3', 'user11']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+        "action_time": "2018-08-09T08:10:38.379Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "48",
+        "object_repr": "member \"user5\" in room \"['user3', 'user5', 'user11']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+        "action_time": "2018-08-09T08:10:45.102Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "49",
+        "object_repr": "member \"user9\" in room \"['user3', 'user5', 'user9', 'user11']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+        "action_time": "2018-08-09T08:10:50.808Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "50",
+        "object_repr": "member \"user1\" in room \"['user3', 'user5', 'user9', 'user11', 'user1']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+        "action_time": "2018-08-09T08:10:57.795Z",
+        "user": 3,
+        "content_type": 2,
+        "object_id": "51",
+        "object_repr": "member \"superuser\" in room \"['user3', 'superuser', 'user5', 'user9', 'user11', 'user1']\"",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 1,
+    "fields": {
+        "date_created": "2018-08-08T07:19:21.389Z",
+        "date_modified": "2018-08-08T07:19:38.162Z",
+        "room": "f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+        "user": 1
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 2,
+    "fields": {
+        "date_created": "2018-08-08T07:19:46.875Z",
+        "date_modified": "2018-08-08T07:19:46.875Z",
+        "room": "f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+        "user": 2
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 3,
+    "fields": {
+        "date_created": "2018-08-08T13:10:12.545Z",
+        "date_modified": "2018-08-08T13:10:12.545Z",
+        "room": "9eef12a2-1345-4c87-aebc-0450d9edf58f",
+        "user": 2
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 4,
+    "fields": {
+        "date_created": "2018-08-08T14:07:54.374Z",
+        "date_modified": "2018-08-08T14:07:54.374Z",
+        "room": "f5d1dfda-a174-4b02-bf36-9cdd9136c18c",
+        "user": 3
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 6,
+    "fields": {
+        "date_created": "2018-08-08T17:14:27.330Z",
+        "date_modified": "2018-08-08T17:14:27.330Z",
+        "room": "9eef12a2-1345-4c87-aebc-0450d9edf58f",
+        "user": 1
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 7,
+    "fields": {
+        "date_created": "2018-08-08T17:15:06.959Z",
+        "date_modified": "2018-08-08T17:15:06.959Z",
+        "room": "8c027d12-db8c-48a8-94df-5618a092af8e",
+        "user": 1
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 8,
+    "fields": {
+        "date_created": "2018-08-09T07:52:53.169Z",
+        "date_modified": "2018-08-09T07:52:53.169Z",
+        "room": "3119ec29-b2c5-4c4e-bd17-c1af0bc372dd",
+        "user": 3
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 9,
+    "fields": {
+        "date_created": "2018-08-09T07:52:59.790Z",
+        "date_modified": "2018-08-09T07:52:59.790Z",
+        "room": "3119ec29-b2c5-4c4e-bd17-c1af0bc372dd",
+        "user": 15
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 10,
+    "fields": {
+        "date_created": "2018-08-09T07:53:07.089Z",
+        "date_modified": "2018-08-09T07:53:07.089Z",
+        "room": "ce9c50e9-9663-4dbc-a2dc-2110be8e4a62",
+        "user": 6
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 11,
+    "fields": {
+        "date_created": "2018-08-09T07:53:13.654Z",
+        "date_modified": "2018-08-09T07:53:13.654Z",
+        "room": "ce9c50e9-9663-4dbc-a2dc-2110be8e4a62",
+        "user": 12
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 12,
+    "fields": {
+        "date_created": "2018-08-09T07:53:23.838Z",
+        "date_modified": "2018-08-09T07:53:23.838Z",
+        "room": "6d9e0347-a2f9-4a38-a3f5-1edc9ea8e5bc",
+        "user": 6
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 13,
+    "fields": {
+        "date_created": "2018-08-09T07:53:30.588Z",
+        "date_modified": "2018-08-09T07:53:30.588Z",
+        "room": "6d9e0347-a2f9-4a38-a3f5-1edc9ea8e5bc",
+        "user": 12
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 14,
+    "fields": {
+        "date_created": "2018-08-09T08:05:33.628Z",
+        "date_modified": "2018-08-09T08:05:33.628Z",
+        "room": "6d9e0347-a2f9-4a38-a3f5-1edc9ea8e5bc",
+        "user": 7
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 15,
+    "fields": {
+        "date_created": "2018-08-09T08:05:55.681Z",
+        "date_modified": "2018-08-09T08:05:55.681Z",
+        "room": "7645bba7-7c70-410f-8c26-60db33f12c3a",
+        "user": 10
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 16,
+    "fields": {
+        "date_created": "2018-08-09T08:06:01.628Z",
+        "date_modified": "2018-08-09T08:06:01.628Z",
+        "room": "7645bba7-7c70-410f-8c26-60db33f12c3a",
+        "user": 2
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 17,
+    "fields": {
+        "date_created": "2018-08-09T08:06:07.030Z",
+        "date_modified": "2018-08-09T08:06:07.030Z",
+        "room": "7645bba7-7c70-410f-8c26-60db33f12c3a",
+        "user": 9
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 18,
+    "fields": {
+        "date_created": "2018-08-09T08:06:13.177Z",
+        "date_modified": "2018-08-09T08:06:13.177Z",
+        "room": "7645bba7-7c70-410f-8c26-60db33f12c3a",
+        "user": 14
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 19,
+    "fields": {
+        "date_created": "2018-08-09T08:07:00.950Z",
+        "date_modified": "2018-08-09T08:07:00.951Z",
+        "room": "516f6b23-6ab8-4928-900f-da315716415a",
+        "user": 13
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 20,
+    "fields": {
+        "date_created": "2018-08-09T08:07:06.611Z",
+        "date_modified": "2018-08-09T08:07:06.611Z",
+        "room": "516f6b23-6ab8-4928-900f-da315716415a",
+        "user": 1
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 21,
+    "fields": {
+        "date_created": "2018-08-09T08:07:13.264Z",
+        "date_modified": "2018-08-09T08:07:13.264Z",
+        "room": "f1606d1d-fb33-4ea4-bed2-62270f61ace5",
+        "user": 14
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 22,
+    "fields": {
+        "date_created": "2018-08-09T08:07:22.788Z",
+        "date_modified": "2018-08-09T08:07:22.788Z",
+        "room": "f1606d1d-fb33-4ea4-bed2-62270f61ace5",
+        "user": 9
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 23,
+    "fields": {
+        "date_created": "2018-08-09T08:07:29.684Z",
+        "date_modified": "2018-08-09T08:07:29.684Z",
+        "room": "f1606d1d-fb33-4ea4-bed2-62270f61ace5",
+        "user": 2
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 24,
+    "fields": {
+        "date_created": "2018-08-09T08:07:39.096Z",
+        "date_modified": "2018-08-09T08:07:39.096Z",
+        "room": "35975468-788d-4b5b-8dbc-2c955fa933e5",
+        "user": 7
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 25,
+    "fields": {
+        "date_created": "2018-08-09T08:07:44.301Z",
+        "date_modified": "2018-08-09T08:07:44.301Z",
+        "room": "35975468-788d-4b5b-8dbc-2c955fa933e5",
+        "user": 4
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 26,
+    "fields": {
+        "date_created": "2018-08-09T08:07:52.571Z",
+        "date_modified": "2018-08-09T08:07:52.571Z",
+        "room": "75d688da-3681-49cc-a6d4-677695ad2008",
+        "user": 4
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 27,
+    "fields": {
+        "date_created": "2018-08-09T08:08:00.613Z",
+        "date_modified": "2018-08-09T08:08:00.613Z",
+        "room": "75d688da-3681-49cc-a6d4-677695ad2008",
+        "user": 11
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 28,
+    "fields": {
+        "date_created": "2018-08-09T08:08:11.890Z",
+        "date_modified": "2018-08-09T08:08:11.890Z",
+        "room": "fdeeddc6-f0fa-45e8-9913-fdaa467bb35e",
+        "user": 13
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 29,
+    "fields": {
+        "date_created": "2018-08-09T08:08:17.802Z",
+        "date_modified": "2018-08-09T08:08:17.802Z",
+        "room": "fdeeddc6-f0fa-45e8-9913-fdaa467bb35e",
+        "user": 3
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 30,
+    "fields": {
+        "date_created": "2018-08-09T08:08:23.254Z",
+        "date_modified": "2018-08-09T08:08:23.254Z",
+        "room": "bdcbf5ba-9f99-4ebb-b90a-ab6b80694f12",
+        "user": 3
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 31,
+    "fields": {
+        "date_created": "2018-08-09T08:08:31.013Z",
+        "date_modified": "2018-08-09T08:08:31.013Z",
+        "room": "bdcbf5ba-9f99-4ebb-b90a-ab6b80694f12",
+        "user": 7
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 32,
+    "fields": {
+        "date_created": "2018-08-09T08:08:38.497Z",
+        "date_modified": "2018-08-09T08:08:38.497Z",
+        "room": "200ed4f3-031c-4e3b-8e76-a76a892c2c21",
+        "user": 8
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 33,
+    "fields": {
+        "date_created": "2018-08-09T08:08:44.236Z",
+        "date_modified": "2018-08-09T08:08:44.236Z",
+        "room": "200ed4f3-031c-4e3b-8e76-a76a892c2c21",
+        "user": 6
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 34,
+    "fields": {
+        "date_created": "2018-08-09T08:08:50.450Z",
+        "date_modified": "2018-08-09T08:08:50.450Z",
+        "room": "200ed4f3-031c-4e3b-8e76-a76a892c2c21",
+        "user": 14
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 35,
+    "fields": {
+        "date_created": "2018-08-09T08:08:57.784Z",
+        "date_modified": "2018-08-09T08:08:57.784Z",
+        "room": "da2cc2db-02fe-4f51-b5c0-1c65558064e0",
+        "user": 1
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 36,
+    "fields": {
+        "date_created": "2018-08-09T08:09:03.934Z",
+        "date_modified": "2018-08-09T08:09:03.934Z",
+        "room": "da2cc2db-02fe-4f51-b5c0-1c65558064e0",
+        "user": 3
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 37,
+    "fields": {
+        "date_created": "2018-08-09T08:09:14.831Z",
+        "date_modified": "2018-08-09T08:09:14.831Z",
+        "room": "630af03b-5ead-43eb-87f5-3d7fab272a59",
+        "user": 8
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 38,
+    "fields": {
+        "date_created": "2018-08-09T08:09:20.799Z",
+        "date_modified": "2018-08-09T08:09:20.799Z",
+        "room": "630af03b-5ead-43eb-87f5-3d7fab272a59",
+        "user": 15
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 39,
+    "fields": {
+        "date_created": "2018-08-09T08:09:27.769Z",
+        "date_modified": "2018-08-09T08:09:27.769Z",
+        "room": "630af03b-5ead-43eb-87f5-3d7fab272a59",
+        "user": 11
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 40,
+    "fields": {
+        "date_created": "2018-08-09T08:09:33.687Z",
+        "date_modified": "2018-08-09T08:09:33.687Z",
+        "room": "98200f12-2253-4d05-99a2-89219134f6fc",
+        "user": 3
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 41,
+    "fields": {
+        "date_created": "2018-08-09T08:09:48.360Z",
+        "date_modified": "2018-08-09T08:09:48.361Z",
+        "room": "98200f12-2253-4d05-99a2-89219134f6fc",
+        "user": 9
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 42,
+    "fields": {
+        "date_created": "2018-08-09T08:09:54.739Z",
+        "date_modified": "2018-08-09T08:09:54.739Z",
+        "room": "c339892c-50de-484a-9f9e-e35e0d25a613",
+        "user": 14
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 43,
+    "fields": {
+        "date_created": "2018-08-09T08:10:03.896Z",
+        "date_modified": "2018-08-09T08:10:03.896Z",
+        "room": "c339892c-50de-484a-9f9e-e35e0d25a613",
+        "user": 13
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 44,
+    "fields": {
+        "date_created": "2018-08-09T08:10:09.696Z",
+        "date_modified": "2018-08-09T08:10:09.696Z",
+        "room": "e2daf1ce-04fc-4153-b9e8-dc73ba73a647",
+        "user": 8
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 45,
+    "fields": {
+        "date_created": "2018-08-09T08:10:15.545Z",
+        "date_modified": "2018-08-09T08:10:15.545Z",
+        "room": "e2daf1ce-04fc-4153-b9e8-dc73ba73a647",
+        "user": 6
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 46,
+    "fields": {
+        "date_created": "2018-08-09T08:10:23.707Z",
+        "date_modified": "2018-08-09T08:10:23.707Z",
+        "room": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "user": 1
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 47,
+    "fields": {
+        "date_created": "2018-08-09T08:10:32.407Z",
+        "date_modified": "2018-08-09T08:10:32.407Z",
+        "room": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "user": 12
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 48,
+    "fields": {
+        "date_created": "2018-08-09T08:10:38.374Z",
+        "date_modified": "2018-08-09T08:10:38.374Z",
+        "room": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "user": 5
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 49,
+    "fields": {
+        "date_created": "2018-08-09T08:10:45.092Z",
+        "date_modified": "2018-08-09T08:10:45.092Z",
+        "room": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "user": 10
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 50,
+    "fields": {
+        "date_created": "2018-08-09T08:10:50.798Z",
+        "date_modified": "2018-08-09T08:10:50.798Z",
+        "room": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "user": 15
+    }
+},
+{
+    "model": "chat.roommember",
+    "pk": 51,
+    "fields": {
+        "date_created": "2018-08-09T08:10:57.781Z",
+        "date_modified": "2018-08-09T08:10:57.781Z",
+        "room": "b78f3bb9-653e-4e7b-93fe-853301eec674",
+        "user": 3
+    }
+}
+]

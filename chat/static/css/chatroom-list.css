@@ -1,0 +1,20 @@
+.chatroom-list {
+	height: 80vh;
+	display:inline-block;
+	background: #fffffe;
+	text-align: center;
+	overflow: auto;
+}
+
+.chat-list-item {
+	padding: 20px 0px;
+	border: 1px solid #35b88f;
+}
+
+.search {
+	padding-bottom: 5px;
+	padding-top: 5px;
+	text-align: center;
+	display: inline;
+
+}

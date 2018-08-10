@@ -1,9 +1,15 @@
 <!DOCTYPE html>
+<html lang="en">
+{% load static %}
 <html>
 	<head>
+		<meta charset="UTF-8">
 		{% block title %}
 			<title>Chatter</title>
 		{% endblock %}
+
+		<!--Mobile first viewport tag-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!--BootStrap CSS-->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -14,8 +20,24 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 		<!--FontAwesome CSS-->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+		<!--
+			We use JQuery UI to use its autocomplete function to dynamically produce
+			a list of registered users for the current user to look through.
+		--> 
+		<!--JQuery UI CSS-->
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<!--JQuery UI JS-->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+		<!--Base CSS-->
+		<link rel="stylesheet" href="{% static 'css/base.css' %}">
 		{% block extrahead %}{% endblock %}
 	</head>
+
+	{% if user.is_authenticated %}
+	<a class = 'float' href = "{% url 'chat:logout' %}">Log out</a>
+	{% endif %}
 	{% block content %}
 	{% endblock %}
 </html>
