@@ -63,7 +63,7 @@ def get_chat_url(request):
 			new_room.save()
 			new_member=RoomMember(room=new_room, user=user)
 			new_member.save()
-			new_room_id_json = {'room_url': new_room.id}
+			new_room_id_json={'room_url': new_room.id}
 			return JsonResponse(new_room_id_json)
 	else:
 		room_for_two = rooms_with_member_count.filter(
@@ -76,4 +76,11 @@ def get_chat_url(request):
 				room_url = final_room[0].id
 				return JsonResponse({'room_url': room_url})
 		else:
-			print ('Hello!')
+			new_room=Room()
+			new_room.save()
+			new_member=RoomMember(room=new_room,user=user)
+			new_member.save()
+			new_recipient=RoomMember(room=new_room,user=target_user)
+			new_recipient.save()
+			new_room_id_json={'room_url': new_room.id}
+			return JsonResponse(new_room_id_json)
