@@ -1,16 +1,32 @@
+<!--AI==========================================================
+	This page is the index page shown right when the user
+	logs in but hasn't opened a room to chat in yet.
+	Might become redundant in the future.
+===========================================================AI-->
+
 {% extends 'chat/base.html' %}
 {% load static %}
 {% block extrahead %}
 	<link rel="stylesheet" href = "{% static 'css/index.css' %}">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock %}
+
 {% block content %}
+	<!--AI==========================================================
+		This includes the list of rooms that the user belongs to.
+	===========================================================AI-->
 	{% include 'chat/chatroom-list.html' %}
+
+	<!--AI==========================================================
+		This is the space that gives instruction to the user as to
+		what to do when the user is on the index page.
+	===========================================================AI-->
 	<div class = "col-8 chat-section">
 		<h3>Select a Chat to get started.</h3>
 		<h6>Or type in a username you want to chat with.</h6>
 	</div>
-	{{hello}}
+
+	<!--AI==========================================================
+		JS that generates list of users for the user to search.
+	===========================================================AI-->
 	<script src = "{% static 'js/searchuser.js' %}"></script>
 {% endblock %}

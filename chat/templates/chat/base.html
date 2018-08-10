@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+
+<!--AI==========================================================
+	This is the Base for all pages in the chat app. It contains
+	the following CSS stylesheets:
+		1) BootStrap 4.1.2
+		2) Chat app
+		3) JQuery UI for formatting autocomplete elements proper
+	and the following JS scripts:
+		1) BootStrap 4.1.2
+		2) JQuery
+		3) JQuery UI
+===========================================================AI-->
 <html lang="en">
 {% load static %}
 <html>
@@ -9,35 +21,58 @@
 		{% endblock %}
 
 		<!--Mobile first viewport tag-->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" 
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!--BootStrap CSS-->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 		<!--JQuery JS-->
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<!--BootStrap JS-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-		<!--FontAwesome CSS-->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
-		<!--
-			We use JQuery UI to use its autocomplete function to dynamically produce
-			a list of registered users for the current user to look through.
-		--> 
+		<!--AI==========================================================
+			BootStrap files.
+		===========================================================AI-->
+		<!--BootStrap CSS-->
+		<link rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" 
+		integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" 
+		crossorigin="anonymous">
+		<!--BootStrap JS-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+		crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" 
+		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" 
+		crossorigin="anonymous"></script>
+
+		<!--AI======================================================================
+			We use JQuery UI to use its autocomplete function to dynamically 
+			produce a list of registered users for the current user to look through.
+		=======================================================================AI-->
 		<!--JQuery UI CSS-->
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<!--JQuery UI JS-->
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-		<!--Base CSS-->
+		<!--AI==========================================================
+			Chat App's CSS stylesheet link.
+		===========================================================AI-->
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
 		{% block extrahead %}{% endblock %}
 	</head>
 
-	{% if user.is_authenticated %}
-	<a class = 'float' href = "{% url 'chat:logout' %}">Log out</a>
-	{% endif %}
-	{% block content %}
-	{% endblock %}
+	<!--AI==========================================================
+		The following block inserts a logout link in every page 
+		if the user is logged in.
+	===========================================================AI-->
+	<body>
+		{% if user.is_authenticated %}
+		<a class = 'float' href = "{% url 'chat:logout' %}">Log out</a>
+		{% endif %}
+
+		<!--AI==========================================================
+			Child pages inherting this base must include their extra
+			properties inside the following content block.
+		===========================================================AI-->
+		{% block content %}
+		{% endblock %}
+	</body>
 </html>

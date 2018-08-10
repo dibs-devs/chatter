@@ -1,15 +1,7 @@
-
-
 .chat-section {
 	display: inline-block;
 	text-align: center;
 	color: grey;
 	height: 80vh;
 	vertical-align: top;
-}
-
-.float {
-	position: absolute;
-	right: 20px;
-	top: 40px;
 }

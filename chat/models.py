@@ -14,8 +14,10 @@ class DateTimeModel(models.Model):
         abstract = True
 
 class Room(DateTimeModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    members = models.ManyToManyField(User, through='RoomMember')
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+            editable=False
+        )
+    members = models.ManyToManyField(User)
 
     def __str__(self):
         room = Room.objects.get(id=self.id)
@@ -26,21 +28,16 @@ class Room(DateTimeModel):
 
         return str(members_list)
 
-class RoomMember(DateTimeModel):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = ('room', 'user')
-
-    def __str__(self):
-        return 'member "{}" in room "{}"'.format(self.user, self.room)
-
-
-
 class Message(DateTimeModel):
-    sender = models.ForeignKey(RoomMember, on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
     text = models.TextField()
 
     def __str__(self):
-        return '"{}" sent by "{}"'.format(self.text, self.sender)
+        return '"{}" \
+        sent by "{}" \
+        in Room "{}"'.format(
+                        self.text,
+                        self.sender,
+                        self.room
+                    )

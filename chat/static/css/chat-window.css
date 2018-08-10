@@ -3,7 +3,8 @@
 	vertical-align: top;
 	height: 80vh;
 }
-.chat-dialog {
+
+#chat-dialog {
 	margin: 0 auto;
 	width: 100%;
 	height: 90%;
@@ -36,4 +37,24 @@
 	color: #35b88f;
 	border: none;
 	padding-top: 2px;
+}
+
+.sent-message {
+	background: blue;
+	color: white;
+	text-align: center;
+	width: 40%;
+	float: right;
+	padding: 5px 5px 5px 5px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	border-radius: 10px;
+	vertical-align: bottom;
+	clear: both;
+}
+
+.messa-container {
+	clear: both;
 }

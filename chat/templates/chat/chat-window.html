@@ -1,17 +1,47 @@
+<!--AI==========================================================
+	Every chat session will have this html page rendered.
+===========================================================AI-->
+
+<!--Extends the Chat app base-->
 {% extends 'chat/base.html' %}
+
+<!--Django static files directory is loaded using this tag-->
 {% load static %}
-{%block extrahead%}
-<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
+
+<!--AI==========================================================
+	Extra CSS that applies to this template.
+===========================================================AI-->
+{% block extrahead %}
+	<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
 {% endblock %}
+
 {% block content %}
+<!--AI==========================================================
+	This inherits the list of chats that a user belongs to.
+===========================================================AI-->
 {% include 'chat/chatroom-list.html' %}
+
+<!--AI==========================================================
+	The following contains the chat dialog div properties
+===========================================================AI-->
 <div class = "col-8 chat-container">
-	<div class = "chat-dialog">
+	<div id = "chat-dialog">
 	</div>
 	<div class = "input-container">
 		<button id = "send-button">Send</button>
 		<input id = "send-message" placeholder = "Type your message...">
 	</div>
 </div>
+
+<!--AI==========================================================
+	These JS files load after the page has loaded.
+	1) searchuser.js: fetches a list of users from the server
+	2) chat-window.js: contains websocket functions for this
+		chat page.
+===========================================================AI-->
+<script>
+	var room_uuid = {{room_uuid_json}};
+</script>
 <script src = "{% static 'js/searchuser.js' %}"></script>
+<script src = "{% static 'js/chat-window.js' %}"></script>
 {% endblock %}
