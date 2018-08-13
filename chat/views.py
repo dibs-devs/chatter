@@ -26,15 +26,15 @@ def chatroom(request, uuid):
 	if room:
 		user = User.objects.get(username=request.user)
 		if user in room.members.all():
+			latest_messages = room.message_set.all().order_by('id')[:50]
 			return render(request, 'chat/chat-window.html', 
-				{'room_uuid_json': mark_safe(json.dumps(uuid))})
+				{'room_uuid_json': uuid, 'latest_messages': latest_messages})
 		else:
 			raise PermissionDenied()
 	else:
 		raise Http404("The room you searched for does not exist.")
 
 #The following functions deal with AJAX requests
-
 @login_required
 def users_list(request):
 	users = list(User.objects.values_list('username', flat = True))

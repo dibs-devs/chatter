@@ -1,9 +1,17 @@
+/*
+AI-------------------------------------------------------------------
+	Chat section of a chat window
+-------------------------------------------------------------------AI
+*/
+
+/*Container of chat box. Includes the dialog and input field and button*/
 .chat-container {
 	display: inline-block;
 	vertical-align: top;
 	height: 80vh;
 }
 
+/*This is the setting for the chat history dialog.*/
 #chat-dialog {
 	margin: 0 auto;
 	width: 100%;
@@ -14,47 +22,72 @@
 	overflow: auto;
 }
 
+/*
+AI-------------------------------------------------------------------
+	The messages inside the chat-dialog have the following settings
+-------------------------------------------------------------------AI
+*/
+
+/*Generic message setting that applies to all messages*/
+.message {
+	width: 60%;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	border-radius: 10px;
+	vertical-align: bottom;
+	clear: both;
+	word-wrap: break-word;
+}
+
+/*Messages sent by current user has these settings.*/
+.message-sent {
+	background: blue;
+	color: white;
+	float: right;
+}
+
+/*Messages received by other users in the chat have these settings.*/
+.message-received {
+	background: grey;
+	color: white;
+	float: left;
+}
+
+/*
+AI-------------------------------------------------------------------
+	The following contains settings for the input field and button.
+-------------------------------------------------------------------AI
+*/
 .input-container {
 	margin: 0 auto;
 	margin-top: 5px;
 	text-align: center;
 	position: relative;
+	border: 2px solid #35b88f;
+	border-radius: 5px;
 }
 
+/*This is the text box where the user inputs the messages to send.
+It's a textarea element to enable scroll.*/
 #send-message {
-	border: 2px solid #35b88f;
-	border-radius: 10px;
-	width: 100%;
+	width: calc(100% - 3.2em);
 	text-align: left;
 	padding-left: 10px;
+	overflow: auto;
+	resize: none;
+	display: inline;
+	border: none;
+	margin-top: 5px;
+	height: 100%;
 }
 
+/*Send button settings*/
 #send-button {
-	position: absolute;
-	right: 0px;
 	background: transparent;
 	font-weight: bold;
 	color: #35b88f;
 	border: none;
-	padding-top: 2px;
-}
-
-.sent-message {
-	background: blue;
-	color: white;
-	text-align: center;
-	width: 40%;
-	float: right;
-	padding: 5px 5px 5px 5px;
-	margin-right: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	border-radius: 10px;
-	vertical-align: bottom;
-	clear: both;
-}
-
-.messa-container {
-	clear: both;
+	display: inline;
+	vertical-align: top;
+	padding-top: 5px;
 }

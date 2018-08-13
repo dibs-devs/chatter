@@ -1,64 +1,137 @@
-from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 import json
-from . import *
+from .models import *
 from django.contrib.auth.models import User
 from channels.db import database_sync_to_async
-from asgiref.sync import async_to_sync
+from django.utils.safestring import mark_safe
+import bleach
 
-#I used websocket initially but realized AJAX is much simpler. 
-# This is just template code for the future now.
-class SearchUser(AsyncWebsocketConsumer):
+class ChatConsumer(AsyncWebsocketConsumer):
+
+    '''
+    AI-------------------------------------------------------------------
+        Database Access methods below
+    -------------------------------------------------------------------AI
+    '''
+
+    @database_sync_to_async
+    def get_room_list(self, user):
+        return Room.objects.filter(members=user)
+
+    @database_sync_to_async
+    def get_room(self, room_id):
+        return Room.objects.get(id=room_id)
+
+    @database_sync_to_async
+    def save_message(self, room, user, message):
+        '''
+        AI-------------------------------------------------------------------
+            1. Select the Room
+            2. Select the user who sent the message
+            3. Select the message to be saved
+            4. Save message
+            5. Set room update time to message date_modified
+        -------------------------------------------------------------------AI
+        '''
+        room = room
+        sender = user
+        text = message
+        new_message = Message(room=room, sender=sender, text=text)
+        new_message.save()
+        room.date_modified = new_message.date_modified
+        room.save()
+
+
+    '''
+    AI-------------------------------------------------------------------
+        WebSocket methods below
+    -------------------------------------------------------------------AI
+    '''
     async def connect(self):
-        await self.accept()
-        users = await self.get_all_users()
-        users = list(users)
-        users_json = json.dumps({'userslist': users})
-        await self.send(users_json)
+        self.user = self.scope['user']
+        #self.room_id = self.scope['url_route']['kwargs']['room_uuid']
+        self.room_list = await self.get_room_list(self.user)
+
+        #This if clause might be redundant.
+        if (self.user.is_authenticated):
+            for room in self.room_list:
+                print('connecting to rooms.')
+                room_group_name = 'chat_%s' % room.id
+                await self.channel_layer.group_add(
+                    room_group_name,
+                    self.channel_name
+                )
+            await self.accept()
+        else:
+            await self.disconnect(403)
 
     async def disconnect(self, close_code):
-        pass
+        for room in self.room_list:
+            print('closing rooms.')
+            room_group_name = 'chat_%s' % room.id
+            await self.channel_layer.group_discard(
+                room_group_name,
+                self.channel_name
+            )
 
     async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        print (text_data_json)
-        
-    @database_sync_to_async
-    def get_all_users(self):
-        return User.objects.values_list('username', flat = True)
+        print ('received text!')
+        username = self.user.username
 
-class ChatConsumer(WebsocketConsumer):
-
-    def connect(self):
-        print (self.scope['user'])
-        #print (self.scope['url_route']['kwargs']['room_uuid'])
-        self.room_id = self.scope['url_route']['kwargs']['room_uuid']
-        self.room_group_name = 'chat_%s' % self.room_id
-        async_to_sync(self.channel_layer.group_add)(
-            self.room_group_name,
-            self.channel_name
-        )
-        self.accept()
-
-    def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.room_group_name,
-            self.channel_name
-        )
-
-    def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
+        room_id = text_data_json['room_id']
 
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
+        try:
+            room = await self.get_room(room_id)
+            room_group_name = 'chat_%s' % room.id
+        except Exception as ex:
+            template = 'An exception of type {} occured. Arguments: \n{}'
+            message = template.format(type(ex).__name__, ex.args)
+            await print(message)
+            await self.disconnect(200)
+
+        self.message_safe = bleach.clean(message)
+        message_harmful = (self.message_safe != message)
+
+        await self.save_message(room, self.user, self.message_safe)
+
+        if message_harmful:
+            warning = "Your message has been escaped due to security reasons.\
+             For more information, see \
+             https://en.wikipedia.org/wiki/Cross-site_scripting"
+        else:
+            warning = ''
+
+        await self.channel_layer.group_send(
+            room_group_name,
             {
                 'type': 'send_to_websocket',
-                'message': message
+                'message': self.message_safe,
+                'warning': warning,
+                'sender': username,
+                'room_id': room_id,
             }
         )
 
-    def send_to_websocket(self, event):
+    async def send_to_websocket(self, event):
+        print ('in send_to_websocket!')
         message = event['message']
-        self.send(text_data=json.dumps({
-            'message': message,
-            }))
+        warning = event['warning']
+        sender = event['sender']
+        room_id = event['room_id']
+        if warning == '':
+            print ('sending without warning!')
+            await self.send(text_data=(json.dumps({
+                'message': message,
+                'sender': sender,
+                'room_id': room_id,
+                })))
+        else:
+            print ('sending with warning!')
+            await self.send(text_data=(json.dumps({
+                'message': message,
+                'sender': sender,
+                'warning': warning,
+                'room_id': room_id
+                })))

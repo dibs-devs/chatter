@@ -17,10 +17,19 @@
 	<input id = "searchbar" placeholder = "username"></input>
 	<button id = "user-selected">Go</button><br />
 </div>
+
+<!--AI==========================================================
+
+===========================================================AI-->
 <div class = "col-3 chatroom-list">
 	{% for room in rooms_list %}
-	<a href="/chat/{{room.id}}/">
-		<div class = 'chat-list-item'>{{room}}</div>
-	</a>
+		<a href="/chat/{{room.id}}/">
+			<div class = 'chat-list-item' id = '{{room.id}}'>
+				{%for member in room.members.all %}
+					{{member.username}},
+				{% endfor %}
+			</div>
+		</a>
+		
 	{% endfor %}
 </div>

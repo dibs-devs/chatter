@@ -1,3 +1,8 @@
+/*
+AI-------------------------------------------------------------------
+	List of chatrooms container.
+-------------------------------------------------------------------AI
+*/
 .chatroom-list {
 	height: 80vh;
 	display:inline-block;
@@ -6,11 +11,18 @@
 	overflow: auto;
 }
 
+/*
+AI-------------------------------------------------------------------
+	Each item in the chatroom container is a div with the following
+	properties.
+-------------------------------------------------------------------AI
+*/
 .chat-list-item {
 	padding: 20px 0px;
 	border: 1px solid #35b88f;
 }
 
+/*The search bar settings are here.*/
 .search {
 	padding-bottom: 5px;
 	padding-top: 5px;

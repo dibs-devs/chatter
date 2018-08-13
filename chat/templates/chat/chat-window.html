@@ -19,6 +19,7 @@
 <!--AI==========================================================
 	This inherits the list of chats that a user belongs to.
 ===========================================================AI-->
+{{user.username}}
 {% include 'chat/chatroom-list.html' %}
 
 <!--AI==========================================================
@@ -26,10 +27,29 @@
 ===========================================================AI-->
 <div class = "col-8 chat-container">
 	<div id = "chat-dialog">
+		<!--AI==========================================================
+			Fetch latest 50 messages and display them properly.
+		===========================================================AI-->
+		{% for message in latest_messages %}
+			{% if message.sender.username == user.username %}
+				<div class="message-container">
+					<div class="message message-sent">
+						{{message.text}}
+					</div>
+				</div>
+			{% else %}
+				<div class="message-container">
+					<div class="message message-received">
+						{{message.text}}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
 	</div>
 	<div class = "input-container">
+		<textarea id = "send-message" rows = "1" 
+			placeholder = "Type your message..."></textarea>
 		<button id = "send-button">Send</button>
-		<input id = "send-message" placeholder = "Type your message...">
 	</div>
 </div>
 
@@ -40,7 +60,8 @@
 		chat page.
 ===========================================================AI-->
 <script>
-	var room_uuid = {{room_uuid_json}};
+	var room_id = '{{room_uuid_json}}';
+	var username = '{{user.username}}';
 </script>
 <script src = "{% static 'js/searchuser.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
