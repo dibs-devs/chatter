@@ -16,7 +16,7 @@ This app makes use of [Django Channels 2](http://channels.readthedocs.io) and us
 
 # Installation and first use
 
-* Clone this repository: [https://github.com/dibs-devs/chatter.git]
+* Clone this repository: `git clone https://github.com/dibs-devs/chatter.git`
 * Install required packages: `pip install -r requirements.txt`
 * Install Redis: [https://redis.io]
 * Run migrations: `python manage.py makemigrations chat && python manage.py migrate`
