@@ -5,10 +5,9 @@
 This app makes use of [Django Channels 2](http://channels.readthedocs.io) and uses
 [Redis](https://redis.io/) as the message broker. 
 
-## This app is still in its alpha phase. We plan to improve it so it can be 
-## used as a package in other Django-based web apps.  
+###### This app is still in its alpha phase. We plan to improve it so it can be used as a package in other Django-based web apps.  
 
-## **Community support and ideas for improvement most welcome!**
+**Community support and ideas for improvement most welcome!**
 
 #### Python dependency: Python 3.5
 
@@ -17,7 +16,6 @@ This app makes use of [Django Channels 2](http://channels.readthedocs.io) and us
 
 # Installation and first use
 
-* 
 * Clone this repository: [https://github.com/dibs-devs/chatter.git]
 * Install required packages: `pip install -r requirements.txt`
 * Install Redis: [https://redis.io]
@@ -35,7 +33,7 @@ This app makes use of [Django Channels 2](http://channels.readthedocs.io) and us
 * Start chatting!
 
 
-## Unit tests haven't been setup for this package yet. Tests welcome!
+**Unit tests haven't been setup for this package yet. Tests welcome!**
 
 
 # Running list of features to add
