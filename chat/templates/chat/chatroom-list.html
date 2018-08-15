@@ -24,7 +24,11 @@
 <div class = "col-3 chatroom-list">
 	{% for room in rooms_list %}
 		<a href="/chat/{{room.id}}/">
-			<div class = 'chat-list-item' id = '{{room.id}}'>
+			{% if room.id in rooms_with_unread %}
+			<div style='font-weight: bold;' class = 'chat-list-item' id = '{{room.id}}'>
+			{% else %}
+			<div class='chat-list-item' id='{{room.id}}'>
+			{% endif %}
 				{%for member in room.members.all %}
 					{{member.username}},
 				{% endfor %}

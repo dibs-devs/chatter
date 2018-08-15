@@ -4,6 +4,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    last_visit = models.DateTimeField()
 
 # This model is used to give date and time when a message was created/modified.
 class DateTimeModel(models.Model):
@@ -29,9 +32,10 @@ class Room(DateTimeModel):
         return str(members_list)
 
 class Message(DateTimeModel):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     text = models.TextField()
+    recipients = models.ManyToManyField(User, related_name='recipients')
 
     def __str__(self):
         return '"{}" \

@@ -135,3 +135,7 @@ $(function() {
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
 });
+
+$('.chat-container').click(function() {
+	console.log('clicked!');
+});

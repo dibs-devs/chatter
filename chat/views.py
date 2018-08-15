@@ -5,13 +5,10 @@ from django.http import HttpResponseRedirect, JsonResponse, Http404
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from .models import *
-from django.db.models import Count, Q
-import json
-from django.utils.safestring import mark_safe
+from django.db.models import Count
 from django.core.exceptions import PermissionDenied
 
 
-# Create your views here.
 @login_required
 def index(request):
 	return render(request, 'chat/index.html')
@@ -22,11 +19,13 @@ def custom_logout(request):
 
 @login_required
 def chatroom(request, uuid):
+	user = User.objects.get(username=request.user)
 	room = Room.objects.get(id=uuid)
 	if room:
-		user = User.objects.get(username=request.user)
 		if user in room.members.all():
 			latest_messages = room.message_set.all().order_by('id')[:50]
+			for message in latest_messages:
+				message.recipients.add(user)
 			return render(request, 'chat/chat-window.html', 
 				{'room_uuid_json': uuid, 'latest_messages': latest_messages})
 		else:
@@ -43,12 +42,9 @@ def users_list(request):
 
 @login_required
 def get_chat_url(request):
-	print ('ajax call initiated to get chat URL!')
 	rooms_with_member_count = Room.objects.annotate(num_members = Count('members'))
 	user = User.objects.get(username=request.user)
 	target_user = User.objects.get(username=request.POST.get('target_user'))
-	print ('logged in user:', user)
-	print ('target user:', target_user)
 
 	'''
 	AI-------------------------------------------------------------------
@@ -95,7 +91,6 @@ def get_chat_url(request):
 			num_members__gte=2).filter(num_members__lte=2)
 		final_room = room_for_two.filter(
 			members=user).filter(members=target_user)
-		print (final_room)
 		if final_room.exists():
 			if len(final_room) == 1:
 				room_url = final_room[0].id
@@ -104,7 +99,8 @@ def get_chat_url(request):
 				print (user)
 				print (target_user)
 				raise AttributeError(
-					'Multiple two-member rooms for the above users exists.'
+					'Multiple two-member rooms for \
+					{} and {} exists.'.format(user, target_user)
 					)
 		else:
 			new_room=Room()

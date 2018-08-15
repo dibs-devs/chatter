@@ -5,6 +5,11 @@ from django.contrib.auth.models import User
 from channels.db import database_sync_to_async
 from django.utils.safestring import mark_safe
 import bleach
+from datetime import datetime
+
+#Time libraries used to record the time when the user disconnects.
+#New messages will be derived from this time in the view.
+from django.utils.timezone import now
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
@@ -21,6 +26,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
     @database_sync_to_async
     def get_room(self, room_id):
         return Room.objects.get(id=room_id)
+
+    @database_sync_to_async
+    def update_user_access_time(user):
+        user.last_visit = datetime.now()
+        user.save()
 
     @database_sync_to_async
     def save_message(self, room, user, message):
@@ -49,13 +59,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
     '''
     async def connect(self):
         self.user = self.scope['user']
-        #self.room_id = self.scope['url_route']['kwargs']['room_uuid']
         self.room_list = await self.get_room_list(self.user)
 
         #This if clause might be redundant.
         if (self.user.is_authenticated):
             for room in self.room_list:
-                print('connecting to rooms.')
                 room_group_name = 'chat_%s' % room.id
                 await self.channel_layer.group_add(
                     room_group_name,
@@ -67,7 +75,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         for room in self.room_list:
-            print('closing rooms.')
             room_group_name = 'chat_%s' % room.id
             await self.channel_layer.group_discard(
                 room_group_name,
@@ -75,7 +82,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             )
 
     async def receive(self, text_data):
-        print ('received text!')
         username = self.user.username
 
         text_data_json = json.loads(text_data)
@@ -88,7 +94,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         except Exception as ex:
             template = 'An exception of type {} occured. Arguments: \n{}'
             message = template.format(type(ex).__name__, ex.args)
-            await print(message)
+            print(message)
             await self.disconnect(200)
 
         self.message_safe = bleach.clean(message)
@@ -115,20 +121,17 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
 
     async def send_to_websocket(self, event):
-        print ('in send_to_websocket!')
         message = event['message']
         warning = event['warning']
         sender = event['sender']
         room_id = event['room_id']
         if warning == '':
-            print ('sending without warning!')
             await self.send(text_data=(json.dumps({
                 'message': message,
                 'sender': sender,
                 'room_id': room_id,
                 })))
         else:
-            print ('sending with warning!')
             await self.send(text_data=(json.dumps({
                 'message': message,
                 'sender': sender,
