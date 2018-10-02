@@ -40,6 +40,13 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" 
 		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" 
 		crossorigin="anonymous"></script>
+		<!--Raleway font-->
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+		<!--FontAwesome-->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+		crossorigin="anonymous">
 
 		<!--AI======================================================================
 			We use JQuery UI to use its autocomplete function to dynamically 
@@ -63,7 +70,7 @@
 	===========================================================AI-->
 	<body>
 		{% if user.is_authenticated %}
-		<a class = 'float' href = "{% url 'chat:logout' %}">Log out</a>
+		<div class="float"><a href = "{% url 'chat:logout' %}">Log out</a></div>
 		{% endif %}
 
 		<!--AI==========================================================

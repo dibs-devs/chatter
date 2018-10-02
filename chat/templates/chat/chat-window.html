@@ -16,16 +16,17 @@
 {% endblock %}
 
 {% block content %}
+<i class="fas fa-arrow-left"></i>
 <!--AI==========================================================
 	This inherits the list of chats that a user belongs to.
 ===========================================================AI-->
-{{user.username}}
+
 {% include 'chat/chatroom-list.html' %}
 
 <!--AI==========================================================
 	The following contains the chat dialog div properties
 ===========================================================AI-->
-<div class = "col-8 chat-container">
+<div class = "chat-container">
 	<div id = "chat-dialog">
 		<!--AI==========================================================
 			Fetch latest 50 messages and display them properly.
@@ -39,6 +40,9 @@
 				</div>
 			{% else %}
 				<div class="message-container">
+					<div class="message message-receiver">
+						{{message.sender.username}}:
+					</div>
 					<div class="message message-received">
 						{{message.text}}
 					</div>

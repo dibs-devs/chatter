@@ -1,7 +1,7 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 from .models import *
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from channels.db import database_sync_to_async
 from django.utils.safestring import mark_safe
 import bleach
@@ -50,7 +50,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         new_message.save()
         room.date_modified = new_message.date_modified
         room.save()
-
 
     '''
     AI-------------------------------------------------------------------
