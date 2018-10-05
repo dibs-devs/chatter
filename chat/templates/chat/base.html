@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+{% extends 'base.html' %} <!--Site level base template as defined in your app settings-->
 
 <!--AI==========================================================
 	This is the Base for all pages in the chat app. It contains
 	the following CSS stylesheets:
-		1) BootStrap 4.1.2
+		1) Bootstrap 4.1.2
 		2) Chat app
 		3) JQuery UI for formatting autocomplete elements proper
 	and the following JS scripts:
@@ -11,10 +11,10 @@
 		2) JQuery
 		3) JQuery UI
 ===========================================================AI-->
-<html lang="en">
 {% load static %}
-<html>
-	<head>
+<!-- <html> -->
+	{% block extrahead %}
+	{{ block.super }}
 		<meta charset="UTF-8">
 		{% block title %}
 			<title>Chatter</title>
@@ -62,7 +62,7 @@
 		===========================================================AI-->
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
 		{% block extrahead %}{% endblock %}
-	</head>
+	{% endblock %}
 
 	<!--AI==========================================================
 		The following block inserts a logout link in every page 
@@ -80,4 +80,4 @@
 		{% block content %}
 		{% endblock %}
 	</body>
-</html>
+<!-- </html> -->

@@ -12,6 +12,7 @@
 	Extra CSS that applies to this template.
 ===========================================================AI-->
 {% block extrahead %}
+	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
 {% endblock %}
 

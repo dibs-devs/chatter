@@ -7,8 +7,9 @@
 {% extends 'chat/base.html' %}
 {% load static %}
 {% block extrahead %}
+	{{ block.super }}
 	<link rel="stylesheet" href = "{% static 'css/index.css' %}">
-{% endblock %}
+{% endblock extrahead %}
 
 {% block content %}
 	<!--AI==========================================================
@@ -30,4 +31,4 @@
 	===========================================================AI-->
 	<script src = "{% static 'js/searchuser.js' %}"></script>
 	<script src = "{% static 'js/index.js' %}"></script>
-{% endblock %}
+{% endblock content %}
