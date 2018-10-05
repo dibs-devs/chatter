@@ -7,6 +7,7 @@ This app makes use of [Django Channels 2](http://channels.readthedocs.io) and us
 
 ###### This app is still in its alpha phase. We plan to improve it so it can be used as a package in other Django-based web apps.  
 
+**Docs for development and staging branches: scroll down to see why they exist and how they differ from master**
 **Community support and ideas for improvement most welcome!**
 
 #### Python dependency: Python 3.5
@@ -42,3 +43,14 @@ This app makes use of [Django Channels 2](http://channels.readthedocs.io) and us
 * Notifications using django-notifications
 * Improve 'Seen by user x' functionality
 
+# Why three branches?
+* We need to test if chatter works as a standalone app. The development branch is for that. 
+* Once we test the app for functionality, we push the working code on to staging
+* In staging branch, we make sure the templates for the chat interface are setup in a way that makes them reusable in other Django apps
+* After we make sure staging works, we push it into master fully set up so that 'chat' can be taken out and used as a reusable Django package
+
+# Why three branches?
+* We need to test if chatter works as a standalone app. The development branch is for that. 
+* Once we test the app for functionality, we push the working code on to staging
+* In staging branch, we make sure the templates for the chat interface are setup in a way that makes them reusable in other Django apps
+* After we make sure staging works, we push it into master fully set up so that 'chat' can be taken out and used as a reusable Django package
