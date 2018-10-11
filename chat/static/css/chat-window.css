@@ -81,20 +81,21 @@ AI-------------------------------------------------------------------
 It's a textarea element to enable scroll.*/
 #send-message {
 	width: calc(100% - 4em);
-	/*text-align: left;*/
+	font-size: 1rem;
 	padding-left: 10px;
 	overflow: auto;
 	resize: none;
 	display: inline;
 	border: none;
 	margin-top: 5px;
-	height: 100%;
+	font-family: 'Raleway', sans-serif;
 }
 
 /*Send button settings*/
 #send-button {
 	background: transparent;
 	font-weight: bold;
+	font-size: 1rem;
 	color: #35b88f;
 	border: none;
 	display: inline;
@@ -125,5 +126,6 @@ It's a textarea element to enable scroll.*/
 	.chat-container {
 		width: 70vw;
 		display: inline-block;
+		height: 80vh;
 	}
 }

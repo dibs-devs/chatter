@@ -16,6 +16,10 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+input {
+	height: 2rem;
+}
+
 /*
 AI-------------------------------------------------------------------
 	Logout link on the top right
