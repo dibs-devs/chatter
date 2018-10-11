@@ -17,7 +17,7 @@
 	{{ block.super }}
 		<meta charset="UTF-8">
 		{% block title %}
-			<title>Chatter</title>
+			Chatter
 		{% endblock %}
 
 		<!--Mobile first viewport tag-->
@@ -61,8 +61,7 @@
 			Chat App's CSS stylesheet link.
 		===========================================================AI-->
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
-		{% block extrahead %}{% endblock %}
-	{% endblock %}
+	{% endblock extrahead %}
 
 	<!--AI==========================================================
 		The following block inserts a logout link in every page 
@@ -78,6 +77,6 @@
 			properties inside the following content block.
 		===========================================================AI-->
 		{% block content %}
-		{% endblock %}
+		{% endblock content %}
 	</body>
 <!-- </html> -->

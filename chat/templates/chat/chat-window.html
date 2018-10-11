@@ -17,6 +17,7 @@
 {% endblock %}
 
 {% block content %}
+{{ block.super }}
 <i class="fas fa-arrow-left"></i>
 <!--AI==========================================================
 	This inherits the list of chats that a user belongs to.
@@ -70,4 +71,4 @@
 </script>
 <script src = "{% static 'js/searchuser.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
-{% endblock %}
+{% endblock content %}
