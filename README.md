@@ -1,5 +1,7 @@
 # Chatter
 
+### The master repository contains source for the reusable version of Chatter. If you want to test out what it looks like as a standalone app, switch to the development branch.
+
 #### Django-based Chat app that supports group chat and real-time updates.
 
 This app makes use of [Django Channels 2](http://channels.readthedocs.io) and uses
