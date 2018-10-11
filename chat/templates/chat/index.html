@@ -7,10 +7,12 @@
 {% extends 'chat/base.html' %}
 {% load static %}
 {% block extrahead %}
+	{{ block.super }}
 	<link rel="stylesheet" href = "{% static 'css/index.css' %}">
-{% endblock %}
+{% endblock extrahead %}
 
 {% block content %}
+	{{ block.super }}
 	<!--AI==========================================================
 		This includes the list of rooms that the user belongs to.
 	===========================================================AI-->
@@ -29,4 +31,5 @@
 		JS that generates list of users for the user to search.
 	===========================================================AI-->
 	<script src = "{% static 'js/searchuser.js' %}"></script>
-{% endblock %}
+	<script src = "{% static 'js/index.js' %}"></script>
+{% endblock content %}

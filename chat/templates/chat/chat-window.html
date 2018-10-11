@@ -12,20 +12,23 @@
 	Extra CSS that applies to this template.
 ===========================================================AI-->
 {% block extrahead %}
+	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
 {% endblock %}
 
 {% block content %}
+{{ block.super }}
+<i class="fas fa-arrow-left"></i>
 <!--AI==========================================================
 	This inherits the list of chats that a user belongs to.
 ===========================================================AI-->
-{{user.username}}
+
 {% include 'chat/chatroom-list.html' %}
 
 <!--AI==========================================================
 	The following contains the chat dialog div properties
 ===========================================================AI-->
-<div class = "col-8 chat-container">
+<div class = "chat-container">
 	<div id = "chat-dialog">
 		<!--AI==========================================================
 			Fetch latest 50 messages and display them properly.
@@ -39,6 +42,9 @@
 				</div>
 			{% else %}
 				<div class="message-container">
+					<div class="message message-receiver">
+						{{message.sender.username}}:
+					</div>
 					<div class="message message-received">
 						{{message.text}}
 					</div>
@@ -65,4 +71,4 @@
 </script>
 <script src = "{% static 'js/searchuser.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
-{% endblock %}
+{% endblock content %}

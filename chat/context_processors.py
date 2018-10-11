@@ -10,7 +10,6 @@ def get_chatroom_list(request):
 					if request.user not in message.recipients.all():
 						rooms_with_unread.append(room.id)
 						break
-			print (rooms_with_unread)
 			return ({'rooms_list': rooms_list, 'rooms_with_unread': rooms_with_unread})
 		else:
 			return ({})

@@ -5,10 +5,13 @@ AI-------------------------------------------------------------------
 */
 .chatroom-list {
 	height: 80vh;
+	width: 25vw;
 	display:inline-block;
 	background: #fffffe;
 	text-align: center;
 	overflow: auto;
+	border: 1px solid grey;
+	padding: 0;
 }
 
 /*
@@ -20,13 +23,53 @@ AI-------------------------------------------------------------------
 .chat-list-item {
 	padding: 20px 0px;
 	border: 1px solid #35b88f;
+	background: white;
+	width: 100%;
+	transition-duration: 0.5s;
 }
 
+.chat-list-item:hover {
+	background: #ededed;
+}
+
+.chat-link {
+	color: black;
+	text-decoration: none;
+	transition-duration: 0.5s;
+}
+
+.chat-link:hover {
+	text-decoration: none;
+}
 /*The search bar settings are here.*/
 .search {
-	padding-bottom: 5px;
-	padding-top: 5px;
+	/*padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding-top: 5px;*/
+	margin-top: auto;
+	margin-bottom: auto;
 	text-align: center;
-	display: inline;
+	display: inline-block;
+}
 
+.room-name {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+@media only screen and (max-width: 768px) {
+	.chatroom-list {
+		display: none;
+		width: 90vw;
+	}
+	.search {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.chatroom-list {
+		display: inline-block;
+		width: 20vw;
+	}
 }
