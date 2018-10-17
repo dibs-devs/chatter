@@ -4,8 +4,8 @@ AI-------------------------------------------------------------------
 -------------------------------------------------------------------AI
 */
 .chatroom-list {
-	height: 80vh;
-	width: 25vw;
+	height: 80%;
+	width: 25%;
 	display:inline-block;
 	background: #fffffe;
 	text-align: center;
@@ -60,7 +60,7 @@ AI-------------------------------------------------------------------
 @media only screen and (max-width: 768px) {
 	.chatroom-list {
 		display: none;
-		width: 90vw;
+		width: 90%;
 	}
 	.search {
 		display: none;
@@ -70,9 +70,9 @@ AI-------------------------------------------------------------------
 @media only screen and (min-width: 769px) {
 	.chatroom-list {
 		display: inline-block;
-		width: 20vw;
+		width: 20%;
 	}
 	.search {
-		width: 20vw;
+		width: 20%;
 	}
 }

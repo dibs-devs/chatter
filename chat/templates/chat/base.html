@@ -1,4 +1,4 @@
-{% extends 'base.html' %} <!--Site level base template as defined in your app settings-->
+{# {% extends 'base.html' %} <!--Site level base template as defined in your app settings--> #}
 
 <!--AI==========================================================
 	This is the Base for all pages in the chat app. It contains
@@ -16,9 +16,6 @@
 	{% block extrahead %}
 	{{ block.super }}
 		<meta charset="UTF-8">
-		{% block title %}
-			Chatter
-		{% endblock %}
 
 		<!--Mobile first viewport tag-->
 		<meta name="viewport" 
@@ -26,8 +23,6 @@
 
 		<!--JQuery JS-->
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<!--Raleway font-->
-		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 		<!--FontAwesome-->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
@@ -53,7 +48,6 @@
 		The following block inserts a logout link in every page 
 		if the user is logged in.
 	===========================================================AI-->
-	{% block body %}
 		{% if user.is_authenticated %}
 		<div class="float"><a href = "{% url 'chat:logout' %}">Log out</a></div>
 		{% endif %}
@@ -64,4 +58,3 @@
 		===========================================================AI-->
 		{% block content %}
 		{% endblock content %}
-	{% endblock body %}

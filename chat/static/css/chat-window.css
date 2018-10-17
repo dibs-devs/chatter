@@ -9,7 +9,7 @@ AI-------------------------------------------------------------------
 	display: inline-block;
 	vertical-align: top;
 	height: 80vh;
-	width: 90vw;
+	width: 90%;
 	padding: 0;
 }
 
@@ -115,7 +115,7 @@ It's a textarea element to enable scroll.*/
 		text-align: center;
 	}
 	.chat-container {
-		width: 90vw;
+		max-width: 90%;
 	}
 }
 
@@ -124,7 +124,7 @@ It's a textarea element to enable scroll.*/
 		display: none;
 	}
 	.chat-container {
-		width: 70vw;
+		width: 70%;
 		display: inline-block;
 		height: 80vh;
 	}

@@ -33,7 +33,7 @@
 		<!--AI==========================================================
 			Fetch latest 50 messages and display them properly.
 		===========================================================AI-->
-		{% for message in latest_messages %}
+		{% for message in latest_messages reversed %}
 			{% if message.sender.username == user.username %}
 				<div class="message-container">
 					<div class="message message-sent">
