@@ -5,7 +5,10 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='profile')
     last_visit = models.DateTimeField()
 
 # This model is used to give date and time when a message was created/modified.
@@ -17,8 +20,10 @@ class DateTimeModel(models.Model):
         abstract = True
 
 class Room(DateTimeModel):
-    id = models.URLField(primary_key=True, default=shortuuid.ShortUUID().random(length=22),
-            editable=False
+    id = models.URLField(
+        primary_key=True,
+        default=shortuuid.ShortUUID.random,
+        editable=False
         )
     members = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
@@ -32,10 +37,15 @@ class Room(DateTimeModel):
         return str(members_list)
 
 class Message(DateTimeModel):
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sender')
+    sender = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='sender')
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     text = models.TextField()
-    recipients = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='recipients')
+    recipients = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='recipients')
 
     def __str__(self):
         return '"{}" \
