@@ -7,10 +7,12 @@
 {% extends 'chat/base.html' %}
 {% load static %}
 {% block extrahead %}
+	{{ block.super }}
 	<link rel="stylesheet" href = "{% static 'css/index.css' %}">
-{% endblock %}
+{% endblock extrahead %}
 
 {% block content %}
+	{{ block.super }}
 	<!--AI==========================================================
 		This includes the list of rooms that the user belongs to.
 	===========================================================AI-->
@@ -20,7 +22,7 @@
 		This is the space that gives instruction to the user as to
 		what to do when the user is on the index page.
 	===========================================================AI-->
-	<div class = "col-8 chat-section">
+	<div class = "chat-section">
 		<h3>Select a Chat to get started.</h3>
 		<h6>Or type in a username you want to chat with.</h6>
 	</div>
@@ -29,4 +31,5 @@
 		JS that generates list of users for the user to search.
 	===========================================================AI-->
 	<script src = "{% static 'js/searchuser.js' %}"></script>
-{% endblock %}
+	<script src = "{% static 'js/index.js' %}"></script>
+{% endblock content %}

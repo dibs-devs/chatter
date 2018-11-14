@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponseRedirect, JsonResponse, Http404
-from django.contrib.auth import logout
-from django.contrib.auth.models import User
+from django.contrib.auth import logout, get_user_model
 from .models import *
 from django.db.models import Count
 from django.core.exceptions import PermissionDenied
 
-
+def redirect_to_chat(request):
+	return HttpResponseRedirect('/chat/')
+	
 @login_required
 def index(request):
 	return render(request, 'chat/index.html')
@@ -17,17 +18,18 @@ def custom_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('chat:index'))
 
+# This fetches a chatroom given the room ID if a user diretly wants to access the chat. 
 @login_required
 def chatroom(request, uuid):
-	user = User.objects.get(username=request.user)
+	user = get_user_model().objects.get(username=request.user)
 	room = Room.objects.get(id=uuid)
 	if room:
 		if user in room.members.all():
-			latest_messages = room.message_set.all().order_by('id')[:50]
+			latest_messages = room.message_set.all().order_by('-id')[:50]
 			for message in latest_messages:
 				message.recipients.add(user)
 			return render(request, 'chat/chat-window.html', 
-				{'room_uuid_json': uuid, 'latest_messages': latest_messages})
+				{'room_uuid_json': uuid, 'latest_messages': latest_messages,'room_name': room.__str__()})
 		else:
 			raise PermissionDenied()
 	else:
@@ -36,15 +38,15 @@ def chatroom(request, uuid):
 #The following functions deal with AJAX requests
 @login_required
 def users_list(request):
-	users = list(User.objects.values_list('username', flat = True))
+	users = list(get_user_model().objects.values_list('username', flat = True))
 	users_list_json = {'userslist': users}
 	return JsonResponse(users_list_json)
 
 @login_required
 def get_chat_url(request):
 	rooms_with_member_count = Room.objects.annotate(num_members = Count('members'))
-	user = User.objects.get(username=request.user)
-	target_user = User.objects.get(username=request.POST.get('target_user'))
+	user = get_user_model().objects.get(username=request.user)
+	target_user = get_user_model().objects.get(username=request.POST.get('target_user'))
 
 	'''
 	AI-------------------------------------------------------------------
@@ -96,8 +98,6 @@ def get_chat_url(request):
 				room_url = final_room[0].id
 				return JsonResponse({'room_url': room_url})
 			else:
-				print (user)
-				print (target_user)
 				raise AttributeError(
 					'Multiple two-member rooms for \
 					{} and {} exists.'.format(user, target_user)

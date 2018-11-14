@@ -71,6 +71,7 @@ function startWebSocket(websocket_url) {
 				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 				$('#chat-dialog').append(
 				'<div class="message-container">'
+				+ '<div class="message-receiver">' + sender + '</div>'
 				+ '<div class = "message message-received">' + message + '</div>'
 				+ '</div>');
 				if (warning) {
@@ -109,15 +110,13 @@ function startWebSocket(websocket_url) {
 	//When the Send button is clicked, check if its just an empty message (i.e. only spaces).
 	//If it is, don't send the message. Otherwise, send it to the websocket.
 	$('#send-button').click( function() {
-		console.log('Send button clicked');
-		var message = $('#send-message').val();
-		if (message.replace(' ', '') !== '') {
+		if ($.trim($("#send-message").val())) {
+			var message = $('#send-message').val();
 			chatSocket.send(JSON.stringify({
 				'message': message,
 				'room_id': room_id,
 			}));
 		}
-
 	});
 }
 
@@ -134,8 +133,12 @@ $(function() {
 	startWebSocket(websocket_url);
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
+	$("div[id*=" + room_id + "]").css("background", "#87ddc2");
 });
 
-$('.chat-container').click(function() {
-	console.log('clicked!');
+$('.fa-arrow-left').click(function() {
+	$(this).hide();
+	$('.chat-container').slideUp();
+	$('.chatroom-list').slideDown();
+	$('.room-name').hide();
 });

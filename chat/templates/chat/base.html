@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+{% extends 'base.html' %} <!--Site level base template as defined in your app settings-->
 
 <!--AI==========================================================
 	This is the Base for all pages in the chat app. It contains
 	the following CSS stylesheets:
-		1) BootStrap 4.1.2
+		1) Bootstrap 4.1.2
 		2) Chat app
 		3) JQuery UI for formatting autocomplete elements proper
 	and the following JS scripts:
@@ -11,14 +11,11 @@
 		2) JQuery
 		3) JQuery UI
 ===========================================================AI-->
-<html lang="en">
 {% load static %}
-<html>
-	<head>
+<!-- <html> -->
+	{% block extrahead %}
+	{{ block.super }}
 		<meta charset="UTF-8">
-		{% block title %}
-			<title>Chatter</title>
-		{% endblock %}
 
 		<!--Mobile first viewport tag-->
 		<meta name="viewport" 
@@ -27,19 +24,10 @@
 		<!--JQuery JS-->
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-		<!--AI==========================================================
-			BootStrap files.
-		===========================================================AI-->
-		<!--BootStrap CSS-->
-		<link rel="stylesheet" 
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
-		<!--BootStrap JS-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
-		crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" 
-		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" 
-		crossorigin="anonymous"></script>
+		<!--FontAwesome-->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+		crossorigin="anonymous">
 
 		<!--AI======================================================================
 			We use JQuery UI to use its autocomplete function to dynamically 
@@ -54,16 +42,14 @@
 			Chat App's CSS stylesheet link.
 		===========================================================AI-->
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
-		{% block extrahead %}{% endblock %}
-	</head>
+	{% endblock extrahead %}
 
 	<!--AI==========================================================
 		The following block inserts a logout link in every page 
 		if the user is logged in.
 	===========================================================AI-->
-	<body>
 		{% if user.is_authenticated %}
-		<a class = 'float' href = "{% url 'chat:logout' %}">Log out</a>
+		<div class="float"><a href = "{% url 'chat:logout' %}">Log out</a></div>
 		{% endif %}
 
 		<!--AI==========================================================
@@ -71,6 +57,4 @@
 			properties inside the following content block.
 		===========================================================AI-->
 		{% block content %}
-		{% endblock %}
-	</body>
-</html>
+		{% endblock content %}

@@ -1,8 +1,18 @@
-/*This is the styling for teh div that is present in the homepage.*/
+/*This is the styling for the div that is present in the homepage.*/
 .chat-section {
 	display: inline-block;
 	text-align: center;
 	color: grey;
-	height: 80vh;
+	height: 80%;
+	width: 75%;
 	vertical-align: top;
+}
+
+@media only screen and (max-width: 768px) {
+	.chat-section {
+		display: none;
+	}
+	.chatroom-list {
+		display: block;
+	}
 }

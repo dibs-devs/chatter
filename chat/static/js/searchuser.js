@@ -47,7 +47,7 @@ function linkuser( array ) {
 	$('#user-selected').click( function() {
 		if (array.includes($('#searchbar').val())) {
 				$.ajax({
-					url: '/ajax/get-chat-url/',
+					url: '/chat/ajax/get-chat-url/',
 					type: 'POST',
 					data: {
 						'target_user': $('#searchbar').val(),
@@ -79,7 +79,7 @@ AI-------------------------------------------------------------------
 $(function() {
 	$.ajax({
 		//The url to send the request to
-		url: '/ajax/users-list/',
+		url: '/chat/ajax/users-list/',
 		/*If the request succeeds, there is data sent back from
 		the server in JSON format. The AJAX function calls in two 
 		functions with the array of users.*/

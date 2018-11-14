@@ -9,6 +9,8 @@ AI-------------------------------------------------------------------
 	display: inline-block;
 	vertical-align: top;
 	height: 80vh;
+	width: 90%;
+	padding: 0;
 }
 
 /*This is the setting for the chat history dialog.*/
@@ -30,10 +32,10 @@ AI-------------------------------------------------------------------
 
 /*Generic message setting that applies to all messages*/
 .message {
-	width: 60%;
-	padding: 5px 5px 5px 5px;
-	margin: 5px 5px 5px 5px;
-	border-radius: 10px;
+	max-width: 60%;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	margin: 0.2em 0.2em 0.2em 0.2em;
+	border-radius: 2em;
 	vertical-align: bottom;
 	clear: both;
 	word-wrap: break-word;
@@ -41,15 +43,23 @@ AI-------------------------------------------------------------------
 
 /*Messages sent by current user has these settings.*/
 .message-sent {
-	background: blue;
+	background: #35b88f;
 	color: white;
 	float: right;
 }
 
+.message-receiver {
+	color: grey;
+	font-size: 0.7em;
+	float: left;
+	padding: 0.2em;
+	margin: 0;
+}
+
 /*Messages received by other users in the chat have these settings.*/
 .message-received {
-	background: grey;
-	color: white;
+	background: #dcdcdc;
+	color: black;
 	float: left;
 }
 
@@ -70,24 +80,52 @@ AI-------------------------------------------------------------------
 /*This is the text box where the user inputs the messages to send.
 It's a textarea element to enable scroll.*/
 #send-message {
-	width: calc(100% - 3.2em);
-	text-align: left;
+	width: calc(100% - 4em);
+	font-size: 1rem;
 	padding-left: 10px;
 	overflow: auto;
 	resize: none;
 	display: inline;
 	border: none;
 	margin-top: 5px;
-	height: 100%;
+	font-family: 'Raleway', sans-serif;
 }
 
 /*Send button settings*/
 #send-button {
 	background: transparent;
 	font-weight: bold;
+	font-size: 1rem;
 	color: #35b88f;
 	border: none;
 	display: inline;
 	vertical-align: top;
 	padding-top: 5px;
+}
+
+.fa-arrow-left {
+	float: left;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	color: #35b88f;
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		text-align: center;
+	}
+	.chat-container {
+		max-width: 90%;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.fa-arrow-left {
+		display: none;
+	}
+	.chat-container {
+		width: 70%;
+		display: inline-block;
+		height: 80vh;
+	}
 }

@@ -8,11 +8,15 @@ AI-------------------------------------------------------------------
 AI-------------------------------------------------------------------
 	Body styles applied to the whole body.
 -------------------------------------------------------------------AI
-*/
+*//*
 body {
 	padding: 40px 20px 0px 20px;
-	font-size: 20px;
 	position: relative;
+	font-family: 'Raleway', sans-serif;
+}*/
+
+input {
+	height: 2rem;
 }
 
 /*
@@ -20,9 +24,20 @@ AI-------------------------------------------------------------------
 	Logout link on the top right
 -------------------------------------------------------------------AI
 */
-.float {
+/*.float {
 	position: absolute;
 	padding: inherit;
 	right: 0px;
 	top: 0px;
+}*/
+
+.float {
+	display: block;
+	text-align: right;
+}
+
+@media only screen and (max-width: 768px) {
+	.chatroom-list {
+		display: none;
+	}
 }
