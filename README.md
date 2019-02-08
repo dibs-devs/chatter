@@ -50,9 +50,3 @@ This app makes use of [Django Channels 2](http://channels.readthedocs.io) and us
 * Once we test the app for functionality, we push the working code on to staging
 * In staging branch, we make sure the templates for the chat interface are setup in a way that makes them reusable in other Django apps
 * After we make sure staging works, we push it into master fully set up so that 'chat' can be taken out and used as a reusable Django package
-
-# Why three branches?
-* We need to test if chatter works as a standalone app. The development branch is for that. 
-* Once we test the app for functionality, we push the working code on to staging
-* In staging branch, we make sure the templates for the chat interface are setup in a way that makes them reusable in other Django apps
-* After we make sure staging works, we push it into master fully set up so that 'chat' can be taken out and used as a reusable Django package
