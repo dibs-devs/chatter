@@ -4,8 +4,8 @@ AI-------------------------------------------------------------------
 -------------------------------------------------------------------AI
 */
 .chatroom-list {
-	height: 80vh;
-	width: 25vw;
+	height: 80%;
+	width: 25%;
 	display:inline-block;
 	background: #fffffe;
 	text-align: center;
@@ -24,7 +24,7 @@ AI-------------------------------------------------------------------
 	padding: 20px 0px;
 	border: 1px solid #35b88f;
 	background: white;
-	width: 100%;
+	width: 99%;
 	transition-duration: 0.5s;
 }
 
@@ -43,24 +43,24 @@ AI-------------------------------------------------------------------
 }
 /*The search bar settings are here.*/
 .search {
-	/*padding-bottom: 10px;
-	margin-bottom: 10px;
-	padding-top: 5px;*/
 	margin-top: auto;
 	margin-bottom: auto;
-	text-align: center;
 	display: inline-block;
+	width: 25vw;
 }
 
 .room-name {
 	margin-top: auto;
 	margin-bottom: auto;
+	display: inline-block;
+	width: 70vw;
+	text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
 	.chatroom-list {
 		display: none;
-		width: 90vw;
+		width: 90%;
 	}
 	.search {
 		display: none;
@@ -70,6 +70,9 @@ AI-------------------------------------------------------------------
 @media only screen and (min-width: 769px) {
 	.chatroom-list {
 		display: inline-block;
-		width: 20vw;
+		width: 20%;
+	}
+	.search {
+		width: 20%;
 	}
 }

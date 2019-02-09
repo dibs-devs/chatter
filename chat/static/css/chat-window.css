@@ -9,7 +9,7 @@ AI-------------------------------------------------------------------
 	display: inline-block;
 	vertical-align: top;
 	height: 80vh;
-	width: 90vw;
+	width: 90%;
 	padding: 0;
 }
 
@@ -81,20 +81,21 @@ AI-------------------------------------------------------------------
 It's a textarea element to enable scroll.*/
 #send-message {
 	width: calc(100% - 4em);
-	/*text-align: left;*/
+	font-size: 1rem;
 	padding-left: 10px;
 	overflow: auto;
 	resize: none;
 	display: inline;
 	border: none;
 	margin-top: 5px;
-	height: 100%;
+	font-family: 'Raleway', sans-serif;
 }
 
 /*Send button settings*/
 #send-button {
 	background: transparent;
 	font-weight: bold;
+	font-size: 1rem;
 	color: #35b88f;
 	border: none;
 	display: inline;
@@ -114,7 +115,7 @@ It's a textarea element to enable scroll.*/
 		text-align: center;
 	}
 	.chat-container {
-		width: 90vw;
+		max-width: 90%;
 	}
 }
 
@@ -123,7 +124,8 @@ It's a textarea element to enable scroll.*/
 		display: none;
 	}
 	.chat-container {
-		width: 70vw;
+		width: 70%;
 		display: inline-block;
+		height: 80vh;
 	}
 }

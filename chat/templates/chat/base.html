@@ -1,4 +1,4 @@
-{% extends 'base.html' %} <!--Site level base template as defined in your app settings-->
+{# {% extends 'base.html' %} <!--Site level base template as defined in your app settings--> #}
 
 <!--AI==========================================================
 	This is the Base for all pages in the chat app. It contains
@@ -16,9 +16,6 @@
 	{% block extrahead %}
 	{{ block.super }}
 		<meta charset="UTF-8">
-		{% block title %}
-			Chatter
-		{% endblock %}
 
 		<!--Mobile first viewport tag-->
 		<meta name="viewport" 
@@ -26,22 +23,6 @@
 
 		<!--JQuery JS-->
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-		<!--AI==========================================================
-			BootStrap files.
-		===========================================================AI-->
-		<!--BootStrap CSS-->
-		<link rel="stylesheet" 
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
-		<!--BootStrap JS-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
-		crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" 
-		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" 
-		crossorigin="anonymous"></script>
-		<!--Raleway font-->
-		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 		<!--FontAwesome-->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
@@ -67,7 +48,6 @@
 		The following block inserts a logout link in every page 
 		if the user is logged in.
 	===========================================================AI-->
-	<body>
 		{% if user.is_authenticated %}
 		<div class="float"><a href = "{% url 'chat:logout' %}">Log out</a></div>
 		{% endif %}
@@ -78,5 +58,3 @@
 		===========================================================AI-->
 		{% block content %}
 		{% endblock content %}
-	</body>
-<!-- </html> -->

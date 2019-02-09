@@ -12,3 +12,6 @@ migrations/
 
 # ignore redis database file
 *.rdb
+
+# ignore registration template folder
+registration/

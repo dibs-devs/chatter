@@ -7,7 +7,8 @@ from .models import *
 from django.db.models import Count
 from django.core.exceptions import PermissionDenied
 
-
+def redirect_to_chat(request):
+	return HttpResponseRedirect('/chat/')
 @login_required
 def index(request):
 	return render(request, 'chat/index.html')
@@ -23,7 +24,7 @@ def chatroom(request, uuid):
 	room = Room.objects.get(id=uuid)
 	if room:
 		if user in room.members.all():
-			latest_messages = room.message_set.all().order_by('id')[:50]
+			latest_messages = room.message_set.all().order_by('-id')[:50]
 			for message in latest_messages:
 				message.recipients.add(user)
 			return render(request, 'chat/chat-window.html', 

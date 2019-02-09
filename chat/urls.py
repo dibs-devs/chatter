@@ -5,6 +5,7 @@ from . import views
 app_name = 'chat'
 
 urlpatterns = [
+	path('', views.redirect_to_chat, name = "redirect_to_chat"),
 	path('chat/', views.index, name = "index"),
 	path('chat/accounts/logout/', views.custom_logout, name = "logout"),
 	path('chat/<str:uuid>/', views.chatroom, name = "chatroom"),
