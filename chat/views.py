@@ -17,7 +17,7 @@ def custom_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('chat:index'))
 
-# This fetches a chatroom given the room ID if a user diretly wants to access the chat. 
+# This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
 def chatroom(request, uuid):
 	user = get_user_model().objects.get(username=request.user)
@@ -27,7 +27,7 @@ def chatroom(request, uuid):
 			latest_messages = room.message_set.all().order_by('-id')[:50]
 			for message in latest_messages:
 				message.recipients.add(user)
-			return render(request, 'chat/chat-window.html', 
+			return render(request, 'chat/chat-window.html',
 				{'room_uuid_json': uuid, 'latest_messages': latest_messages,'room_name': room.__str__()})
 		else:
 			raise PermissionDenied()
@@ -49,8 +49,8 @@ def get_chat_url(request):
 
 	'''
 	AI-------------------------------------------------------------------
-		If the user is trying to chat with themselves, check if the 
-		room with that user only exists. 
+		If the user is trying to chat with themselves, check if the
+		room with that user only exists.
 		If it does, return that room's ID to for URL with it.
 		If it doesn't, create a room with that user in it and return
 		the new room's ID.
@@ -103,7 +103,6 @@ def get_chat_url(request):
 					)
 		else:
 			new_room=Room()
-			new_room.save()
 			new_room.members.add(user)
 			new_room.members.add(target_user)
 			new_room.save()
