@@ -18,19 +18,19 @@
 		<meta charset="UTF-8">
 
 		<!--Mobile first viewport tag-->
-		<meta name="viewport" 
+		<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!--JQuery JS-->
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 		<!--FontAwesome-->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 		crossorigin="anonymous">
 
 		<!--AI======================================================================
-			We use JQuery UI to use its autocomplete function to dynamically 
+			We use JQuery UI to use its autocomplete function to dynamically
 			produce a list of registered users for the current user to look through.
 		=======================================================================AI-->
 		<!--JQuery UI CSS-->
@@ -43,14 +43,6 @@
 		===========================================================AI-->
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
 	{% endblock extrahead %}
-
-	<!--AI==========================================================
-		The following block inserts a logout link in every page 
-		if the user is logged in.
-	===========================================================AI-->
-		{% if user.is_authenticated %}
-		<div class="float"><a href = "{% url 'chat:logout' %}">Log out</a></div>
-		{% endif %}
 
 		<!--AI==========================================================
 			Child pages inherting this base must include their extra

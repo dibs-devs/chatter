@@ -8,7 +8,7 @@
 
   The default templates for this app are made with Bootstrap, one of the most popular CSS frameworks out there. This makes it easier for developers to change the templates just by modifying the right CSS files.
 
- [More work to be done] Added to that, it can also possibly be used as a REST API, since all the views generate standard JSON responses that need to be parsed by the websockets present in the front-end of the app using this package.  
+ [More work to be done] Added to that, it can also possibly be used as a REST API, since all the views generate standard JSON responses that need to be parsed by the websockets present in the front-end of the app using this package.
 
 This app makes use of [Django Channels 2](http://channels.readthedocs.io) and uses
 [Redis](https://redis.io/) as the message broker.
@@ -76,12 +76,24 @@ INSTALLED_APPS = [
   `python manage.py migrate`
 * Start your app's development server and go to your `'/chat/'` URL, and you will see Chatter's homepage.
 
-**Unit tests haven't been setup for this package yet. Tests welcome!**
+**Tests haven't been setup for this package yet. I built this app before
+I knew what good test practices were like. So, tests welcome!**
+
+### Usage Notes
+
+* Chatter, as of right now, provides a very minimal interface for users to chat with other users.
+For starters, while group chatting is supported on a database level,
+the corresponding templates and front-end logic have not yet been setup.
+* If you're using chatter as a package in your own app, you have to make sure
+to handle user authentication in your app. Chatter, by default, provides
+views that require user authentication. If you're developing Chatter on the other
+hand, the usage will vary a bit. The notes for that can be found in the Developers
+section.
 
 
 ### Running list of features to add
 
-* Add a "Create Group" option
+* Add a "Create Group" option for users on the templates
 * Notifications using django-notifications
-* Improve 'Seen by user x' functionality
-* Multitenancy support
+* Add 'Seen by user x' functionality
+* Multitenancy support in conjuction with [django-tenants](https://www.github.com/tomturner/django-tenants)

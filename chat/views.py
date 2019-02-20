@@ -7,15 +7,9 @@ from .models import *
 from django.db.models import Count
 from django.core.exceptions import PermissionDenied
 
-def redirect_to_chat(request):
-	return HttpResponseRedirect('/chat/')
 @login_required
 def index(request):
 	return render(request, 'chat/index.html')
-
-def custom_logout(request):
-	logout(request)
-	return HttpResponseRedirect(reverse('chat:index'))
 
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
