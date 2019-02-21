@@ -1,4 +1,4 @@
-{% extends 'base.html' %} <!--Site level base template as defined in your app settings-->
+{# {% extends 'base.html' %} <!--Site level base template as defined in your app settings--> #}
 
 <!--AI==========================================================
 	This is the Base for all pages in the chat app. It contains
@@ -16,40 +16,21 @@
 	{% block extrahead %}
 	{{ block.super }}
 		<meta charset="UTF-8">
-		{% block title %}
-			Chatter
-		{% endblock %}
 
 		<!--Mobile first viewport tag-->
-		<meta name="viewport" 
+		<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!--JQuery JS-->
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-		<!--AI==========================================================
-			BootStrap files.
-		===========================================================AI-->
-		<!--BootStrap CSS-->
-		<link rel="stylesheet" 
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
-		<!--BootStrap JS-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
-		crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" 
-		integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" 
-		crossorigin="anonymous"></script>
-		<!--Raleway font-->
-		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
 		<!--FontAwesome-->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 		crossorigin="anonymous">
 
 		<!--AI======================================================================
-			We use JQuery UI to use its autocomplete function to dynamically 
+			We use JQuery UI to use its autocomplete function to dynamically
 			produce a list of registered users for the current user to look through.
 		=======================================================================AI-->
 		<!--JQuery UI CSS-->
@@ -63,20 +44,9 @@
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
 	{% endblock extrahead %}
 
-	<!--AI==========================================================
-		The following block inserts a logout link in every page 
-		if the user is logged in.
-	===========================================================AI-->
-	<body>
-		{% if user.is_authenticated %}
-		<div class="float"><a href = "{% url 'chat:logout' %}">Log out</a></div>
-		{% endif %}
-
 		<!--AI==========================================================
 			Child pages inherting this base must include their extra
 			properties inside the following content block.
 		===========================================================AI-->
 		{% block content %}
 		{% endblock content %}
-	</body>
-<!-- </html> -->

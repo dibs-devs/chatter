@@ -10,18 +10,18 @@
 
 <!--AI==========================================================
 	The following div describes the Search bar to search
-	for users.
+	for users as well as the name of the chatroom.
 	===========================================================AI-->
-	<div class="row">
-	<div class = "col-3 search">
-		{% csrf_token %}
-		<input id = "searchbar" placeholder = "username"></input>
-		<button id = "user-selected">Go</button><br />
+	<div>
+		<div class="search">
+			{% csrf_token %}
+			<input id = "searchbar" placeholder = "Username"></input>
+			<button id = "user-selected">Go</button><br />
+		</div>
+		<div class="room-name">
+			<b>{{room_name}}</b>
+		</div>
 	</div>
-	<div class="col-5 room-name">
-		<b>{{room_name}}</b>
-	</div>
-</div>
 
 <!--AI==========================================================
 	The following block represents the list of chatrooms at the left

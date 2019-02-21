@@ -5,8 +5,7 @@ from . import views
 app_name = 'chat'
 
 urlpatterns = [
-	path('chat/', views.index, name = "index"),
-	path('chat/accounts/logout/', views.custom_logout, name = "logout"),
+	path('', views.index, name = "index"),
 	path('chat/<str:uuid>/', views.chatroom, name = "chatroom"),
 
 	#AJAX paths
