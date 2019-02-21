@@ -15,3 +15,6 @@ migrations/
 
 # ignore registration template folder
 registration/
+
+# ignore built docs from sphinx
+docs/build/

@@ -87,7 +87,7 @@ the corresponding templates and front-end logic have not yet been setup.
 * If you're using chatter as a package in your own app, you have to make sure
 to handle user authentication in your app. Chatter, by default, provides
 views that require user authentication. If you're developing Chatter on the other
-hand, the usage will vary a bit. The notes for that can be found in the Developers
+hand, the usage will vary a bit. The notes for that can be found in the Contributing
 section.
 
 
