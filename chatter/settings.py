@@ -26,7 +26,7 @@ SECRET_KEY = '()7a06z3cu#vrsmxt2^8qz0z$mya+@c+fvzcf1af%2c*(pv6qk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.django-chatter.dev']
 
 
 # Application definition
