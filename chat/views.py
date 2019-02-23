@@ -97,6 +97,7 @@ def get_chat_url(request):
 					)
 		else:
 			new_room=Room()
+			new_room.save()
 			new_room.members.add(user)
 			new_room.members.add(target_user)
 			new_room.save()
