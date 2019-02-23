@@ -24,9 +24,9 @@ def chatroom(request, uuid):
 			return render(request, 'chat/chat-window.html',
 				{'room_uuid_json': uuid, 'latest_messages': latest_messages,'room_name': room.__str__()})
 		else:
-			raise PermissionDenied()
+			raise Http404("Sorry! What you're looking for isn't here.")
 	else:
-		raise Http404("The room you searched for does not exist.")
+		raise Http404("Sorry! What you're looking for isn't here.")
 
 #The following functions deal with AJAX requests
 @login_required
