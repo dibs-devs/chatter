@@ -11,6 +11,22 @@ from datetime import datetime
 #New messages will be derived from this time in the view.
 from django.utils.timezone import now
 
+
+@database_sync_to_async
+def get_room_list(user, multitenant=False, schema_name=None):
+    if multitenant:
+        if not schema_name:
+            raise AttributeError("Multitenancy support error: \
+                scope does not have multitenancy enabled.")
+        else:
+            from django_tenants.utils import schema_context
+            with schema_context(schema_name):
+                return Room.objects.filter(members=user)
+    else:
+        return Room.objects.filter(members=user)
+
+
+
 class ChatConsumer(AsyncWebsocketConsumer):
 
     '''
@@ -58,6 +74,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
     '''
     async def connect(self):
         self.user = self.scope['user']
+
         self.room_list = await self.get_room_list(self.user)
 
         #This if clause might be redundant.
