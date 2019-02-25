@@ -9,6 +9,7 @@ Chatter has the following utilities available:
 * **Middleware to Support Multitenancy**
 
   *Added in: Chatter 0.1.0*
+  
   Django Chatter now supports multitenant SaaS applications made using
   `django-tenants <https://github.com/tomturner/django-tenants>`_.
   This is made available as middlewares in the :code:`utils.py` module.
