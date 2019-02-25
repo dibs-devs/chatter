@@ -25,13 +25,13 @@ Chatter has the following utilities available:
 
   .. code-block:: python
 
-    from chat.utils import MTSchemaMiddleware
+    from django_chatter.utils import MTSchemaMiddleware
 
     application = ProtocolTypeRouter({
     	'websocket': <your stack>(
         MTSchemaMiddleware(
       		URLRouter(
-      			chat.routing.websocket_urlpatterns
+      			django_chatter.routing.websocket_urlpatterns
       			)
       		)
         )
@@ -50,13 +50,13 @@ Chatter has the following utilities available:
 
   .. code-block:: python
 
-    from chat.utils import MTAuthMiddleware
+    from django_chatter.utils import MTAuthMiddleware
 
     application = ProtocolTypeRouter({
     	'websocket': <your stack>(
         MTAuthMiddleware(
       		URLRouter(
-      			chat.routing.websocket_urlpatterns
+      			django_chatter.routing.websocket_urlpatterns
       			)
       		)
         )
@@ -69,13 +69,13 @@ Chatter has the following utilities available:
 
   .. code-block:: python
 
-    from chat.utils import ChatterMTMiddlewareStack
+    from django_chatter.utils import ChatterMTMiddlewareStack
 
     application = ProtocolTypeRouter({
     	'websocket': <your stack>(
         ChatterMTMiddlewareStack(
       		URLRouter(
-      			chat.routing.websocket_urlpatterns
+      			django_chatter.routing.websocket_urlpatterns
       			)
       		)
         )

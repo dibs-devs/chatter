@@ -37,7 +37,7 @@ Installation
 
     INSTALLED_APPS = [
       ...
-      'chat',
+      'django_chatter',
       ...
       ]
 
@@ -76,12 +76,12 @@ Installation
 
     from channels.auth import AuthMiddlewareStack
     from channels.routing import ProtocolTypeRouter, URLRouter
-    import chat.routing
+    import django_chatter.routing
 
     application = ProtocolTypeRouter({
       'websocket': AuthMiddlewareStack(
         URLRouter(
-        chat.routing.websocket_urlpatterns # send request to chatter's urls
+        django_chatter.routing.websocket_urlpatterns # send request to chatter's urls
         )
       )
     })
@@ -120,14 +120,14 @@ Installation
         'OPTIONS': {
           'context_processors': [
             ...,
-            'chat.context_processors.get_chatroom_list',
+            'django_chatter.context_processors.get_chatroom_list',
             ...,
           ],
         },
       },
     ]
 
-* Link :code:`chat.urls` to the URL you want in your
+* Link :code:`django_chatter.urls` to the URL you want in your
   URLConf (:code:`<project>/urls.py`).
 
   Example:
@@ -139,7 +139,7 @@ Installation
     ...
     urlpatterns = [
       ...,
-      path('chat/', include('chat.urls')),
+      path('chat/', include('django_chatter.urls')),
       ...
     ]
 
@@ -147,7 +147,7 @@ Installation
 
   .. code-block:: bash
 
-    $ python manage.py makeimigrations chat
+    $ python manage.py makeimigrations django_chatter
     $ python manage.py migrate
 
 * Start your app's development server and go to your :code:`'/chat/'` URL,

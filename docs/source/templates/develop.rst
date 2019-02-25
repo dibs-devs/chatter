@@ -74,7 +74,7 @@ To start developing Chatter, follow the following steps:
 
   .. code-block:: bash
 
-    $ python manage.py makemigrations chat
+    $ python manage.py makemigrations django_chatter
     $ python manage.py migrate
 
 * Create a superuser for chatter:
@@ -90,7 +90,7 @@ To start developing Chatter, follow the following steps:
     $ python manage.py runserver
 
 * (Optional) if you want to streamline the login/logout mechanisms, feel free to
-  add a :code:`login.html` file to `chat/templates/registration` folder. This
+  add a :code:`login.html` file to `django_chatter/templates/registration` folder. This
   should give you a form to log in. Django's
   `template <https://docs.djangoproject.com/
   en/2.1/topics/auth/default/#django.contrib.auth.views.LoginView>`_
@@ -101,7 +101,5 @@ The following is a list of features and hooks that we plan on bringing to Chatte
 Features Yet to Come
 --------------------
 * Add a "Create Group" option for users on the templates
-* Notifications using django-notifications
 * Add 'Seen by user x' functionality
-* Multitenancy support in conjuction with
-  `django-tenants <https://www.github.com/tomturner/django-tenants>`_
+* Add time to when messages were sent
