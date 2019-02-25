@@ -1,7 +1,8 @@
 Django Chatter
 ==============
 
-#### Django-based Chat app that supports group chat and real-time updates.
+Django-based Chat app that supports group chat and real-time updates.
+---------------------------------------------------------------------
 
 Full docs here: `Chatter Docs <https://django-chatter.readthedocs.io>`_
 
@@ -63,6 +64,7 @@ Installation
   <https://channels.readthedocs.io/en/latest/topics/consumers.html>`_
   for more details). To enable that, you need to add the following lines to
   your project's :code:`settings.py` file:
+
   .. code-block:: python
 
     CHANNEL_LAYERS = {
@@ -183,7 +185,7 @@ Usage Notes
   views that require user authentication. If you're developing Chatter on the other
   hand, the usage will vary a bit. The notes for that can be found in the
   `Get Involved <https://django-chatter.readthedocs.io/en/latest/templates/develop.html>`_
-   section.
+  section.
 
 -------------------------------
 Running list of features to add
