@@ -9,7 +9,7 @@ from django.core.exceptions import PermissionDenied
 
 @login_required
 def index(request):
-	return render(request, 'chat/index.html')
+	return render(request, 'django_chatter/index.html')
 
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
@@ -21,12 +21,15 @@ def chatroom(request, uuid):
 			latest_messages = room.message_set.all().order_by('-id')[:50]
 			for message in latest_messages:
 				message.recipients.add(user)
-			return render(request, 'chat/chat-window.html',
-				{'room_uuid_json': uuid, 'latest_messages': latest_messages,'room_name': room.__str__()})
+			return render(request, 'django_chatter/chat-window.html',
+				{'room_uuid_json': uuid,
+				'latest_messages': latest_messages,
+				'room_name': room.__str__()}
+				)
 		else:
-			raise PermissionDenied()
+			raise Http404("Sorry! What you're looking for isn't here.")
 	else:
-		raise Http404("The room you searched for does not exist.")
+		raise Http404("Sorry! What you're looking for isn't here.")
 
 #The following functions deal with AJAX requests
 @login_required
@@ -97,6 +100,7 @@ def get_chat_url(request):
 					)
 		else:
 			new_room=Room()
+			new_room.save()
 			new_room.members.add(user)
 			new_room.members.add(target_user)
 			new_room.save()

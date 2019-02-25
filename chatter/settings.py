@@ -26,13 +26,13 @@ SECRET_KEY = '()7a06z3cu#vrsmxt2^8qz0z$mya+@c+fvzcf1af%2c*(pv6qk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.django-chatter.dev', '127.0.0.1', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'chat',
+    'django_chatter',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,7 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'chat.context_processors.get_chatroom_list',
+                'django_chatter.context_processors.get_chatroom_list',
             ],
         },
     },

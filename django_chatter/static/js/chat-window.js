@@ -32,7 +32,7 @@ function startWebSocket(websocket_url) {
 		3) Store the message text.
 		4) If there is a warning, store it.
 		5) If the message is sent by the user logged into the session,
-			apply the correct classes to the message so it's displayed 
+			apply the correct classes to the message so it's displayed
 			to the right.
 		6) If the message is sent by a different user, apply the correct
 			classes to the message so it's displayed to the left.
@@ -51,7 +51,6 @@ function startWebSocket(websocket_url) {
 		var sender = data['sender'];
 		var received_room_id = data['room_id'];
 		if (username === sender) {
-			console.log('I\'m here!');
 			$('#'+received_room_id).css('font-weight', 'bold');
 			$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 			$('#chat-dialog').append(
@@ -67,7 +66,6 @@ function startWebSocket(websocket_url) {
 		} else {
 			if (received_room_id === room_id) {
 				$('#'+received_room_id).css('font-weight', 'bold');
-				console.log('moving to the top');
 				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 				$('#chat-dialog').append(
 				'<div class="message-container">'
@@ -83,11 +81,10 @@ function startWebSocket(websocket_url) {
 			}
 			else {
 				$('#'+received_room_id).css('font-weight', 'bold');
-				console.log('moving to the top!');
 				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
-			}	
+			}
 		}
-		
+
 		$('#send-message').val('');
 		document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
@@ -122,14 +119,13 @@ function startWebSocket(websocket_url) {
 
 /*
 AI-------------------------------------------------------------------
-	When the document is loaded, start the websocket connection. 
+	When the document is loaded, start the websocket connection.
 	The webpage should load the latest 50 messages in a particular
-	group chat. When that is done, scroll down to the bottom to 
+	group chat. When that is done, scroll down to the bottom to
 	reveal the latest messages.
 -------------------------------------------------------------------AI
 */
 $(function() {
-	console.log('ready!');
 	startWebSocket(websocket_url);
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;

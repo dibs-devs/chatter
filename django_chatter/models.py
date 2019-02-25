@@ -25,13 +25,12 @@ class Room(DateTimeModel):
     members = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
-        room = Room.objects.get(id=self.id)
-        memberset = room.members.all()
+        memberset = self.members.all()
         members_list = []
         for member in memberset:
             members_list.append(member.username)
 
-        return str(members_list)
+        return ", ".join(members_list)
 
 class Message(DateTimeModel):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL,
