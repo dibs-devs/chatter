@@ -22,7 +22,10 @@ def chatroom(request, uuid):
 			for message in latest_messages:
 				message.recipients.add(user)
 			return render(request, 'chat/chat-window.html',
-				{'room_uuid_json': uuid, 'latest_messages': latest_messages,'room_name': room.__str__()})
+				{'room_uuid_json': uuid,
+				'latest_messages': latest_messages,
+				'room_name': room.__str__()}
+				)
 		else:
 			raise Http404("Sorry! What you're looking for isn't here.")
 	else:
