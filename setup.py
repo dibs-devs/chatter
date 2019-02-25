@@ -16,7 +16,7 @@ setup(
     description='A WebSocket-based Chat app for Django developers.',
     long_description=README,
     url='https://www.github.com/dibs-devs/chatter',
-    author='Ahmed Ishtiaque',
+    author='Ahmed Ishtiaque, Dibs',
     author_email='ahmedishti27@gmail.com',
     classifiers=[
         'Environment :: Web Environment',

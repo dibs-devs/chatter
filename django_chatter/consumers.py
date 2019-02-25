@@ -3,31 +3,18 @@ import json
 from .models import *
 from django.contrib.auth import get_user_model
 from channels.db import database_sync_to_async
-from django.utils.safestring import mark_safe
 import bleach
-from datetime import datetime
 
 #Time libraries used to record the time when the user disconnects.
 #New messages will be derived from this time in the view.
 from django.utils.timezone import now
 
 
-@database_sync_to_async
-def get_room_list(user, multitenant=False, schema_name=None):
-    if multitenant:
-        if not schema_name:
-            raise AttributeError("Multitenancy support error: \
-                scope does not have multitenancy details added. \
-                did you forget to add ChatterMTMiddlewareStack to your routing?")
-        else:
-            from django_tenants.utils import schema_context
-            with schema_context(schema_name):
-                return Room.objects.filter(members=user)
-    else:
-        return Room.objects.filter(members=user)
-
-
-# TODO: Maybe there's a way to keep it DRY.
+'''
+AI-------------------------------------------------------------------
+    Database Access methods below
+-------------------------------------------------------------------AI
+'''
 @database_sync_to_async
 def get_room(room_id, multitenant=False, schema_name=None):
     if multitenant:
@@ -41,23 +28,6 @@ def get_room(room_id, multitenant=False, schema_name=None):
                 return Room.objects.get(id=room_id)
     else:
         return Room.objects.get(id=room_id)
-
-
-@database_sync_to_async
-def update_user_access_time(user, multitenant=False, schema_name=None):
-    if multitenant:
-        if not schema_name:
-            raise AttributeError("Multitenancy support error: \
-                scope does not have multitenancy details added. \
-                did you forget to add ChatterMTMiddlewareStack to your routing?")
-        else:
-            from django_tenants.utils import schema_context
-            with schema_context(schema_name):
-                user.last_visit = datetime.now()
-                user.save()
-    else:
-        user.last_visit = datetime.now()
-        user.save()
 
 
 '''
@@ -92,25 +62,6 @@ def save_message(room, sender, text, multitenant=False, schema_name=None):
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
-    '''
-    AI-------------------------------------------------------------------
-        Database Access methods below
-    -------------------------------------------------------------------AI
-    '''
-
-    @database_sync_to_async
-    def get_room_list(self, user):
-        return Room.objects.filter(members=user)
-
-    @database_sync_to_async
-    def get_room(self, room_id):
-        return Room.objects.get(id=room_id)
-
-    @database_sync_to_async
-    def update_user_access_time(user):
-        user.last_visit = datetime.now()
-        user.save()
-
     @database_sync_to_async
     def save_message(self, room, user, message):
         '''
@@ -137,10 +88,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
     '''
     async def connect(self):
         self.user = self.scope['user']
-        # self.room_list = await self.get_room_list(self.user)
-        # self.room = await self.
-
-
 
         self.schema_name = self.scope.get('schema_name', None)
         self.multitenant = self.scope.get('multitenant', False)
@@ -150,15 +97,28 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 break
         try:
             self.room = await get_room(room_id, self.multitenant, self.schema_name)
-            if self.user in self.room.members.all():
-                room_group_name = 'chat_%s' % self.room.id
-                await self.channel_layer.group_add(
-                    room_group_name,
-                    self.channel_name
-                )
-                await self.accept()
+            if self.multitenant:
+                from django_tenants.utils import schema_context
+                with schema_context(self.schema_name):
+                    if self.user in self.room.members.all():
+                        room_group_name = 'chat_%s' % self.room.id
+                        await self.channel_layer.group_add(
+                            room_group_name,
+                            self.channel_name
+                        )
+                        await self.accept()
+                    else:
+                        await self.disconnect(403)
             else:
-                await self.disconnect(403)
+                if self.user in self.room.members.all():
+                    room_group_name = 'chat_%s' % self.room.id
+                    await self.channel_layer.group_add(
+                        room_group_name,
+                        self.channel_name
+                    )
+                    await self.accept()
+                else:
+                    await self.disconnect(403)
         except Exception as ex:
             raise ex
             await self.disconnect(500)
@@ -170,29 +130,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
-
-
-
-        #This if clause might be redundant.
-    #     if (self.user.is_authenticated):
-    #         for room in self.room_list:
-    #             room_group_name = 'chat_%s' % room.id
-    #             await self.channel_layer.group_add(
-    #                 room_group_name,
-    #                 self.channel_name
-    #             )
-    #         await self.accept()
-    #     else:
-    #         await self.disconnect(403)
-    #
-    # async def disconnect(self, close_code):
-    #     for room in self.room_list:
-    #         room_group_name = 'chat_%s' % room.id
-    #         await self.channel_layer.group_discard(
-    #             room_group_name,
-    #             self.channel_name
-    #         )
-
     async def receive(self, text_data):
         username = self.user.username
 
@@ -200,19 +137,18 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         room_id = text_data_json['room_id']
 
-        try:
-            room = await self.get_room(room_id)
-            room_group_name = 'chat_%s' % room.id
-        except Exception as ex:
-            template = 'An exception of type {} occured. Arguments: \n{}'
-            message = template.format(type(ex).__name__, ex.args)
-            print(message)
-            await self.disconnect(500)
-
+        # Clean code off message if message contains code
         self.message_safe = bleach.clean(message)
         message_harmful = (self.message_safe != message)
 
-        await save_message(room,
+        try:
+            # room = await self.get_room(room_id)
+            room_group_name = 'chat_%s' % room_id
+        except Exception as ex:
+            raise ex
+            await self.disconnect(500)
+
+        await save_message(self.room,
                                 self.user,
                                 self.message_safe,
                                 self.multitenant,

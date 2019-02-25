@@ -18,3 +18,9 @@ registration/
 
 # ignore built docs from sphinx
 docs/build/
+
+# ignore python package dist files
+dist/
+
+# ignore egg info files
+*.egg-info

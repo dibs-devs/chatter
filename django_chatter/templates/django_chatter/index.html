@@ -4,7 +4,7 @@
 	Might become redundant in the future.
 ===========================================================AI-->
 
-{% extends 'chat/base.html' %}
+{% extends 'django_chatter/base.html' %}
 {% load static %}
 {% block extrahead %}
 	{{ block.super }}
@@ -16,7 +16,7 @@
 	<!--AI==========================================================
 		This includes the list of rooms that the user belongs to.
 	===========================================================AI-->
-	{% include 'chat/chatroom-list.html' %}
+	{% include 'django_chatter/chatroom-list.html' %}
 
 	<!--AI==========================================================
 		This is the space that gives instruction to the user as to

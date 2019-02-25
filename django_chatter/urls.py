@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 # Defined namespace for use on all templates
-app_name = 'chat'
+app_name = 'django_chatter'
 
 urlpatterns = [
 	path('', views.index, name = "index"),

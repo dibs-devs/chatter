@@ -9,7 +9,7 @@ from django.core.exceptions import PermissionDenied
 
 @login_required
 def index(request):
-	return render(request, 'chat/index.html')
+	return render(request, 'django_chatter/index.html')
 
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
@@ -21,7 +21,7 @@ def chatroom(request, uuid):
 			latest_messages = room.message_set.all().order_by('-id')[:50]
 			for message in latest_messages:
 				message.recipients.add(user)
-			return render(request, 'chat/chat-window.html',
+			return render(request, 'django_chatter/chat-window.html',
 				{'room_uuid_json': uuid,
 				'latest_messages': latest_messages,
 				'room_name': room.__str__()}

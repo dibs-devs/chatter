@@ -3,7 +3,7 @@
 ===========================================================AI-->
 
 <!--Extends the Chat app base-->
-{% extends 'chat/base.html' %}
+{% extends 'django_chatter/base.html' %}
 
 <!--Django static files directory is loaded using this tag-->
 {% load static %}
@@ -23,7 +23,7 @@
 	This inherits the list of chats that a user belongs to.
 ===========================================================AI-->
 
-{% include 'chat/chatroom-list.html' %}
+{% include 'django_chatter/chatroom-list.html' %}
 
 <!--AI==========================================================
 	The following contains the chat dialog div properties
