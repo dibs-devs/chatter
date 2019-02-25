@@ -79,7 +79,7 @@ Installation
 * If you haven't already, create a file named :code:`routing.py` in your
   project's configuration folder.
   This is because Django Channels uses a specification called
-  `ASGI <https://channels.readthedocs.io/en/latest/asgi.html`_
+  `ASGI <https://channels.readthedocs.io/en/latest/asgi.html>`_
   for its websocket protocol. To enable Channels on your app, you have to add
   a file that routes all websocket requests to a Channels app
   (in this case, Chatter).
