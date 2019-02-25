@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['.django-chatter.dev', '127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'chat',
+    'django_chatter',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
