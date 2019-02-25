@@ -24,3 +24,6 @@ dist/
 
 # ignore egg info files
 *.egg-info
+
+# ignore release bdist
+build/*
