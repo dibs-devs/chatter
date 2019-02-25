@@ -3,12 +3,14 @@ Django Chatter
 
 #### Django-based Chat app that supports group chat and real-time updates.
 
- Chat is a crucial aspect of many web apps at present.
- However, Django's package repository does not have well-maintained reusable chat
- packages that Django developers can integrate into their platforms.
+Full docs here: `Chatter Docs <https://django-chatter.readthedocs.io>`_
 
- Chatter is an attempt to change that. This is an open-source fully reusable chat
- application that has mechanisms to support group chats in place.
+Chat is a crucial aspect of many web apps at present.
+However, Django's package repository does not have well-maintained reusable chat
+packages that Django developers can integrate into their platforms.
+
+Chatter is an attempt to change that. This is an open-source fully reusable chat
+application that has mechanisms to support group chats in place.
 
 The default templates for this app are made with Bootstrap, one of the most
 popular CSS frameworks out there. This makes it easier for developers to change
