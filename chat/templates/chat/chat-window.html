@@ -53,7 +53,7 @@
 		{% endfor %}
 	</div>
 	<div class = "input-container">
-		<textarea id = "send-message" rows = "1" 
+		<textarea id = "send-message" rows = "1"
 			placeholder = "Type your message..."></textarea>
 		<button id = "send-button">Send</button>
 	</div>
@@ -69,6 +69,5 @@
 	var room_id = '{{room_uuid_json}}';
 	var username = '{{user.username}}';
 </script>
-<script src = "{% static 'js/searchuser.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
 {% endblock content %}

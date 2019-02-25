@@ -29,17 +29,22 @@
 <div class = "chatroom-list">
 
 	{% for room in rooms_list %}
-		<a class="chat-link" href="/chat/{{room.id}}/">
+		<a class="chat-link" href="{% url 'chat:chatroom' uuid=room.id %}">
 			{% if room.id in rooms_with_unread %}
 			<div style='font-weight: bold;' class = 'chat-list-item' id = '{{room.id}}'>
 			{% else %}
 			<div class='chat-list-item' id='{{room.id}}'>
 			{% endif %}
-				{%for member in room.members.all %}
-					{{member.username}},
-				{% endfor %}
+				{{room}}
 			</div>
 		</a>
-		
+
 	{% endfor %}
 </div>
+
+<script>
+	var get_user_url = '{% url "chat:users_list" %}';
+	var get_chat_url = '{% url "chat:get_chat_url" %}';
+	var chatter_index = '{% url "chat:index" %}';
+</script>
+<script src = "{% static 'js/searchuser.js' %}"></script>

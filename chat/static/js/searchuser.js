@@ -1,6 +1,6 @@
 /*
 AI-------------------------------------------------------------------
-	This script makes an AJAX call to get a list of registered 
+	This script makes an AJAX call to get a list of registered
 	users. After that, the list is displayed dynamically using
 	JQuery UI so that when a user is typing a username, the user
 	can access these recipient users.
@@ -13,8 +13,8 @@ var ws_or_wss = window.location.protocol == "https:" ? "wss://" : "ws://";
 
 /*
 AI-------------------------------------------------------------------
-	This uses the JQuery UI Plugin to filter and autocomplete 
-	the list of users as you search for a user in the searchbar. 
+	This uses the JQuery UI Plugin to filter and autocomplete
+	the list of users as you search for a user in the searchbar.
 	Of course, this isn't exactly customizable CSS-wise.
 -------------------------------------------------------------------AI
 */
@@ -36,7 +36,7 @@ function linkuser( array ) {
 				$('#user-selected').trigger('click');
 			}
 			else {
-				alert('Please enter a valid User to chat with.');
+				alert('Please enter a valid user to chat with.');
 			}
 		}
 	});
@@ -47,7 +47,8 @@ function linkuser( array ) {
 	$('#user-selected').click( function() {
 		if (array.includes($('#searchbar').val())) {
 				$.ajax({
-					url: '/chat/ajax/get-chat-url/',
+					// url: '/chat/ajax/get-chat-url/',
+					url: get_chat_url,
 					type: 'POST',
 					data: {
 						'target_user': $('#searchbar').val(),
@@ -56,7 +57,7 @@ function linkuser( array ) {
 							).val(),
 					},
 					success: function (data) {
-						location.href=http_or_https + window.location.host + '/'
+						location.href=http_or_https + window.location.host + chatter_index
 						+ 'chat/' + data.room_url + '/';
 					}
 				});
@@ -64,7 +65,7 @@ function linkuser( array ) {
 			else {
 				alert('Please enter a valid User to chat with.');
 			}
-		
+
 	});
 }
 
@@ -79,9 +80,10 @@ AI-------------------------------------------------------------------
 $(function() {
 	$.ajax({
 		//The url to send the request to
-		url: '/chat/ajax/users-list/',
+		// url: '/chat/ajax/users-list/',
+		url: get_user_url,
 		/*If the request succeeds, there is data sent back from
-		the server in JSON format. The AJAX function calls in two 
+		the server in JSON format. The AJAX function calls in two
 		functions with the array of users.*/
 		success: function( data ) {
 			populate(data.userslist);

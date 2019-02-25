@@ -39,7 +39,7 @@ Installation
 ------------
 
 * Chatter is on `PyPi <https://pypi.org/project/django-chatter/>`_ now!
-To install it, run
+  To install it, run
 
   .. code-block:: python
 
@@ -115,10 +115,31 @@ To install it, run
   about this, get in touch! We'd be happy to talk to you about it).
 
 * Now that you're done setting up :code:`routing.py`, add the following line in
-  your :code:`settings.py` file to enable routing websocket requests to the
-  appropriate app:
+  your :code:`settings.py` file to link to the `routing.py` (again, you may have
+  already done this if you're already using channels)
+
   .. code-block:: python
+
     ASGI_APPLICATION = '<project name>.routing.application'
+
+* Chatter uses a context processor to generate a list of all rooms that a user
+  is a member of. To use this context processor, add it to your :code:`TEMPLATES`
+  list in your :code:`settings.py` file:
+
+  .. code-block:: python
+
+    TEMPLATES = [
+      {
+        ...
+        'OPTIONS': {
+          'context_processors': [
+            ...,
+            'chat.context_processors.get_chatroom_list',
+            ...,
+          ],
+        },
+      },
+    ]
 
 * Link :code:`chat.urls` to the URL you want in your
   URLConf (:code:`<project>/urls.py`).

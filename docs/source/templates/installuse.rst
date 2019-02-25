@@ -16,14 +16,14 @@ Added to that, Chatter uses Redis as its message broker. This means that all the
 chat messages are communicated between all connected users through the Redis
 datastore. Given that, you have to have Redis installed on your system. Details on
 installing Redis can be found on their `Downloads <https://redis.io/download>`_
- page.
+page.
 
 ------------
 Installation
 ------------
 
 * Chatter is on `PyPi <https://pypi.org/project/django-chatter/>`_ now!
-To install it, run
+  To install it, run
 
   .. code-block:: python
 
@@ -47,21 +47,23 @@ To install it, run
   <https://channels.readthedocs.io/en/latest/topics/consumers.html>`_
   for more details). To enable that, you need to add the following lines to
   your project's :code:`settings.py` file:
+
   .. code-block:: python
 
     CHANNEL_LAYERS = {
       'default': {
           'BACKEND': 'channels_redis.core.RedisChannelLayer',
           'CONFIG': {
-              "hosts": [('127.0.0.1', 6379)],
+            'hosts': [('127.0.0.1', 6379)],
           },
       },
     }
 
+
 * If you haven't already, create a file named :code:`routing.py` in your
   project's configuration folder.
   This is because Django Channels uses a specification called
-  `ASGI <https://channels.readthedocs.io/en/latest/asgi.html`_
+  `ASGI <https://channels.readthedocs.io/en/latest/asgi.html>`_
   for its websocket protocol. To enable Channels on your app, you have to add
   a file that routes all websocket requests to a Channels app
   (in this case, Chatter).
@@ -101,8 +103,29 @@ To install it, run
 * Now that you're done setting up :code:`routing.py`, add the following line in
   your :code:`settings.py` file to enable routing websocket requests to the
   appropriate app:
+
   .. code-block:: python
+
     ASGI_APPLICATION = 'mysite.routing.application'
+
+* Chatter uses a context processor to generate a list of all rooms that a user
+  is a member of. To use this context processor, add it to your :code:`TEMPLATES`
+  list in your :code:`settings.py` file:
+
+  .. code-block:: python
+
+    TEMPLATES = [
+      {
+        ...
+        'OPTIONS': {
+          'context_processors': [
+            ...,
+            'chat.context_processors.get_chatroom_list',
+            ...,
+          ],
+        },
+      },
+    ]
 
 * Link :code:`chat.urls` to the URL you want in your
   URLConf (:code:`<project>/urls.py`).
