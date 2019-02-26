@@ -9,12 +9,13 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-chatter',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',  # example license
     description='A WebSocket-based Chat app for Django developers.',
     long_description=README,
+    long_description_content_type='text/markdown',
     url='https://www.github.com/dibs-devs/chatter',
     author='Ahmed Ishtiaque, Dibs',
     author_email='ahmedishti27@gmail.com',

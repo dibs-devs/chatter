@@ -9,7 +9,7 @@ Chatter has the following utilities available:
 * **Middleware to Support Multitenancy**
 
   *Added in: Chatter 0.1.0*
-  
+
   Django Chatter now supports multitenant SaaS applications made using
   `django-tenants <https://github.com/tomturner/django-tenants>`_.
   This is made available as middlewares in the :code:`utils.py` module.
@@ -81,6 +81,31 @@ Chatter has the following utilities available:
       		)
         )
     })
+
+* **Create Room Function**
+
+  *Added in: Chatter 0.1.1*
+
+  This function takes in a _list_ of User objects and returns the ID of a new room
+  containing the given users. If the room already exists in the database, it
+  returns the existing room's ID. With the ID, you can then call upon Chatter's
+  :code:`chatroom` view from your view. An example is below:
+
+  .. code-block:: python
+    from django_chatter.utils import create_room
+    from django_chatter.views import chatroom
+    from myapp.models import User
+
+    def my_view(request):
+      user1 = request.user  # User requesting the view
+      user2 = User.objects.get(username="user2")  # example user in your db
+      room_id = create_room([user1, user2])
+      return chatroom(request, room_id)
+
+  The above code would create a room from your view, and direct the user to the
+  newly formed room.
+
+
 
 To Do
 -----

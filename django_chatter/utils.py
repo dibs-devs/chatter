@@ -10,6 +10,9 @@ from django.contrib.auth import (
     HASH_SESSION_KEY,
     SESSION_KEY,
 )
+from django.db.models import Count
+
+from django_chatter.models import Room
 
 # custom get_user method for AuthMiddleware subclass. Mostly similar to
 # https://github.com/django/channels/blob/master/channels/auth.py
@@ -88,6 +91,7 @@ class MTSchemaMiddleware:
         )
 
 
+# MiddlewareStack to give access to user object in a multitenant environment
 ChatterMTMiddlewareStack = lambda inner: CookieMiddleware(
     SessionMiddleware(
         MTSchemaMiddleware(
@@ -95,3 +99,27 @@ ChatterMTMiddlewareStack = lambda inner: CookieMiddleware(
         )
     )
 )
+
+
+# Takes in a list of User objects and returns the UUID of the room created.
+def create_room(user_list):
+    for user in user_list:
+        if type(user) != get_user_model():
+            raise TypeError("Parameters passed to create_room doesn't " +
+                "match your project's user model. Please make sure the list " +
+                "you passed contains valid settings.AUTH_USER_MODEL objects.")
+    rooms_with_member_count = Room.objects.annotate(num_members = Count('members'))
+    rooms = Room.objects.filter(members__in=user_list)
+
+    room_with_all_users_qs = \
+        rooms.annotate(num_members = Count('members'))\
+        .filter(num_members = len(user_list))
+    if room_with_all_users_qs.exists():
+        room = room_with_all_users_qs[0]
+        return room.id
+    else:
+        room = Room()
+        room.save()
+        room.members.set(user_list)
+        room.save()
+        return room.id
