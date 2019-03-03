@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-chatter',
-    version='0.1.1',
+    version='0.1.2',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',  # example license
@@ -32,4 +32,11 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    install_requires=[
+        'shortuuid==0.5.0',
+        'channels==2.1.7',
+        'bleach==3.1.0',
+        'django>=2.0.9, <3',
+        'channels-redis==2.3.3',
+    ]
 )
