@@ -109,13 +109,12 @@ def create_room(user_list):
                 "match your project's user model. Please make sure the list " +
                 "you passed contains valid settings.AUTH_USER_MODEL objects.")
     rooms_with_member_count = Room.objects.annotate(num_members = Count('members'))
-    rooms = Room.objects.filter(members__in=user_list)
+    rooms = rooms_with_member_count.filter(num_members = len(user_list))
 
-    room_with_all_users_qs = \
-        rooms.annotate(num_members = Count('members'))\
-        .filter(num_members = len(user_list))
-    if room_with_all_users_qs.exists():
-        room = room_with_all_users_qs[0]
+    for member in user_list:
+        rooms = rooms.filter(members = member)
+    if rooms.exists():
+        room = rooms[0]
         return room.id
     else:
         room = Room()

@@ -19,8 +19,9 @@ class saveRoomTestCase(TestCase):
             room_id = create_room([user1, user2, user3])
             room_in_db = Room.objects.all()[0]
             self.assertEqual(room_in_db.id, room_id)
-        except TypeError:
-            self.fail("create_room() raised Exception unexpectedly.")
+        except TypeError as e:
+            raise e
+            self.fail()
 
     def test_create_room_with_invalid_input(self):
         self.assertRaises(TypeError, lambda: create_room([1,2,3]))

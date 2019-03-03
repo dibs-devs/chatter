@@ -19,7 +19,7 @@ class DateTimeModel(models.Model):
 
 class Room(DateTimeModel):
     id = models.URLField(primary_key=True,
-            default=shortuuid.ShortUUID().random(length=22),
+            default=shortuuid.ShortUUID().random,
             editable=False
         )
     members = models.ManyToManyField(settings.AUTH_USER_MODEL)
