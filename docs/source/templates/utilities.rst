@@ -16,71 +16,71 @@ Chatter has the following utilities available:
   Both these middlwares require `CookieMiddleware` and `SessionMiddleware` stacked
   higher in the ASGI application routing stack.
 
-  *MTSchemaMiddleware*:
+  * *MTSchemaMiddleware*:
 
-  This middleware attaches :code:`schema_name` as well as a boolean named
-  :code:`multitenant` into a websocket consumer's :code:`scope`. This enables
-  you to access the schema name from any consumer that's wrapped inside this
-  middleware. To do this, you have to add it into your middleware stack in your
-  project's `routing.py` file like so:
+   This middleware attaches :code:`schema_name` as well as a boolean named
+   :code:`multitenant` into a websocket consumer's :code:`scope`. This enables
+   you to access the schema name from any consumer that's wrapped inside this
+   middleware. To do this, you have to add it into your middleware stack in your
+   project's `routing.py` file like so:
 
-  .. code-block:: python
+   .. code-block:: python
 
-    from django_chatter.utils import MTSchemaMiddleware
+     from django_chatter.utils import MTSchemaMiddleware
 
-    application = ProtocolTypeRouter({
-    	'websocket': <your stack>(
-        MTSchemaMiddleware(
-      		URLRouter(
-      			django_chatter.routing.websocket_urlpatterns
-      			)
-      		)
-        )
-    })
+     application = ProtocolTypeRouter({
+      'websocket': <your stack>(
+         MTSchemaMiddleware(
+         URLRouter(
+          django_chatter.routing.websocket_urlpatterns
+          )
+         )
+         )
+     })
 
-  After doing this, your consumers will have access to the schema_name that you
-  can use with `django-tenant`'s `schema_context`.
+   After doing this, your consumers will have access to the schema_name that you
+   can use with `django-tenant`'s `schema_context`.
 
-  *MTAuthMiddleware*:
+  * *MTAuthMiddleware*:
 
-  This middleware is Chatter's version of attaching a user object to a
-  websocket's :code:`scope`. This automatically attaches the logged in user's
-  information from the client's session cookies depending on which tenant
-  they're accessing Chatter from. You can use it in your project's
-  :code:`routing.py` by the following method:
+   This middleware is Chatter's version of attaching a user object to a
+   websocket's :code:`scope`. This automatically attaches the logged in user's
+   information from the client's session cookies depending on which tenant
+   they're accessing Chatter from. You can use it in your project's
+   :code:`routing.py` by the following method:
 
-  .. code-block:: python
+   .. code-block:: python
 
-    from django_chatter.utils import MTAuthMiddleware
+     from django_chatter.utils import MTAuthMiddleware
 
-    application = ProtocolTypeRouter({
-    	'websocket': <your stack>(
-        MTAuthMiddleware(
-      		URLRouter(
-      			django_chatter.routing.websocket_urlpatterns
-      			)
-      		)
-        )
-    })
+     application = ProtocolTypeRouter({
+      'websocket': <your stack>(
+         MTAuthMiddleware(
+         URLRouter(
+          django_chatter.routing.websocket_urlpatterns
+          )
+         )
+         )
+     })
 
-  There's a high chance that you'd want to be using both these middlewares. To
-  make things easy, these two are combined with :code:`CookieMiddleware` and
-  :code:`SessionMiddleware` to make :code:`ChatterMTMiddlewareStack` which you
-  can use like this:
+   There's a high chance that you'd want to be using both these middlewares. To
+   make things easy, these two are combined with :code:`CookieMiddleware` and
+   :code:`SessionMiddleware` to make :code:`ChatterMTMiddlewareStack` which you
+   can use like this:
 
-  .. code-block:: python
+   .. code-block:: python
 
-    from django_chatter.utils import ChatterMTMiddlewareStack
+     from django_chatter.utils import ChatterMTMiddlewareStack
 
-    application = ProtocolTypeRouter({
-    	'websocket': <your stack>(
-        ChatterMTMiddlewareStack(
-      		URLRouter(
-      			django_chatter.routing.websocket_urlpatterns
-      			)
-      		)
-        )
-    })
+     application = ProtocolTypeRouter({
+      'websocket': <your stack>(
+         ChatterMTMiddlewareStack(
+         URLRouter(
+          django_chatter.routing.websocket_urlpatterns
+          )
+         )
+         )
+     })
 
 * **Create Room Function**
 
@@ -92,6 +92,7 @@ Chatter has the following utilities available:
   :code:`chatroom` view from your view. An example is below:
 
   .. code-block:: python
+  
     from django_chatter.utils import create_room
     from django_chatter.views import chatroom
     from myapp.models import User
