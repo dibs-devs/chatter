@@ -1,4 +1,4 @@
-import shortuuid
+import uuid
 
 from django.conf import settings
 from django.db import models
@@ -18,10 +18,9 @@ class DateTimeModel(models.Model):
         abstract = True
 
 class Room(DateTimeModel):
-    id = models.URLField(primary_key=True,
-            default=shortuuid.ShortUUID().random,
-            editable=False
-        )
+    id = models.UUIDField(primary_key=True,
+            default=uuid.uuid4,
+            editable=False)
     members = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
