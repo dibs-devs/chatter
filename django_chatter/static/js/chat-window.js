@@ -51,7 +51,7 @@ function startWebSocket(websocket_url) {
 		var sender = data['sender'];
 		var received_room_id = data['room_id'];
 		if (username === sender) {
-			$('#'+received_room_id).css('font-weight', 'bold');
+			// $('#'+received_room_id).css('font-weight', 'bold');
 			$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 			$('#chat-dialog').append(
 			'<div class="message-container">'
@@ -63,6 +63,11 @@ function startWebSocket(websocket_url) {
 				+ '<div class = "message message-received">' + warning + '</div>'
 				+ '</div>');
 			}
+
+			$('#send-message').val('');
+			document.getElementById('chat-dialog').scrollTop
+			= document.getElementById('chat-dialog').scrollHeight;
+
 		} else {
 			if (received_room_id === room_id) {
 				$('#'+received_room_id).css('font-weight', 'bold');
@@ -84,10 +89,6 @@ function startWebSocket(websocket_url) {
 				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 			}
 		}
-
-		$('#send-message').val('');
-		document.getElementById('chat-dialog').scrollTop
-		= document.getElementById('chat-dialog').scrollHeight;
 	}
 
 	//Notify when the websocket closes abruptly.
@@ -132,6 +133,7 @@ $(function() {
 	$("div[id*=" + room_id + "]").css("background", "#87ddc2");
 });
 
+// Animation to slide up chat window and slide down user list in mobile devices
 $('.fa-arrow-left').click(function() {
 	$(this).hide();
 	$('.chat-container').slideUp();

@@ -4,6 +4,7 @@ from .models import *
 from django.contrib.auth import get_user_model
 from channels.db import database_sync_to_async
 import bleach
+from uuid import UUID
 
 #Time libraries used to record the time when the user disconnects.
 #New messages will be derived from this time in the view.
@@ -92,9 +93,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.schema_name = self.scope.get('schema_name', None)
         self.multitenant = self.scope.get('multitenant', False)
         for param in self.scope['path'].split('/'):
-            if len(param) == 22: # ShortUUID length
-                room_id = param
+            try:
+                room_id = UUID(param, version=4)
                 break
+            except ValueError:
+                pass
         try:
             self.room = await get_room(room_id, self.multitenant, self.schema_name)
             if self.multitenant:

@@ -42,9 +42,6 @@
 				</div>
 			{% else %}
 				<div class="message-container">
-					<div class="message message-receiver">
-						{{message.sender.username}}:
-					</div>
 					<div class="message message-received">
 						{{message.text}}
 					</div>
@@ -70,4 +67,5 @@
 	var username = '{{user.username}}';
 </script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
+<script src = "{% static 'js/fetch-messages.js' %}"></script>
 {% endblock content %}

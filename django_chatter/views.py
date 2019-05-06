@@ -6,6 +6,7 @@ from django.contrib.auth import logout, get_user_model
 from .models import *
 from django.db.models import Count
 from django.core.exceptions import PermissionDenied
+from .utils import create_room
 
 @login_required
 def index(request):
@@ -46,63 +47,14 @@ def get_chat_url(request):
 
 	'''
 	AI-------------------------------------------------------------------
-		If the user is trying to chat with themselves, check if the
-		room with that user only exists.
-		If it does, return that room's ID to for URL with it.
-		If it doesn't, create a room with that user in it and return
-		the new room's ID.
+		Use the util room creation function to create room for one/two
+		user(s). This can be extended in the future to add multiple users
+		in a group chat.
 	-------------------------------------------------------------------AI
 	'''
 	if (user == target_user):
-		#QuerySet of rooms with one user
-		rooms_for_one = rooms_with_member_count.filter(
-			num_members__gte=1).filter(num_members__lte=1)
-		#QuerySet of room(s) with the particular logged in user
-		final_room = rooms_for_one.filter(members=user)
-		if final_room.exists():
-			if len(final_room) == 1:
-				room_url = final_room[0].id
-				return JsonResponse({'room_url': room_url})
-			else:
-				raise AttributeError(
-					'Multiple one-member rooms for the same user exist.'
-					)
-		else:
-			new_room=Room()
-			new_room.save()
-			new_room.members.add(user)
-			new_room.save()
-			new_room_id_json={'room_url': new_room.id}
-			return JsonResponse(new_room_id_json)
-		'''
-		AI-------------------------------------------------------------------
-			If the user is trying to chat with another user, check if the
-			right room already exists.
-			If the room exists, return the room's ID to form the
-			unique room URL.
-			If the room doesn't exist, make the room, put the two users in
-			that room, and return the new room's ID to form the URL.
-		-------------------------------------------------------------------AI
-		'''
+		room_id = create_room([user])
 	else:
-		room_for_two = rooms_with_member_count.filter(
-			num_members__gte=2).filter(num_members__lte=2)
-		final_room = room_for_two.filter(
-			members=user).filter(members=target_user)
-		if final_room.exists():
-			if len(final_room) == 1:
-				room_url = final_room[0].id
-				return JsonResponse({'room_url': room_url})
-			else:
-				raise AttributeError(
-					'Multiple two-member rooms for \
-					{} and {} exists.'.format(user, target_user)
-					)
-		else:
-			new_room=Room()
-			new_room.save()
-			new_room.members.add(user)
-			new_room.members.add(target_user)
-			new_room.save()
-			new_room_id_json={'room_url': new_room.id}
-			return JsonResponse(new_room_id_json)
+		room_id = create_room([user, target_user])
+	new_room_id_json={'room_url': room_id}
+	return JsonResponse(new_room_id_json)
