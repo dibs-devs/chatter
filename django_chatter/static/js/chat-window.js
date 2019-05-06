@@ -133,6 +133,7 @@ $(function() {
 	$("div[id*=" + room_id + "]").css("background", "#87ddc2");
 });
 
+// Animation to slide up chat window and slide down user list in mobile devices
 $('.fa-arrow-left').click(function() {
 	$(this).hide();
 	$('.chat-container').slideUp();
