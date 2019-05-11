@@ -7,9 +7,6 @@ __pycache__/
 # ignore database file
 *.sqlite3
 
-# ignore migrations folders
-migrations/
-
 # ignore redis database file
 *.rdb
 

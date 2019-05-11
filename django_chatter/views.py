@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponseRedirect, JsonResponse, Http404
 from django.contrib.auth import logout, get_user_model
-from .models import *
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
+
+from .models import *
 from .utils import create_room
 
 @login_required
@@ -19,8 +21,18 @@ def index(request):
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
 def chatroom(request, uuid):
+	try:
+		base_template = settings.CHATTER_BASE_TEMPLATE
+	except AttributeError as e:
+		print ("(Optional) settings.CHATTER_BASE_TEMPLATE not found. Have you "
+		"set it to point to your base template in your settings file?")
+		base_template = 'django_chatter/base.html'
 	user = get_user_model().objects.get(username=request.user)
-	room = Room.objects.get(id=uuid)
+	try:
+		room = Room.objects.get(id=uuid)
+	except Exception as e:
+		print (e)
+		raise Http404("Sorry! What you're looking for isn't here.")
 	if room:
 		if user in room.members.all():
 			latest_messages = room.message_set.all().order_by('-id')[:50]
@@ -29,8 +41,10 @@ def chatroom(request, uuid):
 			return render(request, 'django_chatter/chat-window.html',
 				{'room_uuid_json': uuid,
 				'latest_messages': latest_messages,
-				'room_name': room.__str__()}
-				)
+				'room_name': room.__str__(),
+				'base_template': base_template,
+				}
+			)
 		else:
 			raise Http404("Sorry! What you're looking for isn't here.")
 	else:
