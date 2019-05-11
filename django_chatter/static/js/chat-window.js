@@ -51,7 +51,7 @@ function startWebSocket(websocket_url) {
 		var sender = data['sender'];
 		var received_room_id = data['room_id'];
 		if (username === sender) {
-			// $('#'+received_room_id).css('font-weight', 'bold');
+			// Below line adds the current chatroom to the top
 			$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 			$('#chat-dialog').append(
 			'<div class="message-container">'
@@ -65,16 +65,14 @@ function startWebSocket(websocket_url) {
 			}
 
 			$('#send-message').val('');
-			document.getElementById('chat-dialog').scrollTop
-			= document.getElementById('chat-dialog').scrollHeight;
 
 		} else {
+			// The room that received the new message is open right now
 			if (received_room_id === room_id) {
 				$('#'+received_room_id).css('font-weight', 'bold');
 				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 				$('#chat-dialog').append(
 				'<div class="message-container">'
-				+ '<div class="message-receiver">' + sender + '</div>'
 				+ '<div class = "message message-received">' + message + '</div>'
 				+ '</div>');
 				if (warning) {
@@ -84,11 +82,14 @@ function startWebSocket(websocket_url) {
 					+ '</div>');
 				}
 			}
+			// The room containing the new message is a different room from the current one
 			else {
 				$('#'+received_room_id).css('font-weight', 'bold');
 				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
 			}
 		}
+		document.getElementById('chat-dialog').scrollTop
+		= document.getElementById('chat-dialog').scrollHeight;
 	}
 
 	//Notify when the websocket closes abruptly.
