@@ -131,7 +131,9 @@ $(function() {
 	startWebSocket(websocket_url);
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
-	$("div[id*=" + room_id + "]").css("background", "#87ddc2");
+	$active_room = $("#" + room_id);
+	$active_room.css("background", "#E0E0E0");
+
 });
 
 // Animation to slide up chat window and slide down user list in mobile devices

@@ -11,61 +11,78 @@
 <!--AI==========================================================
 	Extra CSS that applies to this template.
 ===========================================================AI-->
-{% block extrahead %}
+{% block django_chatter_extrahead %}
 	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
-{% endblock %}
+	<!--Jquery-->
+	<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!--JQuery UI CSS-->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!--JQuery UI JS-->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock django_chatter_extrahead %}
 
-{% block content %}
+{% block django_chatter_content %}
 {{ block.super }}
-<i class="fas fa-arrow-left"></i>
-<!--AI==========================================================
-	This inherits the list of chats that a user belongs to.
-===========================================================AI-->
+<div class="app-container">
+	<div class="chat-container">
+			<!--AI==========================================================
+				This inherits the list of chats that a user belongs to.
+			===========================================================AI-->
+			<div class="chatroom-list-container chat-subsection">
+				{% include 'django_chatter/chatroom-list.html' %}
+			</div>
 
-{% include 'django_chatter/chatroom-list.html' %}
-
-<!--AI==========================================================
-	The following contains the chat dialog div properties
-===========================================================AI-->
-<div class = "chat-container">
-	<div id = "chat-dialog">
-		<!--AI==========================================================
-			Fetch latest 50 messages and display them properly.
-		===========================================================AI-->
-		{% for message in latest_messages reversed %}
-			{% if message.sender.username == user.username %}
-				<div class="message-container">
-					<div class="message message-sent">
-						{{message.text}}
+			<!--AI==========================================================
+				The following contains the chat dialog div properties
+			===========================================================AI-->
+			<div class = "dialog-container chat-subsection">
+				<div id = "room-title">
+					{{room_name}}
+				</div>
+				<div id = "chat-dialog">
+					<!--AI==========================================================
+						Fetch latest 50 messages and display them properly.
+					===========================================================AI-->
+					{% for message in latest_messages reversed %}
+						{% if message.sender.username == user.username %}
+							<div class="message-container">
+								<div class="message message-sent">
+									{{message.text}}
+								</div>
+							</div>
+						{% else %}
+							<div class="message-container">
+								<div class="message message-received">
+									{{message.text}}
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class = "input-container">
+					<input type="text" id = "send-message" rows = "1"
+						placeholder = "Type your message...">
+					<div id="send-btn-parent">
+						<img id="send-button" height="30px" role="button"
+							src="{% static 'img/send-button.svg' %}">
 					</div>
 				</div>
-			{% else %}
-				<div class="message-container">
-					<div class="message message-received">
-						{{message.text}}
-					</div>
-				</div>
-			{% endif %}
-		{% endfor %}
-	</div>
-	<div class = "input-container">
-		<textarea id = "send-message" rows = "1"
-			placeholder = "Type your message..."></textarea>
-		<button id = "send-button">Send</button>
+			</div>
+		</div>
+
+	<!--AI==========================================================
+		These JS files load after the page has loaded.
+		1) searchuser.js: fetches a list of users from the server
+		2) chat-window.js: contains websocket functions for this
+			chat page.
+	===========================================================AI-->
 	</div>
 </div>
-
-<!--AI==========================================================
-	These JS files load after the page has loaded.
-	1) searchuser.js: fetches a list of users from the server
-	2) chat-window.js: contains websocket functions for this
-		chat page.
-===========================================================AI-->
 <script>
 	var room_id = '{{room_uuid_json}}';
 	var username = '{{user.username}}';
 </script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
 <script src = "{% static 'js/fetch-messages.js' %}"></script>
-{% endblock content %}
+{% endblock django_chatter_content %}

@@ -11,10 +11,8 @@ developers can integrate into their platforms.
 Django Chatter is an attempt to change that. This is an open-source fully reusable
 chat application that has mechanisms to support group chats in place.
 
-The default templates for this app are made with `Bootstrap <getbootstrap.com>`_,
-one of the most popular CSS frameworks out there.
-This makes it easier for developers to change the templates just by modifying the
-right CSS files.
+the HTML front-end for this app is built with Flexbox, making it responsive to
+numerous viewports. 
 
 [More work to be done] Added to that, it can also possibly be used as a REST API,
 since all the views generate standard JSON responses that need to be parsed by

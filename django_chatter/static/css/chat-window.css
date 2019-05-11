@@ -4,24 +4,103 @@ AI-------------------------------------------------------------------
 -------------------------------------------------------------------AI
 */
 
+:root {
+  --main-bg-color: #08d18e;
+}
+
+/*Chatter's container. Contains chatroom-list and chat-dialog*/
+.app-container {
+	height: 100%;
+	max-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 /*Container of chat box. Includes the dialog and input field and button*/
 .chat-container {
-	display: inline-block;
-	vertical-align: top;
-	height: 80vh;
-	width: 90%;
-	padding: 0;
+	width: 100%;
+	max-width: 1200px;
+	max-height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.chat-subsection {
+	display: flex;
+	flex-direction: column;
+	border: 2px solid var(--main-bg-color);
+	border-radius: 2px;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chatroom-list-container {
+	flex-grow: 1;
+	border-right: 0;
+}
+
+.dialog-container {
+	flex-grow: 3;
+}
+
+#room-title {
+	height: 40px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	height: 40px;
+	border-bottom: 2px solid var(--main-bg-color);
 }
 
 /*This is the setting for the chat history dialog.*/
 #chat-dialog {
-	margin: 0 auto;
-	width: 100%;
-	height: 90%;
-	border: 2px solid #35b88f;
-	border-radius: 5px;
-	background-color: white;
 	overflow: auto;
+	height: 96%;
+}
+
+/*
+AI-------------------------------------------------------------------
+	The following contains settings for the input field and button.
+-------------------------------------------------------------------AI
+*/
+.input-container {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	display: flex;
+	justify-content: center;
+	border-top: 2px solid var(--main-bg-color);
+	height: 40px;
+}
+
+/*This is the text box where the user inputs the messages to send.
+It's a textarea element to enable scroll.*/
+#send-message {
+	width: calc(100% - 50px);
+	height: 100%;
+	font-size: 1rem;
+	overflow: auto;
+	resize: none;
+	border: none;
+	font-family: 'Raleway', sans-serif;
+	padding: 0 10px;
+}
+
+/*Send button's parent*/
+#send-btn-parent {
+	width: 50px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+/*Send button settings*/
+#send-button {
+	background: transparent;
+	font-weight: bold;
+	font-size: 1rem;
+	color: var(--main-bg-color);
+	border: none;
+	width: 50px;
 }
 
 /*
@@ -43,7 +122,7 @@ AI-------------------------------------------------------------------
 
 /*Messages sent by current user has these settings.*/
 .message-sent {
-	background: #35b88f;
+	background: var(--main-bg-color);
 	color: white;
 	float: right;
 }
@@ -63,69 +142,30 @@ AI-------------------------------------------------------------------
 	float: left;
 }
 
-/*
-AI-------------------------------------------------------------------
-	The following contains settings for the input field and button.
--------------------------------------------------------------------AI
-*/
-.input-container {
-	margin: 0 auto;
-	margin-top: 5px;
-	text-align: center;
-	position: relative;
-	border: 2px solid #35b88f;
-	border-radius: 5px;
-}
-
-/*This is the text box where the user inputs the messages to send.
-It's a textarea element to enable scroll.*/
-#send-message {
-	width: calc(100% - 4em);
-	font-size: 1rem;
-	padding-left: 10px;
-	overflow: auto;
-	resize: none;
-	display: inline;
-	border: none;
-	margin-top: 5px;
-	font-family: 'Raleway', sans-serif;
-}
-
-/*Send button settings*/
-#send-button {
-	background: transparent;
-	font-weight: bold;
-	font-size: 1rem;
-	color: #35b88f;
-	border: none;
-	display: inline;
-	vertical-align: top;
-	padding-top: 5px;
-}
-
 .fa-arrow-left {
 	float: left;
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
-	color: #35b88f;
+	color: var(--main-bg-color);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 	body {
 		text-align: center;
 	}
-	.chat-container {
-		max-width: 90%;
-	}
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 768px) {
 	.fa-arrow-left {
 		display: none;
 	}
 	.chat-container {
-		width: 70%;
-		display: inline-block;
-		height: 80vh;
+		min-width: 768px;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.chatroom-list-container {
+		display: none;
 	}
 }

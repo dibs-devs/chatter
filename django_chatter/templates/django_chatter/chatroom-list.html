@@ -12,28 +12,24 @@
 	The following div describes the Search bar to search
 	for users as well as the name of the chatroom.
 	===========================================================AI-->
-	<div>
-		<div class="search">
-			{% csrf_token %}
-			<input id = "searchbar" placeholder = "Username"></input>
-			<button id = "user-selected">Go</button><br />
-		</div>
-		<div class="room-name">
-			<b>{{room_name}}</b>
-		</div>
+
+	<div class="search">
+		{% csrf_token %}
+		<input id = "searchbar" placeholder = "Username"></input>
+		<button id = "user-selected">Go</button><br />
 	</div>
 
 <!--AI==========================================================
 	The following block represents the list of chatrooms at the left
 ===========================================================AI-->
 <div class = "chatroom-list">
-
 	{% for room in rooms_list %}
-		<a class="chat-link" href="{% url 'django_chatter:chatroom' uuid=room.id %}">
+		<a class="chat-link list-room" id='{{room.id}}'
+			href="{% url 'django_chatter:chatroom' uuid=room.id %}">
 			{% if room.id in rooms_with_unread %}
-			<div style='font-weight: bold;' class = 'chat-list-item' id = '{{room.id}}'>
+			<div style='font-weight: bold;' class = 'chat-list-item'>
 			{% else %}
-			<div class='chat-list-item' id='{{room.id}}'>
+			<div class='chat-list-item'>
 			{% endif %}
 				{{room}}
 			</div>

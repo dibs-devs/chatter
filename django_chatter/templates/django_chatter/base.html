@@ -11,9 +11,8 @@
 		3) JQuery UI
 ===========================================================AI-->
 {% load static %}
-<!-- <html> -->
-	{% block extrahead %}
-	{{ block.super }}
+<html>
+	<head>
 		<meta charset="UTF-8">
 
 		<!--Mobile first viewport tag-->
@@ -41,11 +40,16 @@
 			Chat App's CSS stylesheet link.
 		===========================================================AI-->
 		<link rel="stylesheet" href="{% static 'css/base.css' %}">
-	{% endblock extrahead %}
+	{% block django_chatter_extrahead %}
+	{% endblock django_chatter_extrahead %}
+	</head>
 
 		<!--AI==========================================================
 			Child pages inherting this base must include their extra
 			properties inside the following content block.
 		===========================================================AI-->
-		{% block content %}
-		{% endblock content %}
+		<body>
+		{% block django_chatter_content %}
+		{% endblock django_chatter_content %}
+		</body>
+</html>

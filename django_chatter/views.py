@@ -34,14 +34,22 @@ def chatroom(request, uuid):
 		print (e)
 		raise Http404("Sorry! What you're looking for isn't here.")
 	if room:
-		if user in room.members.all():
+		all_members = room.members.all()
+		if user in all_members:
 			latest_messages = room.message_set.all().order_by('-id')[:50]
-			for message in latest_messages:
+			if latest_messages.exists():
+				message = latest_messages[0]
 				message.recipients.add(user)
+			if all_members.count() == 1:
+				room_name = "Notes to Yourself"
+			elif all_members.count() == 2:
+				room_name = all_members.exclude(pk=user.pk)[0]
+			else:
+				room_name = room.__str__()
 			return render(request, 'django_chatter/chat-window.html',
 				{'room_uuid_json': uuid,
 				'latest_messages': latest_messages,
-				'room_name': room.__str__(),
+				'room_name': room_name,
 				'base_template': base_template,
 				}
 			)
