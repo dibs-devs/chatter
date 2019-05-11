@@ -4,13 +4,17 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, JsonResponse, Http404
 from django.contrib.auth import logout, get_user_model
 from .models import *
-from django.db.models import Count
 from django.core.exceptions import PermissionDenied
 from .utils import create_room
 
 @login_required
 def index(request):
-	return render(request, 'django_chatter/index.html')
+	rooms_list = Room.objects.filter(members=request.user).order_by('-date_modified')
+	if rooms_list.exists():
+		latest_room_uuid = rooms_list[0].id
+		return chatroom(request, latest_room_uuid)
+	else:
+		return render(request, 'django_chatter/index.html')
 
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
@@ -41,7 +45,6 @@ def users_list(request):
 
 @login_required
 def get_chat_url(request):
-	rooms_with_member_count = Room.objects.annotate(num_members = Count('members'))
 	user = get_user_model().objects.get(username=request.user)
 	target_user = get_user_model().objects.get(username=request.POST.get('target_user'))
 
