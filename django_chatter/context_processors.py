@@ -10,7 +10,7 @@ def get_chatroom_list(request):
 			for room in rooms_list:
 				message = room.message_set.all().order_by('-id')[0]
 				if request.user not in message.recipients.all():
-					rooms_with_unread.append(room.id)]
+					rooms_with_unread.append(room.id)
 
 			#unread rooms are marked with bold letterings
 			return ({'rooms_list': rooms_list, 'rooms_with_unread': rooms_with_unread})
