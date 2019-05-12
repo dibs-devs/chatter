@@ -52,7 +52,7 @@ function startWebSocket(websocket_url) {
 		var received_room_id = data['room_id'];
 		if (username === sender) {
 			// Below line adds the current chatroom to the top
-			$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
+			$('#' + received_room_id).parent().prepend($('#' + received_room_id));
 			$('#chat-dialog').append(
 			'<div class="message-container">'
 			+ '<div class = "message message-sent">' + message + '</div>'
