@@ -8,7 +8,10 @@ def get_chatroom_list(request):
 			rooms_with_unread = []
 			# Go through each list of rooms and check if the last message was unread
 			for room in rooms_list:
-				message = room.message_set.all().order_by('-id')[0]
+				try:
+					message = room.message_set.all().order_by('-id')[0]
+				except IndexError as e:
+					break
 				if request.user not in message.recipients.all():
 					rooms_with_unread.append(room.id)
 

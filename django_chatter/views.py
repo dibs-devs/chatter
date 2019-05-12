@@ -11,12 +11,19 @@ from .utils import create_room
 
 @login_required
 def index(request):
+	try:
+		base_template = settings.CHATTER_BASE_TEMPLATE
+	except AttributeError as e:
+		print ("(Optional) settings.CHATTER_BASE_TEMPLATE not found. Have you "
+		"set it to point to your base template in your settings file?")
+		base_template = 'django_chatter/base.html'
 	rooms_list = Room.objects.filter(members=request.user).order_by('-date_modified')
 	if rooms_list.exists():
 		latest_room_uuid = rooms_list[0].id
 		return chatroom(request, latest_room_uuid)
 	else:
-		return render(request, 'django_chatter/index.html')
+		return render(request, 'django_chatter/index.html',
+			{'base_template': base_template})
 
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
 @login_required
