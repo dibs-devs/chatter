@@ -1,0 +1,36 @@
+language: python
+python:
+  - "3.6.7"
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10
+  chrome: stable
+
+before_script:
+  - psql -c 'create database chatter;' -U postgres
+  - psql -c "create user chatteradmin with password 'chatter';" -U postgres
+  - psql -c "alter role chatteradmin set client_encoding to 'utf8';" -U postgres
+  - psql -c "alter role chatteradmin set default_transaction_isolation to 'read committed';" -U postgres
+  - psql -c "alter role chatteradmin set timezone to 'America/New_York';" -U postgres
+  - psql -c "grant all privileges on database chatter to chatteradmin;" -U postgres
+  - psql -c "alter role chatteradmin createdb;" -U postgres
+
+install:
+  - pip install -r dev-requirements.txt
+
+script:
+  - python manage.py makemigrations
+  - python manage.py migrate
+  - python manage.py test
+
+env:
+  global:
+    - PGPORT=5433
+
+before_install:
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart

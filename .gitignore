@@ -24,3 +24,6 @@ dist/
 
 # ignore release bdist
 build/*
+
+# ignore html coverage statistics
+htmlcov

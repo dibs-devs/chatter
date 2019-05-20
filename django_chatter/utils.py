@@ -105,9 +105,10 @@ ChatterMTMiddlewareStack = lambda inner: CookieMiddleware(
 def create_room(user_list):
     for user in user_list:
         if type(user) != get_user_model():
-            raise TypeError("Parameters passed to create_room doesn't " +
-                "match your project's user model. Please make sure the list " +
-                "you passed contains valid settings.AUTH_USER_MODEL objects.")
+            raise TypeError("Parameters passed to create_room doesn't "
+                "match your project's user model. Please make sure the list "
+                "you passed contains valid User objects as defined in your "
+                "settings.AUTH_USER_MODEL parameter.")
     rooms_with_member_count = Room.objects.annotate(num_members = Count('members'))
     rooms = rooms_with_member_count.filter(num_members = len(user_list))
 

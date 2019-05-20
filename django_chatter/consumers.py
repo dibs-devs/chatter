@@ -1,14 +1,30 @@
-from channels.generic.websocket import AsyncWebsocketConsumer
-import json
-from .models import *
+'''AI--------------------------------------------------------------------------
+    Django Imports
+--------------------------------------------------------------------------AI'''
 from django.contrib.auth import get_user_model
+from django.db import connection
+from django.utils.timezone import now
+
+
+'''AI--------------------------------------------------------------------------
+    Third-party Imports
+--------------------------------------------------------------------------AI'''
+from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 import bleach
-from uuid import UUID
 
-#Time libraries used to record the time when the user disconnects.
-#New messages will be derived from this time in the view.
-from django.utils.timezone import now
+
+'''AI--------------------------------------------------------------------------
+    App Imports
+--------------------------------------------------------------------------AI'''
+from .models import Room, Message
+
+
+'''AI--------------------------------------------------------------------------
+    Python Imports
+--------------------------------------------------------------------------AI'''
+import json
+from uuid import UUID
 
 
 '''
@@ -66,26 +82,6 @@ def save_message(room, sender, text, multitenant=False, schema_name=None):
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
-
-    # @database_sync_to_async
-    # def save_message(self, room, user, message):
-    #     '''
-    #     AI-------------------------------------------------------------------
-    #         1. Select the Room
-    #         2. Select the user who sent the message
-    #         3. Select the message to be saved
-    #         4. Save message
-    #         5. Set room update time to message date_modified
-    #     -------------------------------------------------------------------AI
-    #     '''
-    #     print ("I'm the wrong one who's getting executed")
-    #     room = room
-    #     sender = user
-    #     text = message
-    #     new_message = Message(room=room, sender=sender, text=text)
-    #     new_message.save()
-    #     room.date_modified = new_message.date_modified
-    #     room.save()
 
     '''
     AI-------------------------------------------------------------------

@@ -5,42 +5,69 @@ from django.http import HttpResponseRedirect, JsonResponse, Http404
 from django.contrib.auth import logout, get_user_model
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
+from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.base import TemplateView
 
 from .models import *
 from .utils import create_room
 
-@login_required
-def index(request):
+# import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+def import_base_template():
 	try:
-		base_template = settings.CHATTER_BASE_TEMPLATE
+		return settings.CHATTER_BASE_TEMPLATE
 	except AttributeError as e:
-		print ("(Optional) settings.CHATTER_BASE_TEMPLATE not found. Have you "
-		"set it to point to your base template in your settings file?")
-		base_template = 'django_chatter/base.html'
-	rooms_list = Room.objects.filter(members=request.user).order_by('-date_modified')
-	if rooms_list.exists():
-		latest_room_uuid = rooms_list[0].id
-		return chatroom(request, latest_room_uuid)
-	else:
-		return render(request, 'django_chatter/index.html',
-			{'base_template': base_template})
+		try:
+			if settings.CHATTER_DEBUG == True:
+				logger.info("django_chatter.views: "
+				"(Optional) settings.CHATTER_BASE_TEMPLATE not found. You can "
+				"set it to point to your base template in your settings file.")
+		except AttributeError as e:
+			logger.info("django_chatter.views: "
+			"(Optional) settings.CHATTER_BASE_TEMPLATE not found. You can "
+			"set it to point to your base template in your settings file.")
+			logger.info("django_chatter.views: to turn off this message, set "
+			"your settings.CHATTER_DEBUG to False.")
+		return 'django_chatter/base.html'
+
+
+class IndexView(LoginRequiredMixin, View):
+
+	def get(self, request, *args, **kwargs):
+		rooms_list = Room.objects.filter(members=request.user).order_by('-date_modified')
+		if rooms_list.exists():
+			latest_room_uuid = rooms_list[0].id
+			return HttpResponseRedirect(
+				reverse('django_chatter:chatroom', args=[latest_room_uuid])
+			)
+		else:
+			# create room with the user themselves
+			user = get_user_model().objects.get(username=request.user)
+			room_id = create_room([user])
+			return HttpResponseRedirect(
+				reverse('django_chatter:chatroom', args=[room_id])
+			)
+
 
 # This fetches a chatroom given the room ID if a user diretly wants to access the chat.
-@login_required
-def chatroom(request, uuid):
-	try:
-		base_template = settings.CHATTER_BASE_TEMPLATE
-	except AttributeError as e:
-		print ("(Optional) settings.CHATTER_BASE_TEMPLATE not found. Have you "
-		"set it to point to your base template in your settings file?")
-		base_template = 'django_chatter/base.html'
-	user = get_user_model().objects.get(username=request.user)
-	try:
-		room = Room.objects.get(id=uuid)
-	except Exception as e:
-		print (e)
-		raise Http404("Sorry! What you're looking for isn't here.")
-	if room:
+class ChatRoomView(LoginRequiredMixin, TemplateView):
+	template_name = 'django_chatter/chat-window.html'
+
+	# This gets executed whenever a room exists
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		uuid = kwargs.get('uuid')
+		try:
+			room = Room.objects.get(id=uuid)
+			user=get_user_model().objects.get(username=self.request.user)
+		except Exception as e:
+			logger.exception("\n\nException in django_chatter.views.ChatRoomView:\n")
+			raise Http404("Sorry! What you're looking for isn't here.")
 		all_members = room.members.all()
 		if user in all_members:
 			latest_messages = room.message_set.all().order_by('-id')[:50]
@@ -53,17 +80,14 @@ def chatroom(request, uuid):
 				room_name = all_members.exclude(pk=user.pk)[0]
 			else:
 				room_name = room.__str__()
-			return render(request, 'django_chatter/chat-window.html',
-				{'room_uuid_json': uuid,
-				'latest_messages': latest_messages,
-				'room_name': room_name,
-				'base_template': base_template,
-				}
-			)
+			context['room_uuid_json'] = kwargs.get('uuid')
+			context['latest_messages'] = latest_messages
+			context['room_name'] = room_name
+			context['base_template'] = import_base_template()
+			return context
 		else:
 			raise Http404("Sorry! What you're looking for isn't here.")
-	else:
-		raise Http404("Sorry! What you're looking for isn't here.")
+
 
 #The following functions deal with AJAX requests
 @login_required
@@ -71,6 +95,7 @@ def users_list(request):
 	users = list(get_user_model().objects.values_list('username', flat = True))
 	users_list_json = {'userslist': users}
 	return JsonResponse(users_list_json)
+
 
 @login_required
 def get_chat_url(request):
