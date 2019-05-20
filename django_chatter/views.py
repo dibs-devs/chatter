@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 def import_base_template():
 	try:
-		return (True, settings.CHATTER_BASE_TEMPLATE)
+		return settings.CHATTER_BASE_TEMPLATE
 	except AttributeError as e:
 		try:
 			if settings.CHATTER_DEBUG == True:

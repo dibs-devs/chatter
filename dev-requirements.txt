@@ -8,3 +8,4 @@ sphinx-rtd-theme==0.4.3
 twine==1.13.0
 django-tenants==2.2.3
 coverage==4.5.3
+daphne==2.2.5
