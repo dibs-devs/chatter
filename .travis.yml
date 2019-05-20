@@ -16,7 +16,7 @@ before_script:
   - psql -c "alter role chatteradmin set client_encoding to 'utf8';" -U postgres
   - psql -c "alter role chatteradmin set default_transaction_isolation to 'read committed';" -U postgres
   - psql -c "alter role chatteradmin set timezone to 'America/New_York';" -U postgres
-  - psql -c "grant all privileges on database dibs to chatteradmin;" -U postgres
+  - psql -c "grant all privileges on database chatter to chatteradmin;" -U postgres
   - psql -c "alter role chatteradmin createdb;" -U postgres
 
 install:
