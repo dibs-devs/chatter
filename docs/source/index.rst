@@ -12,7 +12,7 @@ Django Chatter is an attempt to change that. This is an open-source fully reusab
 chat application that has mechanisms to support group chats in place.
 
 the HTML front-end for this app is built with Flexbox, making it responsive to
-numerous viewports. 
+numerous viewports.
 
 [More work to be done] Added to that, it can also possibly be used as a REST API,
 since all the views generate standard JSON responses that need to be parsed by
@@ -45,3 +45,4 @@ Contents
    templates/test
    templates/develop
    templates/credits
+   templates/changelog

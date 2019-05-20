@@ -50,13 +50,13 @@ To start developing Chatter, follow the following steps:
 
     .. code-block:: bash
 
-      # CREATE DATABASE chatter;
-      # CREATE USER chatteradmin WITH PASSWORD 'chatter';
-      # ALTER ROLE chatteradmin SET client_encoding TO 'utf8';
-      # ALTER ROLE chatteradmin SET default_transaction_isolation TO 'read committed';
-      # ALTER ROLE chatteradmin SET timezone TO 'America/New_York';
-      # GRANT ALL PRIVILEGES ON DATABASE chatter TO chatteradmin;
-      # \q
+      $ CREATE DATABASE chatter;
+      $ CREATE USER chatteradmin WITH PASSWORD 'chatter';
+      $ ALTER ROLE chatteradmin SET client_encoding TO 'utf8';
+      $ ALTER ROLE chatteradmin SET default_transaction_isolation TO 'read committed';
+      $ ALTER ROLE chatteradmin SET timezone TO 'America/New_York';
+      $ GRANT ALL PRIVILEGES ON DATABASE chatter TO chatteradmin;
+      $ \q
 
     The instructions should be pretty intuitive. This is a replication of the
     detailed PostgreSQL install guide on
@@ -76,6 +76,30 @@ To start developing Chatter, follow the following steps:
 
     $ python manage.py makemigrations django_chatter
     $ python manage.py migrate
+
+* Create public tenant to enable multitenancy testing support with django-tenants:
+
+  .. code-block:: bash
+
+    $ python manage.py shell
+
+  .. code-block:: python
+
+    from customers.models import Client, Domain
+
+    # create your public tenant
+    tenant = Client(schema_name='public',
+                  name='Schemas Inc.',
+                  paid_until='2016-12-05',
+                  on_trial=False)
+    tenant.save()
+
+    # Add one or more domains for the tenant
+    domain = Domain()
+    domain.domain = 'localhost' # don't add your port or www here! on a local server you'll want to use localhost here
+    domain.tenant = tenant
+    domain.is_primary = True
+    domain.save()
 
 * Create a superuser for chatter:
 

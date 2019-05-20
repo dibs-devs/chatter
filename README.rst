@@ -1,6 +1,12 @@
 Django Chatter
 ==============
 
+.. image:: https://coveralls.io/repos/github/dibs-devs/chatter/badge.svg?branch=master
+        :target: https://coveralls.io/github/dibs-devs/chatter?branch=master
+
+.. image:: https://travis-ci.org/dibs-devs/chatter.svg?branch=master
+    :target: https://travis-ci.org/dibs-devs/chatter
+
 Django-based Chat app that supports group chat and real-time updates.
 ---------------------------------------------------------------------
 
