@@ -2,6 +2,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 from .models import *
 from django.contrib.auth import get_user_model
+from django.db import connection
 from channels.db import database_sync_to_async
 import bleach
 from uuid import UUID

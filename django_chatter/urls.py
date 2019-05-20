@@ -5,8 +5,8 @@ from . import views
 app_name = 'django_chatter'
 
 urlpatterns = [
-	path('', views.index, name = "index"),
-	path('chat/<str:uuid>/', views.chatroom, name = "chatroom"),
+	path('', views.IndexView.as_view(), name = "index"),
+	path('chat/<str:uuid>/', views.ChatRoomView.as_view(), name = "chatroom"),
 
 	#AJAX paths
 	path('ajax/users-list/', views.users_list, name = "users_list"),

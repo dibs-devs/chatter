@@ -31,8 +31,11 @@ ALLOWED_HOSTS = ['.django-chatter.dev', '127.0.0.1', 'localhost']
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django_chatter',
+# Multitenant settings
+SHARED_APPS = (
+    'django_tenants',
+    'tenants', # configuration folder with tenant model
+    'django_chatter', # actual reusable app
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +43,29 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+)
+
+TENANT_APPS = (
+    'django.contrib.contenttypes',
+)
+
+INSTALLED_APPS = list(SHARED_APPS) + \
+    [app for app in TENANT_APPS if app not in SHARED_APPS]
+
+# INSTALLED_APPS = [
+#     'django_chatter',
+#     'channels',
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+# ]
+
+TENANT_MODEL = 'tenants.Client'
+
+TENANT_DOMAIN_MODEL = 'tenants.Domain'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +75,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # for multitenant systems
+    'django_tenants.middleware.main.TenantMainMiddleware',
 ]
 
 ROOT_URLCONF = 'chatter.urls'
@@ -91,7 +119,9 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # if you're testing multitenancy, turn this one and the above off
+        'ENGINE': 'django_tenants.postgresql_backend',
         'NAME': 'chatter',
         'USER': 'chatteradmin',
         'PASSWORD': 'chatter',
@@ -99,6 +129,11 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# For multitenant systems
+DATABASE_ROUTERS = (
+    'django_tenants.routers.TenantSyncRouter',
+)
 
 
 # Password validation
@@ -144,3 +179,25 @@ STATICFILES_DIRS = (STATIC_DIR,)
 LOGIN_REDIRECT_URL = '/'
 
 # CHATTER_BASE_TEMPLATE="sample.html"
+CHATTER_DEBUG = False
+
+# logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console',],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+        'django_chatter.views': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}

@@ -40,10 +40,4 @@ class Message(DateTimeModel):
         related_name='recipients')
 
     def __str__(self):
-        return '"{}" \
-        sent by "{}" \
-        in Room "{}"'.format(
-                        self.text,
-                        self.sender,
-                        self.room
-                    )
+        return f'{self.text} sent by "{self.sender}" in Room "{self.room}"'

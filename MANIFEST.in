@@ -5,3 +5,4 @@ recursive-include django_chatter/templates *
 recursive-exclude chatter *
 recursive-exclude docs/build *
 recursive-exclude tests/ *
+recursive-exclude django_chatter/tests *
