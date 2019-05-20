@@ -26,3 +26,7 @@ script:
   - python manage.py makemigrations
   - python manage.py migrate
   - python manage.py test
+
+env:
+  global:
+    - PGPORT=5432
