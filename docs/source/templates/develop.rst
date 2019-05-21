@@ -85,13 +85,11 @@ To start developing Chatter, follow the following steps:
 
   .. code-block:: python
 
-    from customers.models import Client, Domain
+    from tenants.models import Client, Domain
 
     # create your public tenant
     tenant = Client(schema_name='public',
-                  name='Schemas Inc.',
-                  paid_until='2016-12-05',
-                  on_trial=False)
+                  name='Schemas Inc.')
     tenant.save()
 
     # Add one or more domains for the tenant

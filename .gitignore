@@ -27,3 +27,6 @@ build/*
 
 # ignore html coverage statistics
 htmlcov
+
+# ignore .coverage file
+.coverage

@@ -42,7 +42,7 @@ class RoomTestCase(TestCase):
 			rooms = rooms.filter(members = member)
 		if rooms.exists():
 			room = rooms[0]
-		self.assertEqual(room.__str__(), "aishtiaque, lol, hello")
+		self.assertEqual(room.__str__(), "user0, user1, user2")
 
 
 class MessageTestCase(TestCase):
@@ -59,4 +59,4 @@ class MessageTestCase(TestCase):
 	def test_message_title(self):
 		print('testing message titles')
 		self.assertEqual(Message.objects.all()[0].__str__(),
-			'hey sent by "lol" in Room "lol"')
+			'Notes to myself sent by "user0" in Room "user0"')

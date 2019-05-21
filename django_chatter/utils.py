@@ -74,7 +74,7 @@ class MTSchemaMiddleware:
         if "headers" not in scope:
             raise ValueError(
                 "MTSchemaMiddleware was passed a scope that did not have a headers key "
-                + "(make sure it is only passed HTTP or WebSocket connections)"
+                "(make sure it is only passed HTTP or WebSocket connections)"
             )
 
         for key, value in scope.get('headers', []):
