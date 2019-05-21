@@ -1,6 +1,7 @@
 language: python
 python:
   - "3.6.7"
+
 services:
   - postgresql
 addons:
@@ -9,6 +10,14 @@ addons:
     packages:
       - postgresql-10
   chrome: stable
+
+env:
+  global:
+    - PGPORT=5433
+
+before_install:
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
 
 before_script:
   - psql -c 'create database chatter;' -U postgres
@@ -21,16 +30,12 @@ before_script:
 
 install:
   - pip install -r dev-requirements.txt
+  - pip install coveralls
 
 script:
   - python manage.py makemigrations
   - python manage.py migrate
-  - python manage.py test
+  - coverage run --source="." manage.py test
 
-env:
-  global:
-    - PGPORT=5433
-
-before_install:
-  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-  - sudo service postgresql restart
+after_success:
+  coveralls
