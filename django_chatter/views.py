@@ -9,7 +9,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
 
-from .models import *
+from .models import Room, Message
 from .utils import create_room
 
 # import the logging library
@@ -84,6 +84,26 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			context['latest_messages'] = latest_messages
 			context['room_name'] = room_name
 			context['base_template'] = import_base_template()
+
+			# Add rooms with unread messages
+			rooms_list = Room.objects.filter(members=self.request.user)\
+				.order_by('-date_modified')
+			try:
+				rooms_list = rooms_list[10]
+			except Exception as e:
+				pass
+			rooms_with_unread = []
+			# Go through each list of rooms and check if the last message was unread
+			for room in rooms_list:
+				try:
+					message = room.message_set.all().order_by('-id')[0]
+				except IndexError as e:
+					continue
+				if self.request.user not in message.recipients.all():
+					rooms_with_unread.append(room.id)
+			context['rooms_list'] = rooms_list
+			context['rooms_with_unread'] = rooms_with_unread
+
 			return context
 		else:
 			raise Http404("Sorry! What you're looking for isn't here.")

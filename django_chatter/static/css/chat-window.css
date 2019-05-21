@@ -18,15 +18,7 @@ AI-------------------------------------------------------------------
 	justify-content: center;
 }
 
-/*Container of chat box. Includes the dialog and input field and button*/
-.chat-container {
-	width: 100%;
-	max-width: 1200px;
-	height: 100%;
-	display: flex;
-	flex-direction: row;
-}
-
+/*Both chatroom list and chat dialog have these settings*/
 .chat-subsection {
 	display: flex;
 	flex-direction: column;
@@ -36,12 +28,27 @@ AI-------------------------------------------------------------------
 }
 
 .chatroom-list-container {
+  flex-basis: 0;
 	flex-grow: 1;
 	border-right: 0;
+  max-width: 400px;
+}
+
+
+/*Container of chat box. Includes the dialog and input field and button*/
+.chat-container {
+	width: 100%;
+	max-width: 1200px;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
 .dialog-container {
 	flex-grow: 3;
+  flex-basis: 0;
+  width: 100px; /*Placeholder to enable max-width*/
+  max-width: 800px;
 }
 
 #room-title {
@@ -57,6 +64,7 @@ AI-------------------------------------------------------------------
 #chat-dialog {
 	overflow: auto;
 	height: 96%;
+  max-width: 100%;
 }
 
 /*
@@ -150,9 +158,6 @@ AI-------------------------------------------------------------------
 }
 
 @media only screen and (max-width: 767px) {
-	body {
-		text-align: center;
-	}
 }
 
 @media only screen and (min-width: 768px) {
