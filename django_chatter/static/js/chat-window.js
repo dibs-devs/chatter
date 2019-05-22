@@ -132,7 +132,8 @@ $(function() {
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
 	$active_room = $("#" + room_id);
-	$active_room.css("background", "#E0E0E0");
+	$active_room.css("background", "#E0E0E0"); // Select current room
+	$('#send-message').focus(); // Focus message input on load
 });
 
 // Animation to slide up chat window and slide down user list in mobile devices
@@ -145,4 +146,22 @@ $('#back-button').click(function() {
 		$chatroom_list.css('border', '2px solid var(--main-bg-color)');
 		$chatroom_list.slideDown();
 	});
+});
+
+// When user clicks on the chat dialog, focus the input
+// and change chatroom-list text to normal if it was bold before
+$('#chat-dialog').click(function() {
+	$('#send-message').focus(); // Focus message input
+	$('#' + room_id).css('font-weight', 'normal');
+});
+
+// Don't select the input field when user clicks on message to enable selecting
+// text
+$('.message').click(function(e) {
+	e.stopPropagation();
+});
+
+// Change chatroom lists's room's font to normal on text input click
+$('#send-message').click(function() {
+	$('#' + room_id).css('font-weight', 'normal');
 });
