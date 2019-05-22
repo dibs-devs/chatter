@@ -7,3 +7,4 @@ recursive-exclude tenants *
 recursive-exclude docs/build *
 recursive-exclude tests/ *
 recursive-exclude django_chatter/tests *
+recursive-exclude django_chatter/templates/registration *
