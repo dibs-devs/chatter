@@ -51,11 +51,21 @@ AI-------------------------------------------------------------------
   max-width: 800px;
 }
 
+.back-button-container {
+  height: 25px;
+  position: absolute;
+  left: 10px;
+}
+#back-button {
+  position: absolute;
+  height: 100%;
+  left: 5px;
+}
 #room-title {
-	height: 40px;
 	align-items: center;
 	justify-content: center;
 	display: flex;
+  flex-direction: row;
 	height: 40px;
 	border-bottom: 2px solid var(--main-bg-color);
 }
@@ -150,20 +160,13 @@ AI-------------------------------------------------------------------
 	float: left;
 }
 
-.fa-arrow-left {
-	float: left;
-	padding-top: 0.2em;
-	padding-bottom: 0.2em;
-	color: var(--main-bg-color);
-}
-
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 577px) {
+  #back-button {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-	.fa-arrow-left {
-		display: none;
-	}
 	.chat-container {
 		min-width: 768px;
 	}

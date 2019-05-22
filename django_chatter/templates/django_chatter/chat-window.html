@@ -39,7 +39,10 @@
 			===========================================================AI-->
 			<div class = "dialog-container chat-subsection">
 				<div id = "room-title">
-					{{room_name}}
+					<div class="back-button-container">
+						<img id="back-button" src="{% static 'img/left-arrow.svg' %}">
+					</div>
+					<div>{{room_name}}</div>
 				</div>
 				<div id = "chat-dialog">
 					<!--AI==========================================================

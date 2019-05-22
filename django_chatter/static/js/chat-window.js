@@ -70,7 +70,7 @@ function startWebSocket(websocket_url) {
 			// The room that received the new message is open right now
 			if (received_room_id === room_id) {
 				$('#'+received_room_id).css('font-weight', 'bold');
-				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
+				$('#'+received_room_id).parent().prepend($('#'+received_room_id));
 				$('#chat-dialog').append(
 				'<div class="message-container">'
 				+ '<div class = "message message-received">' + message + '</div>'
@@ -133,13 +133,16 @@ $(function() {
 		= document.getElementById('chat-dialog').scrollHeight;
 	$active_room = $("#" + room_id);
 	$active_room.css("background", "#E0E0E0");
-
 });
 
 // Animation to slide up chat window and slide down user list in mobile devices
-$('.fa-arrow-left').click(function() {
+$('#back-button').click(function() {
 	$(this).hide();
-	$('.chat-container').slideUp();
-	$('.chatroom-list').slideDown();
-	$('.room-name').hide();
+	$('.dialog-container').slideUp("slow", function() {
+		$chatroom_list = $('.chatroom-list-container');
+		$chatroom_list.css('width','100%');
+		$chatroom_list.css('max-width', '100%');
+		$chatroom_list.css('border', '2px solid var(--main-bg-color)');
+		$chatroom_list.slideDown();
+	});
 });
