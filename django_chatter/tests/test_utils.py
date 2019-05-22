@@ -15,13 +15,9 @@ class saveRoomTestCase(TestCase):
         user1 = User.objects.get(username="user1")
         user2 = User.objects.get(username="user2")
         user3 = User.objects.get(username="user3")
-        try:
-            room_id = create_room([user1, user2, user3])
-            room_in_db = Room.objects.all()[0]
-            self.assertEqual(room_in_db.id, room_id)
-        except TypeError as e:
-            raise e
-            self.fail()
+        room_id = create_room([user1, user2, user3])
+        room_in_db = Room.objects.all()[0]
+        self.assertEqual(room_in_db.id, room_id)
 
     def test_create_room_with_invalid_input(self):
         self.assertRaises(TypeError, lambda: create_room([1,2,3]))

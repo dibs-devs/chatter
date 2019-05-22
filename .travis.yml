@@ -35,7 +35,7 @@ install:
 script:
   - python manage.py makemigrations
   - python manage.py migrate
-  - coverage run --source="." manage.py test
+  - pytest --cov=.
 
 after_success:
   coveralls

@@ -4,21 +4,17 @@ from django.contrib.auth.models import User
 from uuid import UUID
 from django.db.models import Q, Count
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 
 class RoomTestCase(TestCase):
-	'''
-	AI-------------------------------------------------------------------
-		The test database contains:
-			a) Three distinct Users
-			b) Three distinct Rooms
-			c) The Rooms have 1,2 and 3 users each.
-	-------------------------------------------------------------------AI
-	'''
-	fixtures = ['database_dump.json']
 
 	def setUp(self):
-		self.new_room = Room()
-		self.new_room.save()
+		user_list = []
+		for i in range(3):
+			user = get_user_model().objects.create(username=f"user{i}")
+			user_list.append(user)
+		room = Room.objects.create()
+		room.members.add(*user_list)
 		self.roomlist = Room.objects.all()
 
 	def validate_uuid(self, uuid_string):
@@ -44,17 +40,21 @@ class RoomTestCase(TestCase):
 			room = rooms[0]
 		self.assertEqual(room.__str__(), "user0, user1, user2")
 
+	def test_invalid_room_id(self):
+		print ('testing room creation exception with invalid room id')
+		room = Room(id="invaliduuid")
+		self.assertRaises(ValidationError, room.save)
+
 
 class MessageTestCase(TestCase):
-	'''
-	AI-------------------------------------------------------------------
-		The test database contains:
-			a) Three distinct Users
-			b) Three distinct Rooms
-			c) The Rooms have 1,2 and 3 users each.
-	-------------------------------------------------------------------AI
-	'''
-	fixtures = ['database_dump.json']
+
+	def setUp(self):
+		user = get_user_model().objects.create(username="user0")
+		room = Room()
+		room.save()
+		room.members.add(user)
+		message = Message(room=room, sender=user, text="Notes to myself")
+		message.save()
 
 	def test_message_title(self):
 		print('testing message titles')

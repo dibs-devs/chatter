@@ -9,3 +9,6 @@ twine==1.13.0
 django-tenants==2.2.3
 coverage==4.5.3
 daphne==2.2.5
+pytest-cov==2.7.1
+pytest-asyncio==0.10.0
+pytest-django==3.4.8

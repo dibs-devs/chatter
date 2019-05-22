@@ -99,6 +99,14 @@ To start developing Chatter, follow the following steps:
     domain.is_primary = True
     domain.save()
 
+* Run the tests:
+
+  .. code-block:: bash
+
+    $ pytest
+
+  All tests in the :code:`master` branch should pass.
+
 * Create a superuser for chatter:
 
   .. code-block:: bash
