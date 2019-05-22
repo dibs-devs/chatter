@@ -12,3 +12,4 @@ daphne==2.2.5
 pytest-cov==2.7.1
 pytest-asyncio==0.10.0
 pytest-django==3.4.8
+selenium==3.141.0
