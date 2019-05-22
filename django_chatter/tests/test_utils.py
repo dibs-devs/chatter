@@ -82,22 +82,3 @@ async def test_no_session_id_in_headers():
         )
     with pytest.raises(KeyError):
         connected, subprotocol = await communicator.connect()
-
-@pytest.mark.asyncio
-@pytest.mark.django_db(transaction=True)
-async def test_no_session_id_in_headers():
-    settings.CHANNEL_LAYERS = TEST_CHANNEL_LAYERS
-    set_up_data()
-    room = Room.objects.create()
-    user = get_user_model().objects.get(username="user0")
-    room.members.add(user)
-    room.save()
-    client = Client()
-    client.force_login(user=user)
-    sessionless =
-    communicator = WebsocketCommunicator(
-        multitenant_application, f"/ws/chat/{room.id}/",
-        headers = [(b'host', b'localhost:8000')]
-        )
-    with pytest.raises(KeyError):
-        connected, subprotocol = await communicator.connect()
