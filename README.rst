@@ -7,6 +7,9 @@ Django Chatter
 .. image:: https://travis-ci.org/dibs-devs/chatter.svg?branch=master
     :target: https://travis-ci.org/dibs-devs/chatter
 
+.. image:: https://pepy.tech/badge/django-chatter/month
+   :target: https://pypi.org/project/django-chatter/
+
 Django-based Chat app that supports group chat and real-time updates.
 ---------------------------------------------------------------------
 

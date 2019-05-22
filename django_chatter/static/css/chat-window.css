@@ -18,15 +18,7 @@ AI-------------------------------------------------------------------
 	justify-content: center;
 }
 
-/*Container of chat box. Includes the dialog and input field and button*/
-.chat-container {
-	width: 100%;
-	max-width: 1200px;
-	height: 100%;
-	display: flex;
-	flex-direction: row;
-}
-
+/*Both chatroom list and chat dialog have these settings*/
 .chat-subsection {
 	display: flex;
 	flex-direction: column;
@@ -36,19 +28,44 @@ AI-------------------------------------------------------------------
 }
 
 .chatroom-list-container {
+  flex-basis: 0;
 	flex-grow: 1;
 	border-right: 0;
+  max-width: 400px;
+}
+
+
+/*Container of chat box. Includes the dialog and input field and button*/
+.chat-container {
+	width: 100%;
+	max-width: 1200px;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
 .dialog-container {
 	flex-grow: 3;
+  flex-basis: 0;
+  width: 100px; /*Placeholder to enable max-width*/
+  max-width: 800px;
 }
 
+.back-button-container {
+  height: 25px;
+  position: absolute;
+  left: 10px;
+}
+#back-button {
+  position: absolute;
+  height: 100%;
+  left: 5px;
+}
 #room-title {
-	height: 40px;
 	align-items: center;
 	justify-content: center;
 	display: flex;
+  flex-direction: row;
 	height: 40px;
 	border-bottom: 2px solid var(--main-bg-color);
 }
@@ -57,6 +74,7 @@ AI-------------------------------------------------------------------
 #chat-dialog {
 	overflow: auto;
 	height: 96%;
+  max-width: 100%;
 }
 
 /*
@@ -142,23 +160,13 @@ AI-------------------------------------------------------------------
 	float: left;
 }
 
-.fa-arrow-left {
-	float: left;
-	padding-top: 0.2em;
-	padding-bottom: 0.2em;
-	color: var(--main-bg-color);
-}
-
-@media only screen and (max-width: 767px) {
-	body {
-		text-align: center;
-	}
+@media only screen and (min-width: 577px) {
+  #back-button {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-	.fa-arrow-left {
-		display: none;
-	}
 	.chat-container {
 		min-width: 768px;
 	}

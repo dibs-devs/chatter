@@ -1,6 +1,6 @@
 Tests
 =====
 
-As of right now, tests for this app haven't been set up. However, we
-will soon work on making thorough tests to ensure everything is functioning
-correctly.
+This project comes with unit tests to make sure the code is reliable. We welcome
+test contributions from developers. Especially, the multitenancy support testing
+is still in progress, so that needs a lot of work. 

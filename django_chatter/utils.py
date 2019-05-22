@@ -11,13 +11,16 @@ from django.contrib.auth import (
     SESSION_KEY,
 )
 from django.db.models import Count
+from django.http import Http404
 
 from django_chatter.models import Room
+
+import traceback
 
 # custom get_user method for AuthMiddleware subclass. Mostly similar to
 # https://github.com/django/channels/blob/master/channels/auth.py
 @database_sync_to_async
-def get_user(scope):
+def get_tenant_user(scope):
     """
     Return the user model instance associated with the given scope.
     If no user is retrieved, return an instance of `AnonymousUser`.
@@ -27,33 +30,46 @@ def get_user(scope):
             "Cannot find session in scope.\
             You should wrap your consumer in SessionMiddleware."
         )
-    session_key = scope['cookies']['sessionid']
+    try:
+        session_key = scope['cookies']['sessionid']
+    except KeyError as e:
+        raise KeyError(
+            "The scope does not contain valid cookies to determine user with."
+            )
     for key, value in scope.get('headers', []):
         if key == b'host':
-            schema_name = value.decode('ascii').split('.')[0]
+            hostname = value.decode('ascii').split(':')[0]
     user = None
     try:
         # get session and user using django-tenants' schema_context
         #  Link: https://django-tenants.readthedocs.io/en/latest/use.html#utils
-        from django_tenants.utils import schema_context
-        with schema_context(schema_name):
-            session = Session.objects.get(session_key=session_key)
-            uid = session.get_decoded().get(SESSION_KEY)
-            user = get_user_model().objects.get(pk=uid)
+        from django_tenants.utils import get_tenant_domain_model
+        domain_model = get_tenant_domain_model()
+        domain = domain_model.objects.select_related('tenant').get(domain=hostname)
+        try:
+            tenant = domain.tenant
+        except domain_model.DoesNotExist:
+            raise Http404('No tenant for hostname "%s"' % hostname)
+        from django.db import connection
+        connection.set_tenant(tenant)
+        session = Session.objects.get(session_key=session_key)
+        uid = session.get_decoded().get(SESSION_KEY)
+        user = get_user_model().objects.get(pk=uid)
 
-            # Verifying the session
-            # collected from:
-            # https://github.com/django/channels/blob/master/channels/auth.py
-            # line 44 onwards
-            if hasattr(user, "get_session_auth_hash"):
-                session_hash = session.get(HASH_SESSION_KEY)
-                session_hash_verified = session_hash and constant_time_compare(
-                    session_hash, user.get_session_auth_hash()
-                )
-                if not session_hash_verified:
-                    session.flush()
-                    user = None
+        # Verifying the session
+        # collected from:
+        # https://github.com/django/channels/blob/master/channels/auth.py
+        # line 44 onwards
+        if hasattr(user, "get_session_auth_hash"):
+            session_hash = session.get_decoded().get(HASH_SESSION_KEY)
+            session_hash_verified = session_hash and constant_time_compare(
+                session_hash, user.get_session_auth_hash()
+            )
+            if not session_hash_verified:
+                session.flush()
+                user = None
     except Exception as e:
+        print(traceback.format_exc())
         pass
     return user or AnonymousUser()
 
@@ -61,7 +77,7 @@ def get_user(scope):
 # Auth Middleware that attaches users to websocket scope on multitenant envs.
 class MTAuthMiddleware(AuthMiddleware):
     async def resolve_scope(self, scope):
-        scope["user"]._wrapped = await get_user(scope)
+        scope["user"]._wrapped = await get_tenant_user(scope)
 
 
 # Adds the schema name to scope and passes it down the stack of middleware ASGI apps.
@@ -74,12 +90,20 @@ class MTSchemaMiddleware:
         if "headers" not in scope:
             raise ValueError(
                 "MTSchemaMiddleware was passed a scope that did not have a headers key "
-                + "(make sure it is only passed HTTP or WebSocket connections)"
+                "(make sure it is only passed HTTP or WebSocket connections)"
             )
-
         for key, value in scope.get('headers', []):
             if key == b'host':
-                schema_name = value.decode('ascii').split('.')[0]
+                hostname = value.decode('ascii').split(':')[0].split('.')[0]
+                from django_tenants.utils import get_tenant_domain_model
+                domain_model = get_tenant_domain_model()
+                domain = domain_model.objects.select_related('tenant')\
+                    .get(domain=hostname)
+                try:
+                    tenant = domain.tenant
+                    schema_name = tenant.schema_name
+                except domain_model.DoesNotExist:
+                    raise Http404('No tenant for hostname "%s"' % hostname)
                 break
         else:
             raise ValueError(

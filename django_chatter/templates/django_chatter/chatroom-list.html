@@ -31,7 +31,15 @@
 			{% else %}
 			<div class='chat-list-item'>
 			{% endif %}
-				{{room}}
+			{% if room.members.all|length == 2 %}
+				{% for user in room.members.all %}
+					{% if user != request.user %}
+						{{user}}
+					{% endif %}
+				{% endfor %}
+			{% else %}
+					{{room}}
+			{% endif %}
 			</div>
 		</a>
 

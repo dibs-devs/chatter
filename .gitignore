@@ -10,9 +10,6 @@ __pycache__/
 # ignore redis database file
 *.rdb
 
-# ignore registration template folder
-registration/
-
 # ignore built docs from sphinx
 docs/build/
 
@@ -27,3 +24,6 @@ build/*
 
 # ignore html coverage statistics
 htmlcov
+
+# ignore .coverage file
+.coverage

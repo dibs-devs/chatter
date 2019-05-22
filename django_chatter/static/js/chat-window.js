@@ -70,7 +70,7 @@ function startWebSocket(websocket_url) {
 			// The room that received the new message is open right now
 			if (received_room_id === room_id) {
 				$('#'+received_room_id).css('font-weight', 'bold');
-				$('#'+received_room_id).parent().parent().prepend($('#'+received_room_id).parent());
+				$('#'+received_room_id).parent().prepend($('#'+received_room_id));
 				$('#chat-dialog').append(
 				'<div class="message-container">'
 				+ '<div class = "message message-received">' + message + '</div>'
@@ -132,14 +132,36 @@ $(function() {
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
 	$active_room = $("#" + room_id);
-	$active_room.css("background", "#E0E0E0");
-
+	$active_room.css("background", "#E0E0E0"); // Select current room
+	$('#send-message').focus(); // Focus message input on load
 });
 
 // Animation to slide up chat window and slide down user list in mobile devices
-$('.fa-arrow-left').click(function() {
+$('#back-button').click(function() {
 	$(this).hide();
-	$('.chat-container').slideUp();
-	$('.chatroom-list').slideDown();
-	$('.room-name').hide();
+	$('.dialog-container').slideUp("slow", function() {
+		$chatroom_list = $('.chatroom-list-container');
+		$chatroom_list.css('width','100%');
+		$chatroom_list.css('max-width', '100%');
+		$chatroom_list.css('border', '2px solid var(--main-bg-color)');
+		$chatroom_list.slideDown();
+	});
+});
+
+// When user clicks on the chat dialog, focus the input
+// and change chatroom-list text to normal if it was bold before
+$('#chat-dialog').click(function() {
+	$('#send-message').focus(); // Focus message input
+	$('#' + room_id).css('font-weight', 'normal');
+});
+
+// Don't select the input field when user clicks on message to enable selecting
+// text
+$('.message').click(function(e) {
+	e.stopPropagation();
+});
+
+// Change chatroom lists's room's font to normal on text input click
+$('#send-message').click(function() {
+	$('#' + room_id).css('font-weight', 'normal');
 });
