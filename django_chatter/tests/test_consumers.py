@@ -93,7 +93,7 @@ async def test_multitenant_chat_consumer():
 
 @pytest.mark.asyncio
 @pytest.mark.django_db(transaction=True)
-async def test_single_tenant_chat_consumer():
+async def test_harmful_message_in_chat_consumer():
     settings.CHANNEL_LAYERS = TEST_CHANNEL_LAYERS
     set_up_data()
     room = Room.objects.create()
