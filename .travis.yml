@@ -16,7 +16,7 @@ env:
     - PGPORT=5433
 
 before_install:
-  - wget https://chromedriver.storage.googleapis.com/75.0.3770.8/chromedriver_linux64.zip
+  - wget https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d chromedriver_linux64
   - PATH=$PATH:./chromedriver_linux64
   - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
