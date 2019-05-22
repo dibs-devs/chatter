@@ -15,6 +15,8 @@ from django.http import Http404
 
 from django_chatter.models import Room
 
+import traceback
+
 # custom get_user method for AuthMiddleware subclass. Mostly similar to
 # https://github.com/django/channels/blob/master/channels/auth.py
 @database_sync_to_async
@@ -28,7 +30,12 @@ def get_tenant_user(scope):
             "Cannot find session in scope.\
             You should wrap your consumer in SessionMiddleware."
         )
-    session_key = scope['cookies']['sessionid']
+    try:
+        session_key = scope['cookies']['sessionid']
+    except KeyError as e:
+        raise KeyError(
+            "The scope does not contain valid cookies to determine user with."
+            )
     for key, value in scope.get('headers', []):
         if key == b'host':
             hostname = value.decode('ascii').split(':')[0]
@@ -62,7 +69,6 @@ def get_tenant_user(scope):
                 session.flush()
                 user = None
     except Exception as e:
-        import traceback
         print(traceback.format_exc())
         pass
     return user or AnonymousUser()
@@ -86,7 +92,6 @@ class MTSchemaMiddleware:
                 "MTSchemaMiddleware was passed a scope that did not have a headers key "
                 "(make sure it is only passed HTTP or WebSocket connections)"
             )
-
         for key, value in scope.get('headers', []):
             if key == b'host':
                 hostname = value.decode('ascii').split(':')[0].split('.')[0]
