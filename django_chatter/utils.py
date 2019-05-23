@@ -94,7 +94,7 @@ class MTSchemaMiddleware:
             )
         for key, value in scope.get('headers', []):
             if key == b'host':
-                hostname = value.decode('ascii').split(':')[0].split('.')[0]
+                hostname = value.decode('ascii').split(':')[0]
                 from django_tenants.utils import get_tenant_domain_model
                 domain_model = get_tenant_domain_model()
                 domain = domain_model.objects.select_related('tenant')\
