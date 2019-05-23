@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v 1.0.1
+-------
+- Cleaned up some testing code
+- Bugfix in MTSchemaMiddleware - hostname to search tenant with was only
+  the first part of the domain instead of the whole domain.
+
 v 1.0.0
 -------
 - This version removes the context processor :code:`get_chatroom_list` that used to fetch a list of all rooms a
