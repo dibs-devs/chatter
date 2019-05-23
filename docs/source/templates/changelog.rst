@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v 1.0.1
+-------
+- Cleaned up some testing code
+- Bugfix in MTSchemaMiddleware - hostname to search tenant with was only
+  the first part of the domain instead of the whole domain.
+
 v 1.0.0
 -------
 - This version removes the context processor :code:`get_chatroom_list` that used to fetch a list of all rooms a
@@ -10,7 +16,7 @@ compatibility issues, which can be solved by simply removing the context process
 from their settings.
 - Multiple tests have been added to maintain reliability of the code.
 - On multitenant systems, :code:`MTSchemaMiddleware` checks if a tenant with the given
-schema name exists. If not, it raises an Http404 error. 
+schema name exists. If not, it raises an Http404 error.
 
 v 0.2.2
 -------
