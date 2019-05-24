@@ -10,13 +10,13 @@ v 1.0.1
 v 1.0.0
 -------
 - This version removes the context processor :code:`get_chatroom_list` that used to fetch a list of all rooms a
-logged in user is a member of. This is to prevent unnecessary database access in the
-request-response cycle. For users using django_chatter < 1.0.0, this will create
-compatibility issues, which can be solved by simply removing the context processor
-from their settings.
+  logged in user is a member of. This is to prevent unnecessary database access in the
+  request-response cycle. For users using django_chatter < 1.0.0, this will create
+  compatibility issues, which can be solved by simply removing the context processor
+  from their settings.
 - Multiple tests have been added to maintain reliability of the code.
 - On multitenant systems, :code:`MTSchemaMiddleware` checks if a tenant with the given
-schema name exists. If not, it raises an Http404 error.
+  schema name exists. If not, it raises an Http404 error. 
 
 v 0.2.2
 -------
