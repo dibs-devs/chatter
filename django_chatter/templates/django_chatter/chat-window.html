@@ -54,12 +54,25 @@
 								<div class="message message-sent">
 									{{message.text}}
 								</div>
+								<div class="message message-sent message-date-created">
+									{{message.date_created}}
+								</div>
 							</div>
 						{% else %}
 							<div class="message-container">
-								<div class="message message-received">
-									{{message.text}}
+								<div class="message-received-container">
+									<div class="receiver-bubble">
+										{{message.sender|make_list|first|title}}
+									</div>
+									<div class="message message-received">
+										{{message.text}}
+									</div>
 								</div>
+								<div class="message message-received message-date-created
+									message-received-date-created">
+									{{message.date_created}}
+								</div>
+
 							</div>
 						{% endif %}
 					{% endfor %}
@@ -87,6 +100,7 @@
 	var room_id = '{{room_uuid_json}}';
 	var username = '{{user.username}}';
 </script>
+<script src = "{% static 'js/websocket.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
 <script src = "{% static 'js/fetch-messages.js' %}"></script>
 {% endblock django_chatter_content %}

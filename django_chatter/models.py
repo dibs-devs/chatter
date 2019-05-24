@@ -9,6 +9,7 @@ class UserProfile(models.Model):
             on_delete=models.CASCADE, related_name='profile')
     last_visit = models.DateTimeField()
 
+
 # This model is used to give date and time when a message was created/modified.
 class DateTimeModel(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
@@ -16,6 +17,7 @@ class DateTimeModel(models.Model):
 
     class Meta:
         abstract = True
+
 
 class Room(DateTimeModel):
     id = models.UUIDField(primary_key=True,
@@ -30,6 +32,7 @@ class Room(DateTimeModel):
             members_list.append(member.username)
 
         return ", ".join(members_list)
+
 
 class Message(DateTimeModel):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL,

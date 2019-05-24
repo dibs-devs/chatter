@@ -6,6 +6,7 @@ AI-------------------------------------------------------------------
 
 :root {
   --main-bg-color: #08d18e;
+  --bg-grey: #f0f0f0;
 }
 
 /*Chatter's container. Contains chatroom-list and chat-dialog*/
@@ -22,14 +23,13 @@ AI-------------------------------------------------------------------
 .chat-subsection {
 	display: flex;
 	flex-direction: column;
-	border: 2px solid var(--main-bg-color);
+	border: 1px solid var(--bg-grey);
 	border-radius: 2px;
-	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .chatroom-list-container {
   flex-basis: 0;
-	flex-grow: 1;
+	flex-grow: 2;
 	border-right: 0;
   max-width: 400px;
 }
@@ -49,12 +49,13 @@ AI-------------------------------------------------------------------
   flex-basis: 0;
   width: 100px; /*Placeholder to enable max-width*/
   max-width: 800px;
+  border-left: 1px solid #bebebe;
 }
 
 .back-button-container {
   height: 25px;
   position: absolute;
-  left: 10px;
+  left: 20px;
 }
 #back-button {
   position: absolute;
@@ -66,8 +67,12 @@ AI-------------------------------------------------------------------
 	justify-content: center;
 	display: flex;
   flex-direction: row;
-	height: 40px;
-	border-bottom: 2px solid var(--main-bg-color);
+	height: 60px;
+	border-bottom: 2px solid var(--bg-grey);
+  font-size: 20px;
+  -webkit-box-shadow: 0 5px 10px -2px var(--bg-grey);
+	   -moz-box-shadow: 0 5px 10px -2px var(--bg-grey);
+	        box-shadow: 0 5px 10px -2px var(--bg-grey);
 }
 
 /*This is the setting for the chat history dialog.*/
@@ -75,6 +80,101 @@ AI-------------------------------------------------------------------
 	overflow: auto;
 	height: 96%;
   max-width: 100%;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+AI-------------------------------------------------------------------
+	The messages inside the chat-dialog have the following settings
+-------------------------------------------------------------------AI
+*/
+
+.message-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+/*Generic message setting that applies to all messages*/
+.message {
+	max-width: 60%;
+	padding: 15px 15px 15px 15px;
+  margin: 3px 10px 3px 10px;
+	border-radius: 20px;
+	vertical-align: bottom;
+	word-wrap: break-word;
+}
+
+/*Messages sent by current user has these settings.*/
+.message-sent {
+	background: var(--main-bg-color);
+	color: white;
+  margin-left: auto;
+}
+
+.message-received-container {
+  display: flex;
+  align-items: center;
+}
+
+.receiver-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  background: var(--main-bg-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+/*Messages received by other users in the chat have these settings.*/
+.message-received {
+	background: var(--bg-grey);
+	color: black;
+  margin-right: auto;
+  margin-left: 5px;
+  max-width: 45%;
+}
+
+/* custom margins for multiple message bubbles sent by the same user */
+.sent-reduced-bottom-margin {
+  margin-bottom: 0.8px;
+  border-bottom-right-radius: 5px;
+}
+
+.sent-reduced-top-margin {
+  margin-top: 0.8px;
+  border-top-right-radius: 5px;
+}
+
+.received-reduced-bottom-margin {
+  margin-bottom: 0.8px;
+  border-bottom-left-radius: 5px;
+}
+
+.received-reduced-top-margin {
+  margin-top: 0.8px;
+  border-top-left-radius: 5px;
+}
+
+/* Created time styles */
+.message-date-created {
+  font-size: 0.8rem;
+  background: transparent;
+  color: #606060;
+  padding: 5px 0 5px 0;
+  display: none;
+  height: 1rem;
+}
+
+/* Custom class to process date on message received  */
+.message-received-date-created {
+  margin-left: 45px;
 }
 
 /*
@@ -87,8 +187,8 @@ AI-------------------------------------------------------------------
 	padding-bottom: 2px;
 	display: flex;
 	justify-content: center;
-	border-top: 2px solid var(--main-bg-color);
-	height: 40px;
+	border-top: 2px solid var(--bg-grey);
+	height: 50px;
 }
 
 /*This is the text box where the user inputs the messages to send.
@@ -100,7 +200,6 @@ It's a textarea element to enable scroll.*/
 	overflow: auto;
 	resize: none;
 	border: none;
-	font-family: 'Raleway', sans-serif;
 	padding: 0 10px;
 }
 
@@ -116,48 +215,9 @@ It's a textarea element to enable scroll.*/
 	background: transparent;
 	font-weight: bold;
 	font-size: 1rem;
-	color: var(--main-bg-color);
+	color: var(--bg-grey);
 	border: none;
 	width: 50px;
-}
-
-/*
-AI-------------------------------------------------------------------
-	The messages inside the chat-dialog have the following settings
--------------------------------------------------------------------AI
-*/
-
-/*Generic message setting that applies to all messages*/
-.message {
-	max-width: 60%;
-	padding: 0.5em 0.5em 0.5em 0.5em;
-	margin: 0.2em 0.2em 0.2em 0.2em;
-	border-radius: 2em;
-	vertical-align: bottom;
-	clear: both;
-	word-wrap: break-word;
-}
-
-/*Messages sent by current user has these settings.*/
-.message-sent {
-	background: var(--main-bg-color);
-	color: white;
-	float: right;
-}
-
-.message-receiver {
-	color: grey;
-	font-size: 0.7em;
-	float: left;
-	padding: 0.2em;
-	margin: 0;
-}
-
-/*Messages received by other users in the chat have these settings.*/
-.message-received {
-	background: #dcdcdc;
-	color: black;
-	float: left;
 }
 
 @media only screen and (min-width: 577px) {
