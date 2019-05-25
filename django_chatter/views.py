@@ -119,8 +119,6 @@ def users_list(request):
 			data_dict['id'] = user.pk
 			data_dict['text'] = user.username
 			data_array.append(data_dict)
-		users = list(get_user_model().objects.values_list('username', flat = True))
-		users_list_json = {'userslist': users}
 		return JsonResponse(data_array, safe=False)
 
 
