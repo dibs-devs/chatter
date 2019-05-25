@@ -91,16 +91,16 @@ async def test_multitenant_chat_consumer():
     response = response
     message = Message.objects.all()[0]
     time = message.date_created
-    zone = pytz.timezone(get_default_timezone_name())
-    time = time.astimezone(tz=zone)
-    formatted = dateformat.DateFormat(time)
-    time = formatted.format('M d, Y h:i a')
+    # zone = pytz.timezone(get_default_timezone_name())
+    # time = time.astimezone(tz=zone)
+    # formatted = dateformat.DateFormat(time)
+    # time = formatted.format('M d, Y h:i a')
 
     assert response['message_type'] == 'text'
     assert response['message'] == 'Hello!'
     assert response['sender'] == 'user0'
     assert response['room_id'] == str(room.id)
-    assert response['date_created'] == time
+    assert response['date_created'] == time.strftime("%d %b %Y %H:%M:%S %Z")
     await communicator.disconnect()
 
 @pytest.mark.asyncio

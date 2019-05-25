@@ -3,8 +3,6 @@
 --------------------------------------------------------------------------AI'''
 from django.contrib.auth import get_user_model
 from django.db import connection
-from django.utils.timezone import now, get_default_timezone_name
-from django.utils import dateformat
 
 
 '''AI--------------------------------------------------------------------------
@@ -26,7 +24,6 @@ from .models import Room, Message
 --------------------------------------------------------------------------AI'''
 import json
 from uuid import UUID
-import pytz
 
 
 '''
@@ -163,11 +160,7 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
                                     self.multitenant,
                                     self.schema_name
                                     )
-
-            zone = pytz.timezone(get_default_timezone_name())
-            time = time.astimezone(tz=zone)
-            formatted = dateformat.DateFormat(time)
-            time = formatted.format('M d, Y h:i a')
+            time = time.strftime("%d %b %Y %H:%M:%S %Z")
 
 
             if message_harmful:

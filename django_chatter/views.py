@@ -70,9 +70,9 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			raise Http404("Sorry! What you're looking for isn't here.")
 		all_members = room.members.all()
 		if user in all_members:
-			latest_messages = room.message_set.all().order_by('-id')[:50]
-			if latest_messages.exists():
-				message = latest_messages[0]
+			latest_messages_curr_room = room.message_set.all()[:50]
+			if latest_messages_curr_room.exists():
+				message = latest_messages_curr_room[0]
 				message.recipients.add(user)
 			if all_members.count() == 1:
 				room_name = "Notes to Yourself"
@@ -81,7 +81,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			else:
 				room_name = room.__str__()
 			context['room_uuid_json'] = kwargs.get('uuid')
-			context['latest_messages'] = latest_messages
+			context['latest_messages_curr_room'] = latest_messages_curr_room
 			context['room_name'] = room_name
 			context['base_template'] = import_base_template()
 
@@ -94,15 +94,19 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 				pass
 			rooms_with_unread = []
 			# Go through each list of rooms and check if the last message was unread
+			# and add each last message to the context
+			last_messages_in_rooms = []
 			for room in rooms_list:
 				try:
 					message = room.message_set.all().order_by('-id')[0]
+					last_messages_in_rooms.append(message)
 				except IndexError as e:
 					continue
 				if self.request.user not in message.recipients.all():
 					rooms_with_unread.append(room.id)
 			context['rooms_list'] = rooms_list
 			context['rooms_with_unread'] = rooms_with_unread
+			context['last_messages_in_rooms'] = last_messages_in_rooms
 
 			return context
 		else:

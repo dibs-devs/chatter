@@ -44,3 +44,6 @@ class Message(DateTimeModel):
 
     def __str__(self):
         return f'{self.text} sent by "{self.sender}" in Room "{self.room}"'
+
+    class Meta:
+        ordering = ['-id']
