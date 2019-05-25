@@ -32,6 +32,14 @@ $(function() {
     }
 	});
 
+	// Formats the time a message was sent in a more chat-style manner like Android Messages or Messenger
+	times = $('.message-date-created');
+	times.each(function(index, el) {
+		$this = times.eq(index);
+		time_human_readable = dateFormatter($this.text());
+		$this.text(time_human_readable);
+	});
+
 	// Set the latest message as visible
 	document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;
@@ -39,7 +47,7 @@ $(function() {
 
 	// Mark active room with grey focus color
 	$active_room = $("#" + room_id);
-	$active_room.css("background", "#E0E0E0");
+	$active_room.css("background", "var(--bg-grey)");
 
 	// Focus message input on load
 	$('#send-message').focus();

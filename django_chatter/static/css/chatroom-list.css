@@ -19,7 +19,7 @@ AI-------------------------------------------------------------------
 }
 
 .select-chat-user {
-	width: 80%;
+	width: 80% !important;
 }
 
 .select-chat-button {
@@ -42,18 +42,27 @@ AI-------------------------------------------------------------------
 }
 
 .list-room {
-	height: 60px;
+	height: 70px;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	text-decoration: none;
 	color: black;
-	font-size: 18px;
 	cursor:pointer;
 }
 
 .chat-list-item {
 	margin-left: 20px;
+}
+
+.chat-list-title {
+	font-size: 18px;
+}
+
+.chat-list-last-message {
+	margin-top: 5px;
+	font-size: 14px;
+	color: #606060;
 }
 
 .list-room:hover {

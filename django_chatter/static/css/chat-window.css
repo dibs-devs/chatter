@@ -29,7 +29,7 @@ AI-------------------------------------------------------------------
 
 .chatroom-list-container {
   flex-basis: 0;
-	flex-grow: 2;
+	flex-grow: 1.5;
 	border-right: 0;
   max-width: 400px;
 }
@@ -45,7 +45,7 @@ AI-------------------------------------------------------------------
 }
 
 .dialog-container {
-	flex-grow: 3;
+	flex-grow: 2.5;
   flex-basis: 0;
   width: 100px; /*Placeholder to enable max-width*/
   max-width: 800px;

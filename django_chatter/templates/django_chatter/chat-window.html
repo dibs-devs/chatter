@@ -44,14 +44,14 @@
 					<!--AI==========================================================
 						Fetch latest 50 messages and display them properly.
 					===========================================================AI-->
-					{% for message in latest_messages reversed %}
+					{% for message in latest_messages_curr_room reversed %}
 						{% if message.sender.username == user.username %}
 							<div class="message-container">
 								<div class="message message-sent">
 									{{message.text}}
 								</div>
 								<div class="message message-sent message-date-created">
-									{{message.date_created}}
+									{{message.date_created|date:"d M Y H:i:s e"}}
 								</div>
 							</div>
 						{% else %}
@@ -66,7 +66,7 @@
 								</div>
 								<div class="message message-received message-date-created
 									message-received-date-created">
-									{{message.date_created}}
+									{{message.date_created|date:"d M Y H:i:s e"}}
 								</div>
 
 							</div>
@@ -96,6 +96,7 @@
 	var room_id = '{{room_uuid_json}}';
 	var username = '{{user.username}}';
 </script>
+<script src = "{% static 'js/date-formatter.js' %}"></script>
 <script src = "{% static 'js/websocket.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
 <script src = "{% static 'js/fetch-messages.js' %}"></script>
