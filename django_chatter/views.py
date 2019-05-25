@@ -95,18 +95,15 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			rooms_with_unread = []
 			# Go through each list of rooms and check if the last message was unread
 			# and add each last message to the context
-			last_messages_in_rooms = []
 			for room in rooms_list:
 				try:
 					message = room.message_set.all().order_by('-id')[0]
-					last_messages_in_rooms.append(message)
 				except IndexError as e:
 					continue
 				if self.request.user not in message.recipients.all():
 					rooms_with_unread.append(room.id)
 			context['rooms_list'] = rooms_list
 			context['rooms_with_unread'] = rooms_with_unread
-			context['last_messages_in_rooms'] = last_messages_in_rooms
 
 			return context
 		else:

@@ -47,11 +47,6 @@ class TestIndexView(TenantTestCase):
         self.assertEqual(response.redirect_chain[0][0], room_url)
 
         self.assertEqual(str(room.id), response.context['room_uuid_json'])
-
-        self.assertEqual(
-            response.context['last_messages_in_rooms'],
-            [Message.objects.all()[0]]
-        )
         self.assertEqual(
             str(response.context['latest_messages_curr_room']),
             str(Message.objects.all())
