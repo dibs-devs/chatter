@@ -112,15 +112,22 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 #The following functions deal with AJAX requests
 @login_required
 def users_list(request):
-	users = list(get_user_model().objects.values_list('username', flat = True))
-	users_list_json = {'userslist': users}
-	return JsonResponse(users_list_json)
+	if (request.is_ajax()):
+		data_array = []
+		for user in get_user_model().objects.all():
+			data_dict = {}
+			data_dict['id'] = user.pk
+			data_dict['text'] = user.username
+			data_array.append(data_dict)
+		users = list(get_user_model().objects.values_list('username', flat = True))
+		users_list_json = {'userslist': users}
+		return JsonResponse(data_array, safe=False)
 
 
 @login_required
 def get_chat_url(request):
 	user = get_user_model().objects.get(username=request.user)
-	target_user = get_user_model().objects.get(username=request.POST.get('target_user'))
+	target_user = get_user_model().objects.get(pk=request.POST.get('target_user'))
 
 	'''
 	AI-------------------------------------------------------------------
@@ -133,5 +140,6 @@ def get_chat_url(request):
 		room_id = create_room([user])
 	else:
 		room_id = create_room([user, target_user])
-	new_room_id_json={'room_url': room_id}
-	return JsonResponse(new_room_id_json)
+	return HttpResponseRedirect(
+		reverse('django_chatter:chatroom', args=[room_id])
+	)

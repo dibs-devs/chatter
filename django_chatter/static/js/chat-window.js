@@ -12,9 +12,9 @@ $(function() {
 	startWebSocket(websocket_url);
 
 	// visually group messages currently present in the chat
-	messages = $('.message').not('.message-created-time');
+	messages = $('.message').not('.message-date-created');
 	messages.each(function(index, el) {
-    if(index !== messages.length - 2) {
+    if (index !== messages.length - 1) {
 			$current = messages.eq(index);
 			$next = messages.eq(index + 1);
 			if ($current.hasClass('message-received')) {
@@ -88,7 +88,7 @@ $('.message-sent').click(function() {
 	$(this).next().slideToggle(200);
 });
 
-$('body').on('click', '.message-received', function () {
+$('body').on('click', 'message-received', function() {
 	$(this).parent().next().slideToggle(200);
 });
 
