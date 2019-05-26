@@ -17,10 +17,6 @@
 	<link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
 	<!--Jquery-->
 	<script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<!--JQuery UI CSS-->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<!--JQuery UI JS-->
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock django_chatter_extrahead %}
 
 {% block django_chatter_content %}
@@ -48,18 +44,31 @@
 					<!--AI==========================================================
 						Fetch latest 50 messages and display them properly.
 					===========================================================AI-->
-					{% for message in latest_messages reversed %}
+					{% for message in latest_messages_curr_room reversed %}
 						{% if message.sender.username == user.username %}
 							<div class="message-container">
 								<div class="message message-sent">
 									{{message.text}}
 								</div>
+								<div class="message message-sent message-date-created">
+									{{message.date_created|date:"d M Y H:i:s e"}}
+								</div>
 							</div>
 						{% else %}
 							<div class="message-container">
-								<div class="message message-received">
-									{{message.text}}
+								<div class="message-received-container">
+									<div class="receiver-bubble">
+										{{message.sender|make_list|first|title}}
+									</div>
+									<div class="message message-received">
+										{{message.text}}
+									</div>
 								</div>
+								<div class="message message-received message-date-created
+									message-received-date-created">
+									{{message.date_created|date:"d M Y H:i:s e"}}
+								</div>
+
 							</div>
 						{% endif %}
 					{% endfor %}
@@ -87,6 +96,8 @@
 	var room_id = '{{room_uuid_json}}';
 	var username = '{{user.username}}';
 </script>
+<script src = "{% static 'js/date-formatter.js' %}"></script>
+<script src = "{% static 'js/websocket.js' %}"></script>
 <script src = "{% static 'js/chat-window.js' %}"></script>
 <script src = "{% static 'js/fetch-messages.js' %}"></script>
 {% endblock django_chatter_content %}

@@ -8,6 +8,7 @@ from django.conf import settings
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Room, Message
 from .utils import create_room
@@ -70,9 +71,9 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			raise Http404("Sorry! What you're looking for isn't here.")
 		all_members = room.members.all()
 		if user in all_members:
-			latest_messages = room.message_set.all().order_by('-id')[:50]
-			if latest_messages.exists():
-				message = latest_messages[0]
+			latest_messages_curr_room = room.message_set.all()[:50]
+			if latest_messages_curr_room.exists():
+				message = latest_messages_curr_room[0]
 				message.recipients.add(user)
 			if all_members.count() == 1:
 				room_name = "Notes to Yourself"
@@ -81,7 +82,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			else:
 				room_name = room.__str__()
 			context['room_uuid_json'] = kwargs.get('uuid')
-			context['latest_messages'] = latest_messages
+			context['latest_messages_curr_room'] = latest_messages_curr_room
 			context['room_name'] = room_name
 			context['base_template'] = import_base_template()
 
@@ -94,6 +95,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 				pass
 			rooms_with_unread = []
 			# Go through each list of rooms and check if the last message was unread
+			# and add each last message to the context
 			for room in rooms_list:
 				try:
 					message = room.message_set.all().order_by('-id')[0]
@@ -112,15 +114,20 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 #The following functions deal with AJAX requests
 @login_required
 def users_list(request):
-	users = list(get_user_model().objects.values_list('username', flat = True))
-	users_list_json = {'userslist': users}
-	return JsonResponse(users_list_json)
+	if (request.is_ajax()):
+		data_array = []
+		for user in get_user_model().objects.all():
+			data_dict = {}
+			data_dict['id'] = user.pk
+			data_dict['text'] = user.username
+			data_array.append(data_dict)
+		return JsonResponse(data_array, safe=False)
 
 
 @login_required
 def get_chat_url(request):
 	user = get_user_model().objects.get(username=request.user)
-	target_user = get_user_model().objects.get(username=request.POST.get('target_user'))
+	target_user = get_user_model().objects.get(pk=request.POST.get('target_user'))
 
 	'''
 	AI-------------------------------------------------------------------
@@ -133,5 +140,38 @@ def get_chat_url(request):
 		room_id = create_room([user])
 	else:
 		room_id = create_room([user, target_user])
-	new_room_id_json={'room_url': room_id}
-	return JsonResponse(new_room_id_json)
+	return HttpResponseRedirect(
+		reverse('django_chatter:chatroom', args=[room_id])
+	)
+
+# Ajax request to fetch earlier messages
+@login_required
+def get_messages(request, uuid):
+	if request.is_ajax():
+		room = Room.objects.get(id=uuid)
+		if request.user in room.members.all():
+			messages = room.message_set.all()
+			page = request.GET.get('page')
+
+			paginator = Paginator(messages, 20)
+			try:
+				selected = paginator.page(page)
+			except PageNotAnInteger:
+				selected = paginator.page(1)
+			except EmptyPage:
+				selected = []
+			messages_array = []
+			for message in selected:
+				dict = {}
+				dict['sender'] = message.sender.username
+				dict['message'] = message.text
+				dict['received_room_id'] = uuid
+				dict['date_created'] = message.date_created.strftime("%d %b %Y %H:%M:%S %Z")
+				messages_array.append(dict)
+
+			return JsonResponse(messages_array, safe=False)
+
+		else:
+			return Http404("Sorry! We can't find what you're looking for.")
+	else:
+		return Http404("Sorry! We can't find what you're looking for.")

@@ -5,7 +5,27 @@ AI-------------------------------------------------------------------
 */
 
 .search {
-	height: 40px;
+	height: 60px;
+}
+
+.search-form {
+	margin-bottom: 0px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.select-chat-user {
+	width: 80% !important;
+}
+
+.select-chat-button {
+	width: 20%;
+	border: none;
+	background: white;
 }
 
 .chatroom-list {
@@ -13,22 +33,38 @@ AI-------------------------------------------------------------------
 	flex-direction: column;
 }
 
+.chatroom-list-title {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	padding-left: 20px;
+}
+
 .list-room {
-	height: 50px;
+	height: 70px;
 	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-}
-
-.chat-link {
 	text-decoration: none;
 	color: black;
+	cursor:pointer;
 }
 
-/*
-AI-------------------------------------------------------------------
-	Each item in the chatroom container is a div with the following
-	properties.
--------------------------------------------------------------------AI
-*/
+.chat-list-item {
+	margin-left: 20px;
+}
+
+.chat-list-title {
+	font-size: 18px;
+}
+
+.chat-list-last-message {
+	margin-top: 5px;
+	font-size: 14px;
+	color: #606060;
+}
+
+.list-room:hover {
+	background-color: var(--bg-grey);
+}

@@ -3,13 +3,12 @@
 --------------------------------------------------------------------------AI'''
 from django.contrib.auth import get_user_model
 from django.db import connection
-from django.utils.timezone import now
 
 
 '''AI--------------------------------------------------------------------------
     Third-party Imports
 --------------------------------------------------------------------------AI'''
-from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.generic.websocket import AsyncJsonWebsocketConsumer
 from channels.db import database_sync_to_async
 import bleach
 
@@ -72,6 +71,7 @@ def save_message(room, sender, text, multitenant=False, schema_name=None):
                 new_message.save()
                 room.date_modified = new_message.date_modified
                 room.save()
+                return new_message.date_created
     else:
         new_message = Message(room=room, sender=sender, text=text)
         new_message.save()
@@ -79,9 +79,10 @@ def save_message(room, sender, text, multitenant=False, schema_name=None):
         new_message.save()
         room.date_modified = new_message.date_modified
         room.save()
+        return new_message.date_created
 
 
-class ChatConsumer(AsyncWebsocketConsumer):
+class ChatConsumer(AsyncJsonWebsocketConsumer):
 
     '''
     AI-------------------------------------------------------------------
@@ -134,64 +135,53 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
-    async def receive(self, text_data):
+    async def receive_json(self, data):
         username = self.user.username
 
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
-        room_id = text_data_json['room_id']
+        message_type = data['type']
+        if message_type == "text":
+            message = data['message']
+            room_id = data['room_id']
 
-        # Clean code off message if message contains code
-        self.message_safe = bleach.clean(message)
-        message_harmful = (self.message_safe != message)
+            # Clean code off message if message contains code
+            self.message_safe = bleach.clean(message)
+            message_harmful = (self.message_safe != message)
 
-        try:
-            # room = await self.get_room(room_id)
-            room_group_name = 'chat_%s' % room_id
-        except Exception as ex:
-            raise ex
-            await self.disconnect(500)
+            try:
+                # room = await self.get_room(room_id)
+                room_group_name = 'chat_%s' % room_id
+            except Exception as ex:
+                raise ex
+                await self.disconnect(500)
 
-        await save_message(self.room,
-                                self.user,
-                                self.message_safe,
-                                self.multitenant,
-                                self.schema_name
-                                )
+            time = await save_message(self.room,
+                                    self.user,
+                                    self.message_safe,
+                                    self.multitenant,
+                                    self.schema_name
+                                    )
+            time = time.strftime("%d %b %Y %H:%M:%S %Z")
 
-        if message_harmful:
-            warning = "Your message has been escaped due to security reasons.\
-             For more information, see \
-             https://en.wikipedia.org/wiki/Cross-site_scripting"
-        else:
-            warning = ''
 
-        await self.channel_layer.group_send(
-            room_group_name,
-            {
-                'type': 'send_to_websocket',
-                'message': self.message_safe,
-                'warning': warning,
-                'sender': username,
-                'room_id': room_id,
-            }
-        )
+            if message_harmful:
+                warning = "Your message has been escaped due to security reasons.\
+                 For more information, see \
+                 https://en.wikipedia.org/wiki/Cross-site_scripting"
+            else:
+                warning = ''
+
+            await self.channel_layer.group_send(
+                room_group_name,
+                {
+                    'type': 'send_to_websocket',
+                    'message_type': 'text',
+                    'message': self.message_safe,
+                    'date_created': time,
+                    'warning': warning,
+                    'sender': username,
+                    'room_id': room_id,
+                }
+            )
 
     async def send_to_websocket(self, event):
-        message = event['message']
-        warning = event['warning']
-        sender = event['sender']
-        room_id = event['room_id']
-        if warning == '':
-            await self.send(text_data=(json.dumps({
-                'message': message,
-                'sender': sender,
-                'room_id': room_id,
-                })))
-        else:
-            await self.send(text_data=(json.dumps({
-                'message': message,
-                'sender': sender,
-                'warning': warning,
-                'room_id': room_id
-                })))
+        await self.send_json(event)
