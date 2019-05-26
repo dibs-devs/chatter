@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+v 1.0.3
+-------
+- Minor bugfix: Use relative URL when fetching messages to account for parent
+  app's URL settings.
+
 v 1.0.2
 -------
 - On click, messages show when they were sent.
