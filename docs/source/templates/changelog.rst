@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v 1.0.4
+-------
+- Bugfixes: The last message preview on chatroom-list updates as the websocket
+  receives new messages. Overflow of text in the preview has been adjusted for.
+
+v 1.0.3
+-------
+- Minor bugfix: Use relative URL when fetching messages to account for parent
+  app's URL settings.
+
 v 1.0.2
 -------
 - On click, messages show when they were sent.

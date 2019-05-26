@@ -94,6 +94,7 @@
 </div>
 <script>
 	var room_id = '{{room_uuid_json}}';
+	var get_room_url = '{% url "django_chatter:get_messages" uuid=room_uuid_json %}';
 	var username = '{{user.username}}';
 </script>
 <script src = "{% static 'js/date-formatter.js' %}"></script>

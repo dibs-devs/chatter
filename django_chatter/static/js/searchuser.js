@@ -41,7 +41,7 @@ $(function() {
 
 // If no option is selected in the user search form, then do nothing
 $('.search-form').submit(function(e) {
-	if ($('.select2-selection__rendered').attr('title') == null) {
+	if ($('.select-chat-user option:selected').text() == "") {
 		e.preventDefault();
 	}
 });

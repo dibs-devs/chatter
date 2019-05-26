@@ -24,7 +24,7 @@ function checkAndFetch() {
     // $first_message = $('.message').not('.message-date-created').first();
 
     // room_id is defined in the templates
-    get_url = '/ajax/get-messages/' + room_id + '/?page=' + pageNum;
+    get_url = get_room_url + '?page=' + pageNum;
     fetch(get_url, {
       credentials: 'same-origin',
       headers: {
