@@ -13,6 +13,184 @@ websocket_url = ws_or_wss + window.location.host
 	+'/ws/chat/' + room_id + '/';
 
 /*
+	Takes a string and returns it wrapped around a div with
+	class: 'message-container'
+*/
+function addMessageContainerDiv(inner) {
+	return '<div class="message-container">' + inner + '</div>';
+}
+
+function addSentReducedTopMarginDiv(inner) {
+	return '<div class = "message message-sent sent-reduced-top-margin">'
+		+ inner + '</div>';
+}
+
+function addSentReducedBottomMarginDiv(inner) {
+	return '<div class = "message message-sent sent-reduced-bottom-margin">'
+		+ inner + '</div>';
+}
+
+function addMessageReceivedContainerDiv(inner) {
+	return '<div class = "message message-received">' + inner + '</div>';
+}
+
+function addMessageReceivedDateCreatedContainer(inner) {
+	return '<div class = "message message-received message-date-created message-received-date-created">'
+		+ inner + '</div>';
+}
+
+
+function addSenderMessage(
+													message,
+													sender,
+													received_room_id,
+													date_created,
+													append_or_prepend
+	) {
+	if (append_or_prepend == 'append') {
+		$last_message = $('.message').not('.message-date-created').last();
+
+		if ($last_message.hasClass('message-sent')) {
+			$last_message.addClass('sent-reduced-bottom-margin');
+
+			$('#chat-dialog').append(
+				addMessageContainerDiv(
+					addSentReducedTopMarginDiv(message)
+					+ '<div class = "message message-sent message-date-created">'
+						+ date_created
+					+ '</div>'
+				)
+			);
+		}
+		else {
+			$('#chat-dialog').append(
+				addMessageContainerDiv(
+					'<div class = "message message-sent">'
+						+ message
+					+ '</div>'
+					+ '<div class = "message message-sent message-date-created">'
+						+ date_created
+					+ '</div>'
+				)
+			);
+		}
+	}
+
+	else if (append_or_prepend == 'prepend') {
+		$first_message = $('.message').not('.message-date-created').first();
+		if ($first_message.hasClass('message-sent')) {
+			$first_message.addClass('sent-reduced-top-margin');
+
+			$('#chat-dialog').prepend(
+				addMessageContainerDiv(
+					addSentReducedBottomMarginDiv(message)
+					+ '<div class = "message message-sent message-date-created">'
+						+ date_created
+					+ '</div>'
+				)
+			);
+		}
+		else {
+			$('#chat-dialog').prepend(
+				addMessageContainerDiv(
+					'<div class = "message message-sent">'
+						+ message
+					+ '</div>'
+					+ '<div class = "message message-sent message-date-created">'
+						+ date_created
+					+ '</div>'
+				)
+			);
+		}
+	}
+
+	$('#send-message').val('');
+}
+
+function addOpponentMessage(
+														message,
+														sender,
+														received_room_id,
+														date_created,
+														append_or_prepend
+) {
+
+	// If we're appending to the end of the chat
+	if (append_or_prepend == "append") {
+		$last_message = $('.message').not('.message-date-created').last();
+		// If the last message has been sent by the opposition
+		if ($last_message.hasClass('message-received')) {
+			// if (received_room_id === room_id) {
+			$last_message.addClass('received-reduced-bottom-margin');
+			$('#chat-dialog').append(
+				addMessageContainerDiv(
+					'<div class="message-received-container">'
+						 + '<div class="receiver-bubble">'
+							 + sender.charAt(0).toUpperCase()
+						 + '</div>'
+						 + '<div class = "message message-received received-reduced-top-margin">'
+								+ message
+						 + '</div>'
+					 + '</div>'
+					 + addMessageReceivedDateCreatedContainer(date_created)
+				)
+			);
+		}
+
+		// Last message is sent by the sender and not opposition
+		else {
+			$('#chat-dialog').append(
+				addMessageContainerDiv('<div class="message-received-container">'
+							+ '<div class="receiver-bubble">'
+								+ sender.charAt(0).toUpperCase()
+							+ '</div>'
+							+ addMessageReceivedContainerDiv(message)
+						+ '</div>'
+						+ addMessageReceivedDateCreatedContainer(date_created)
+				)
+			);
+		}
+	}
+
+	// If we're prepending to the front of the chat on message load
+	else if (append_or_prepend == "prepend") {
+		$first_message = $('.message').not('.message-date-created').first();
+		// If the First message has been sent by the opposition
+		if ($first_message.hasClass('message-received')) {
+			// if (received_room_id === room_id) {
+			$first_message.addClass('received-reduced-top-margin');
+			$('#chat-dialog').prepend(
+				addMessageContainerDiv(
+					'<div class="message-received-container">'
+						 + '<div class="receiver-bubble">'
+							 + sender.charAt(0).toUpperCase()
+						 + '</div>'
+						 + '<div class = "message message-received received-reduced-bottom-margin">'
+								+ message
+						 + '</div>'
+					 + '</div>'
+					 + addMessageReceivedDateCreatedContainer(date_created)
+				)
+			);
+		}
+
+		// First message is sent by the sender and not opposition
+		else {
+			$('#chat-dialog').prepend(
+				addMessageContainerDiv('<div class="message-received-container">'
+							+ '<div class="receiver-bubble">'
+								+ sender.charAt(0).toUpperCase()
+							+ '</div>'
+							+ addMessageReceivedContainerDiv(message)
+						+ '</div>'
+						+ addMessageReceivedDateCreatedContainer(date_created)
+				)
+			);
+		}
+	}
+}
+
+/*
 AI-------------------------------------------------------------------
 	The following function opens a websocket with the current URL,
 	sends messages to that websocket, receives and processes messages
@@ -26,28 +204,6 @@ function startWebSocket(websocket_url) {
 	//Notify when the websocket is connected.
 	chatSocket.onopen = function(e) {
 		console.log('Websocket connected.');
-	}
-
-	/*
-		Takes a string and returns it wrapped around a div with
-		class: 'message-container'
-	*/
-	function addMessageContainerDiv(inner) {
-		return '<div class="message-container">' + inner + '</div>';
-	}
-
-	function addReducedTopMarginDiv(inner) {
-		return '<div class = "message message-sent sent-reduced-top-margin">'
-			+ inner + '</div>';
-	}
-
-	function addMessageReceivedContainerDiv(inner) {
-		return '<div class = "message message-received">' + inner + '</div>';
-	}
-
-	function addMessageReceivedDateCreatedContainer(inner) {
-		return '<div class = "message message-received message-date-created message-received-date-created">'
-			+ inner + '</div>';
 	}
 
 	/*
@@ -73,7 +229,6 @@ function startWebSocket(websocket_url) {
 	chatSocket.onmessage=function(e) {
 		var data = JSON.parse(e.data);
 		var message = data['message'];
-		var warning = data['warning'];
 		var sender = data['sender'];
 		var received_room_id = data['room_id'];
     var date_created = dateFormatter(data['date_created']);
@@ -83,114 +238,11 @@ function startWebSocket(websocket_url) {
 		$last_room.parent().prepend($last_room);
 
 		if (username === sender) {
-			$last_message = $('.message').not('.message-date-created').last();
-			if ($last_message.hasClass('message-sent')) {
-				$last_message.addClass('sent-reduced-bottom-margin');
-
-				$('#chat-dialog').append(
-					addMessageContainerDiv(
-						addReducedTopMarginDiv(message)
-            + '<div class = "message message-sent message-date-created">'
-              + date_created
-            + '</div>'
-					)
-				);
-
-				if (warning) {
-					$('#chat-dialog').append(
-						addMessageContainerDiv(
-							addMessageReceivedContainerDiv(warning)
-            + '<div class = "message message-received message-date-created">'
-              + date_created
-            + '</div>'
-					)
-				);
-				}
-			}
-			else {
-				$('#chat-dialog').append(
-					addMessageContainerDiv(
-						'<div class = "message message-sent">'
-              + message
-            + '</div>'
-            + '<div class = "message message-sent message-date-created">'
-              + date_created
-            + '</div>'
-					)
-				);
-
-				if (warning) {
-					$('#chat-dialog').append(
-						addMessageContainerDiv(
-						  addMessageReceivedContainerDiv(warning)
-	            + '<div class = "message message-received message-date-created">'
-	              + date_created
-	            + '</div>'
-						)
-					);
-				}
-			}
-
-
-			$('#send-message').val('');
-
-		} else {
-				$last_message = $('.message').not('.message-date-created').last();
-
-        // If the last message has been sent by the opposition
-				if ($last_message.hasClass('message-received')) {
-					// if (received_room_id === room_id) {
-					$last_message.addClass('received-reduced-bottom-margin');
-					$('#'+received_room_id).find('.chat-list-item').css('font-weight', 'bold');
-					$('#'+received_room_id).parent().prepend($('#'+received_room_id));
-					$('#chat-dialog').append(
-						addMessageContainerDiv(
-							'<div class="message-received-container">'
-                 + '<div class="receiver-bubble">'
-                   + sender.charAt(0).toUpperCase()
-                 + '</div>'
-  					     + '<div class = "message message-received received-reduced-top-margin">'
-                    + message
-                 + '</div>'
-               + '</div>'
-               + addMessageReceivedDateCreatedContainer(date_created)
-						)
-					);
-
-					if (warning) {
-						$('#chat-dialog').append(
-							addMessageContainerDiv(
-								addMessageReceivedContainerDiv(warning)
-                + addMessageReceivedDateCreatedContainer(date_created)
-							)
-						);
-					}
-				}
-
-        // Last message is not sent by the opposition
-				else {
-					$('#'+received_room_id).find('.chat-list-item').css('font-weight', 'bold');
-					$('#'+received_room_id).parent().prepend($('#'+received_room_id));
-					$('#chat-dialog').append(
-						addMessageContainerDiv('<div class="message-received-container">'
-                  + '<div class="receiver-bubble">'
-                    + sender.charAt(0).toUpperCase()
-                  + '</div>'
-                  + addMessageReceivedContainerDiv(message)
-                + '</div>'
-                + addMessageReceivedDateCreatedContainer(date_created)
-						)
-					);
-
-					if (warning) {
-						$('#chat-dialog').append(
-							addMessageContainerDiv(
-								addMessageReceivedContainerDiv(warning)
-	              + addMessageReceivedDateCreatedContainer(date_created)
-							)
-						);
-					}
-				}
+			addSenderMessage(message, sender, received_room_id, date_created, 'append');
+		}
+		else {
+			$last_room.find('.chat-list-item').css('font-weight', 'bold');
+			addOpponentMessage(message, sender, received_room_id, date_created, 'append');
 		}
 		document.getElementById('chat-dialog').scrollTop
 		= document.getElementById('chat-dialog').scrollHeight;

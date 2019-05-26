@@ -8,6 +8,7 @@ from django.conf import settings
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Room, Message
 from .utils import create_room
@@ -142,3 +143,35 @@ def get_chat_url(request):
 	return HttpResponseRedirect(
 		reverse('django_chatter:chatroom', args=[room_id])
 	)
+
+# Ajax request to fetch earlier messages
+@login_required
+def get_messages(request, uuid):
+	if request.is_ajax():
+		room = Room.objects.get(id=uuid)
+		if request.user in room.members.all():
+			messages = room.message_set.all()
+			page = request.GET.get('page')
+
+			paginator = Paginator(messages, 20)
+			try:
+				selected = paginator.page(page)
+			except PageNotAnInteger:
+				selected = paginator.page(1)
+			except EmptyPage:
+				selected = []
+			messages_array = []
+			for message in selected:
+				dict = {}
+				dict['sender'] = message.sender.username
+				dict['message'] = message.text
+				dict['received_room_id'] = uuid
+				dict['date_created'] = message.date_created.strftime("%d %b %Y %H:%M:%S %Z")
+				messages_array.append(dict)
+
+			return JsonResponse(messages_array, safe=False)
+
+		else:
+			return Http404("Sorry! We can't find what you're looking for.")
+	else:
+		return Http404("Sorry! We can't find what you're looking for.")

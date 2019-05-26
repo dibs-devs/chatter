@@ -96,10 +96,14 @@ $('.message-sent').click(function() {
 	$(this).next().slideToggle(200);
 });
 
-$('body').on('click', 'message-received', function() {
-	$(this).parent().next().slideToggle(200);
+$('body').on('click', '.message-received', function() {
+	$this = $(this);
+	if (!$this.hasClass('message-received-date-created'))
+		$(this).parent().next().slideToggle(200);
 });
 
 $('.message-received').click(function() {
-	$(this).parent().next().slideToggle(200);
+	$this = $(this);
+	if (!$this.hasClass('message-received-date-created'))
+		$(this).parent().next().slideToggle(200);
 });

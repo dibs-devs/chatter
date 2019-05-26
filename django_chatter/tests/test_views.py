@@ -4,7 +4,7 @@ from django.urls import reverse, resolve
 from django_tenants.test.cases import TenantTestCase
 from django_tenants.test.client import TenantClient
 
-from django_chatter.views import IndexView, users_list
+from django_chatter.views import IndexView, users_list, get_messages
 from django_chatter.models import Room, Message
 
 import json
@@ -88,3 +88,66 @@ class TestUsernames(TenantTestCase):
             json_array.append(dict)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(str(response.content, encoding='utf-8'), json.dumps(json_array))
+
+
+class TestMessagesFetch(TenantTestCase):
+    def setUp(self):
+        super().setUp()
+        self.client = TenantClient(self.tenant)
+        user = get_user_model().objects.create(username="ted")
+        user.set_password('dummypassword')
+        user.save()
+        room = Room.objects.create()
+        room.members.add(user)
+        for i in range(25):
+            Message.objects.create(sender=user, room=room, text=f"Message {i}")
+
+    def test_pagination(self):
+        logged_in = self.client.login(username="ted", password="dummypassword")
+        assert logged_in
+        room_uuid = str(Room.objects.all()[0].id)
+        messages = Message.objects.all()[:20]
+        messages_array = []
+        for message in messages:
+            dict = {}
+            dict['sender'] = message.sender.username
+            dict['message'] = message.text
+            dict['received_room_id'] = room_uuid
+            dict['date_created'] = message.date_created.strftime("%d %b %Y %H:%M:%S %Z")
+            messages_array.append(dict)
+
+        response = self.client.get(
+            f'/ajax/get-messages/{room_uuid}/?page=1',
+            HTTP_X_REQUESTED_WITH='XMLHttpRequest'
+            )
+        content = json.loads(response.content)
+
+        self.assertEqual(content, messages_array)
+
+        # Check second page
+        messages = Message.objects.all()[20:]
+        messages_array = []
+        for message in messages:
+            dict = {}
+            dict['sender'] = message.sender.username
+            dict['message'] = message.text
+            dict['received_room_id'] = room_uuid
+            dict['date_created'] = message.date_created.strftime("%d %b %Y %H:%M:%S %Z")
+            messages_array.append(dict)
+
+        response = self.client.get(
+            f'/ajax/get-messages/{room_uuid}/?page=2',
+            HTTP_X_REQUESTED_WITH='XMLHttpRequest'
+            )
+        content = json.loads(response.content)
+
+        self.assertEqual(content, messages_array)
+
+        response = self.client.get(
+            f'/ajax/get-messages/{room_uuid}/?page=3',
+            HTTP_X_REQUESTED_WITH='XMLHttpRequest'
+            )
+
+        content = json.loads(response.content)
+
+        self.assertEqual(content, [])
