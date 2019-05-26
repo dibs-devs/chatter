@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v 1.0.4
+-------
+- Bugfixes: The last message preview on chatroom-list updates as the websocket
+  receives new messages. Overflow of text in the preview has been adjusted for.
 
 v 1.0.3
 -------

@@ -74,6 +74,11 @@ function addSenderMessage(
 				)
 			);
 		}
+
+		// Update the message preview on the chatoom-list
+		$("#" + received_room_id)
+			.find('.chat-list-last-message')
+			.text("You: " + message);
 	}
 
 	else if (append_or_prepend == 'prepend') {
@@ -150,6 +155,11 @@ function addOpponentMessage(
 				)
 			);
 		}
+
+		// Update the message preview on the chatoom-list
+		$("#" + received_room_id)
+			.find('.chat-list-last-message')
+			.text(sender + ": " + message);
 	}
 
 	// If we're prepending to the front of the chat on message load
