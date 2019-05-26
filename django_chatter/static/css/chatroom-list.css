@@ -62,11 +62,12 @@ AI-------------------------------------------------------------------
 
 .chat-list-last-message {
 	width: 90%;
-	text-overflow: ellipsis;
-	overflow: hidden;
 	margin-top: 5px;
 	font-size: 14px;
 	color: #606060;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .list-room:hover {
