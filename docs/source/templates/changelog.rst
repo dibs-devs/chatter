@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v 1.0.5
+-------
+- Major change: Now, whenever a user/client connects to a room, the UI gets updated
+  if they receive messages in a separate room. This is achieved by connecting to
+  an additional websocket that is defined by the user's username. New alerts are
+  received in this websocket and the update is added to the UI.
+- Tests are added to test this new websocket's behavior.
+- Refactored more of the JS code into their own files and added the dependencies
+  on the top of each file.
+
+
 v 1.0.4
 -------
 - Bugfixes: The last message preview on chatroom-list updates as the websocket
