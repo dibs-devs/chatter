@@ -129,6 +129,8 @@ function addOpponentMessage(
 		if ($last_message.hasClass('message-received')) {
 			// if (received_room_id === room_id) {
 			$last_message.addClass('received-reduced-bottom-margin');
+			$last_message.prev().hide(); // Hide the user bubble
+			$last_message.css('margin-left', '45px'); // Compensate margin for user bubble
 			$('#chat-dialog').append(
 				addMessageContainerDiv(
 					'<div class="message-received-container">'

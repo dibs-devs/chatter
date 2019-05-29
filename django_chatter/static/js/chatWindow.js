@@ -16,6 +16,8 @@ $(function() {
 			$next = messages.eq(index + 1);
 			if ($current.hasClass('message-received')) {
 				if ($next.hasClass('message-received')) {
+					$current.prev().hide(); // Hide the username bubble
+					$current.css('margin-left', '45px'); // Add margin to make up for the absence of bubble
 					$current.addClass('received-reduced-bottom-margin');
 					$next.addClass('received-reduced-top-margin');
 				}
