@@ -62,7 +62,7 @@ async def test_no_host_in_headers():
     client.force_login(user=user)
     with pytest.raises(ValueError):
         communicator = WebsocketCommunicator(
-            multitenant_application, f"/ws/chat/{room.id}/",
+            multitenant_application, f"/ws/django_chatter/chatrooms/{room.id}/",
             )
 
 @pytest.mark.asyncio
@@ -77,7 +77,7 @@ async def test_no_session_id_in_headers():
     client = Client()
     client.force_login(user=user)
     communicator = WebsocketCommunicator(
-        multitenant_application, f"/ws/chat/{room.id}/",
+        multitenant_application, f"/ws/django_chatter/chatrooms/{room.id}/",
         headers = [(b'host', b'localhost:8000')]
         )
     with pytest.raises(KeyError):

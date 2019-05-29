@@ -17,3 +17,7 @@ def set_up_data():
     user = get_user_model().objects.create(username="user0")
     user.set_password("dummypassword")
     user.save()
+
+    user = get_user_model().objects.create(username="user1")
+    user.set_password("dummypassword")
+    user.save()

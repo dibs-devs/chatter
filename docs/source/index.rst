@@ -2,7 +2,7 @@ Welcome to Django Chatter's documentation!
 ==========================================
 
 
-**Django-based Chat app that supports group chat and real-time updates.**
+**Re-usable Django chat application for Django developers.**
 
 Chat is a crucial aspect of many web apps at present. However, Django's package
 repository does not have well-maintained reusable chat packages that Django
@@ -11,7 +11,7 @@ developers can integrate into their platforms.
 Django Chatter is an attempt to change that. This is an open-source fully reusable
 chat application that has mechanisms to support group chats in place.
 
-the HTML front-end for this app is built with Flexbox, making it responsive to
+The HTML front-end for this app is built with Flexbox, making it responsive to
 numerous viewports.
 
 [More work to be done] Added to that, it can also possibly be used as a REST API,
@@ -28,9 +28,6 @@ built from source on Ubuntu machines.
 The core mechanisms of Chatter follows the instructions provided in the
 `Django Channels Tutorial <https://channels.readthedocs.io/en/latest/tutorial/index.html>`_
 section, with some added modifications and a little theming.
-
-**This app is still in its alpha phase.We plan to improve it so
-it can be used as a package in other Django-based web apps.**
 
 
 Contents

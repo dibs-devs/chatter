@@ -10,21 +10,20 @@ Django Chatter
 .. image:: https://pepy.tech/badge/django-chatter/month
    :target: https://pypi.org/project/django-chatter/
 
-Django-based Chat app that supports group chat and real-time updates.
+Re-usable Django chat application for Django developers.
 ---------------------------------------------------------------------
 
-Full docs here: `Chatter Docs <https://django-chatter.readthedocs.io>`_
+Full docs here: `Django Chatter Docs <https://django-chatter.readthedocs.io>`_
 
 Chat is a crucial aspect of many web apps at present.
 However, Django's package repository does not have well-maintained reusable chat
 packages that Django developers can integrate into their platforms.
 
-Chatter is an attempt to change that. This is an open-source fully reusable chat
+Django Chatter is an attempt to change that. This is an open-source fully reusable chat
 application that has mechanisms to support group chats in place.
 
-The default templates for this app are made with Bootstrap, one of the most
-popular CSS frameworks out there. This makes it easier for developers to change
-the templates just by modifying the right CSS files.
+The HTML front-end for this app is built with Flexbox, making it responsive to
+numerous viewports.
 
 [More work to be done] Added to that, it can also possibly be used as a REST API,
 since all the views generate standard JSON responses that need to be parsed by the
@@ -33,14 +32,11 @@ websockets present in the front-end of the app using this package.
 This app makes use of `Django Channels 2 <http://channels.readthedocs.io>`_ and uses
 `Redis <https://redis.io/>`_ as the message broker.
 
-**This app is still in its alpha phase. We plan to improve it so it can be used
-as a package in other Django-based web apps. **
-
-To run chatter properly, you'll require `python>=3.5` and Redis. **Note:**
+To run Django Chatter properly, you'll require `python>=3.5` and Redis. **Note:**
 For development, we are currently using `redis-5.0.3`, built from source on
 Ubuntu machines.
 
-The core mechanisms of Chatter follows the instructions provided in the
+The core mechanisms of Chatter follow the instructions provided in the
 `Django Channels <https://channels.readthedocs.io/en/latest/>`_ tutorial section,
 with some added modifications and theming.
 
@@ -202,4 +198,3 @@ Running list of features to add
 
 * Add a "Create Group" option for users on the templates
 * Add 'Seen by user x' functionality
-* Add displaying time with messages

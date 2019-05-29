@@ -1,17 +1,14 @@
 /*
 AI-------------------------------------------------------------------
-	When the document is loaded, start the websocket connection.
-	The webpage should load the latest 50 messages in a particular
-	group chat. When that is done, scroll down to the bottom to
+	When the document is loaded, scroll down to the bottom to
 	reveal the latest messages.
+
+	Depends on: date-formatter.js
 -------------------------------------------------------------------AI
 */
 $(function() {
 
-	// Start websocket present in websocket.js
-	startWebSocket(websocket_url);
-
-	// visually group messages currently present in the chat
+	// Bubble modifications on messages sent by same people on load
 	messages = $('.message').not('.message-date-created');
 	messages.each(function(index, el) {
     if (index !== messages.length - 1) {
@@ -19,6 +16,8 @@ $(function() {
 			$next = messages.eq(index + 1);
 			if ($current.hasClass('message-received')) {
 				if ($next.hasClass('message-received')) {
+					$current.prev().hide(); // Hide the username bubble
+					$current.css('margin-left', '45px'); // Add margin to make up for the absence of bubble
 					$current.addClass('received-reduced-bottom-margin');
 					$next.addClass('received-reduced-top-margin');
 				}
@@ -46,7 +45,7 @@ $(function() {
 
 
 	// Mark active room with grey focus color
-	$active_room = $("#" + room_id);
+	$active_room = $("#" + room_id); // room_id from chat-window.html
 	$active_room.css("background", "var(--bg-grey)");
 
 	// Focus message input on load

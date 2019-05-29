@@ -31,7 +31,7 @@ AI-------------------------------------------------------------------
   flex-basis: 0;
 	flex-grow: 1.5;
 	border-right: 0;
-  max-width: 350px;
+  max-width: 40%;
 }
 
 
@@ -48,7 +48,7 @@ AI-------------------------------------------------------------------
 	flex-grow: 2.5;
   flex-basis: 0;
   width: 100px; /*Placeholder to enable max-width*/
-  max-width: 800px;
+  max-width: 60%;
   border-left: 1px solid #bebebe;
 }
 
@@ -236,4 +236,7 @@ It's a textarea element to enable scroll.*/
 	.chatroom-list-container {
 		display: none;
 	}
+  .dialog-container {
+    max-width: 100%;
+  }
 }

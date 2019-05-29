@@ -100,15 +100,17 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
                 break
             except ValueError:
                 pass
+
+        # Check if the user connecting to the room's websocket belongs in the room
         try:
             self.room = await get_room(room_id, self.multitenant, self.schema_name)
             if self.multitenant:
                 from django_tenants.utils import schema_context
                 with schema_context(self.schema_name):
                     if self.user in self.room.members.all():
-                        room_group_name = 'chat_%s' % self.room.id
+                        self.room_group_name = 'chat_%s' % self.room.id
                         await self.channel_layer.group_add(
-                            room_group_name,
+                            self.room_group_name,
                             self.channel_name
                         )
                         await self.accept()
@@ -116,9 +118,9 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
                         await self.disconnect(403)
             else:
                 if self.user in self.room.members.all():
-                    room_group_name = 'chat_%s' % self.room.id
+                    self.room_group_name = 'chat_%s' % self.room.id
                     await self.channel_layer.group_add(
-                        room_group_name,
+                        self.room_group_name,
                         self.channel_name
                     )
                     await self.accept()
@@ -129,30 +131,30 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
             await self.disconnect(500)
 
     async def disconnect(self, close_code):
-        room_group_name = 'chat_%s' % self.room.id
         await self.channel_layer.group_discard(
-            room_group_name,
+            self.room_group_name,
             self.channel_name
         )
 
     async def receive_json(self, data):
-        username = self.user.username
+        if (data['sender'] != self.user.username)\
+            or data['room_id'] != str(self.room.id):
+            await self.disconnect(403)
 
-        message_type = data['type']
+        message_type = data['message_type']
         if message_type == "text":
             message = data['message']
             room_id = data['room_id']
 
             # Clean code off message if message contains code
             self.message_safe = bleach.clean(message)
-            message_harmful = (self.message_safe != message)
 
-            try:
-                # room = await self.get_room(room_id)
-                room_group_name = 'chat_%s' % room_id
-            except Exception as ex:
-                raise ex
-                await self.disconnect(500)
+            # try:
+            #     # room = await self.get_room(room_id)
+            #     room_group_name = 'chat_%s' % room_id
+            # except Exception as ex:
+            #     raise ex
+            #     await self.disconnect(500)
 
             time = await save_message(self.room,
                                     self.user,
@@ -161,27 +163,64 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
                                     self.schema_name
                                     )
             time = time.strftime("%d %b %Y %H:%M:%S %Z")
-
-
-            if message_harmful:
-                warning = "Your message has been escaped due to security reasons.\
-                 For more information, see \
-                 https://en.wikipedia.org/wiki/Cross-site_scripting"
-            else:
-                warning = ''
-
             await self.channel_layer.group_send(
-                room_group_name,
+                self.room_group_name,
                 {
                     'type': 'send_to_websocket',
                     'message_type': 'text',
                     'message': self.message_safe,
                     'date_created': time,
-                    'warning': warning,
-                    'sender': username,
+                    'sender': self.user.username,
                     'room_id': room_id,
                 }
             )
+
+            for user in self.room.members.all():
+                if user != self.user:
+                    await self.channel_layer.group_send(
+                        f'user_{user.username}',
+                        {
+                            'type': 'receive_json',
+                            'message_type': 'text',
+                            'message': self.message_safe,
+                            'date_created': time,
+                            'sender': self.user.username,
+                            'room_id': room_id,
+                        }
+                    )
+
+    async def send_to_websocket(self, event):
+        await self.send_json(event)
+
+
+class AlertConsumer(AsyncJsonWebsocketConsumer):
+    '''
+    AI-------------------------------------------------------------------
+        WebSocket methods below
+    -------------------------------------------------------------------AI
+    '''
+    async def connect(self):
+        self.user = self.scope['user']
+        self.user_group_name = f'user_{self.user.username}'
+        await self.channel_layer.group_add(
+            self.user_group_name,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            self.user_group_name,
+            self.channel_name
+        )
+
+    async def receive_json(self, data):
+
+        # Check if the data has been sent to this consumer by the currently
+        # logged in user
+
+        data['type'] = 'send_to_websocket'
+        await self.channel_layer.group_send(self.user_group_name, data)
 
     async def send_to_websocket(self, event):
         await self.send_json(event)
