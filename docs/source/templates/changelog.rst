@@ -1,6 +1,9 @@
 Changelog
 =========
 
+v 1.0.7
+-------
+- Bugfix: Properly selecting the last 10 rooms when loading a chat window.
 
 v 1.0.6
 -------
