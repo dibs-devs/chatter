@@ -116,7 +116,7 @@ AI-------------------------------------------------------------------
 
 .message-received-container {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .receiver-bubble {
@@ -130,6 +130,7 @@ AI-------------------------------------------------------------------
   width: 30px;
   height: 30px;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 /*Messages received by other users in the chat have these settings.*/

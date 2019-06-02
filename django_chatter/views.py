@@ -88,11 +88,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 
 			# Add rooms with unread messages
 			rooms_list = Room.objects.filter(members=self.request.user)\
-				.order_by('-date_modified')
-			try:
-				rooms_list = rooms_list[10]
-			except Exception as e:
-				pass
+				.order_by('-date_modified')[:10]
 			rooms_with_unread = []
 			# Go through each list of rooms and check if the last message was unread
 			# and add each last message to the context

@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v 1.0.7
+-------
+- Bugfix: Properly selecting the last 10 rooms when loading a chat window.
+
+v 1.0.6
+-------
+- UI improvement: the Opponent username bubble has alignment flex-end to ensure it's in the bottom
+- Cache usernames of all users present in a room to save database queries
+
+
 v 1.0.5
 -------
 - Major change: Now, whenever a user/client connects to a room, the UI gets updated
