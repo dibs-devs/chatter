@@ -168,7 +168,7 @@ Installation
 
   .. code-block:: bash
 
-    $ python manage.py makeimigrations chat
+    $ python manage.py makemigrations chat
     $ python manage.py migrate
 
 * Start your app's development server and go to your :code:`'/chat/'` URL,
