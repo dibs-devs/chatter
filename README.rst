@@ -198,3 +198,4 @@ Running list of features to add
 
 * Add a "Create Group" option for users on the templates
 * Add 'Seen by user x' functionality
+really helpful for you if you want make real-life applictation in djang
